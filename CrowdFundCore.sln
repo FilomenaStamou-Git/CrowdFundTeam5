@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrowdFundCore", "CrowdFundCore\CrowdFundCore.csproj", "{325EA467-20FB-4D0A-86CF-1884C3DAC57B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{325EA467-20FB-4D0A-86CF-1884C3DAC57B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{325EA467-20FB-4D0A-86CF-1884C3DAC57B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{325EA467-20FB-4D0A-86CF-1884C3DAC57B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{325EA467-20FB-4D0A-86CF-1884C3DAC57B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF32EF0C-98D5-45D7-9B86-B13A2D8C2026}
+	EndGlobalSection
+EndGlobal
