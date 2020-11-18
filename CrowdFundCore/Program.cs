@@ -11,6 +11,7 @@ namespace ProjectCF_Console
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the test area of the CrowdFunding website!");
+            Console.WriteLine("I brought giannis branch to main");
 
             //var userOpt = new UserOption()
             //{
@@ -32,7 +33,7 @@ namespace ProjectCF_Console
             };
                    
             db.Users.Add(user);           
-            db.SaveChanges();
+            db.SaveChanges(); 
 
            // User user1 = db.Users.Find(1);
            // Console.WriteLine(user1.FirstName);
