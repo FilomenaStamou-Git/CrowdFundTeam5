@@ -1,7 +1,7 @@
 ﻿using System;
-using ProjectCF.Models;
-using ProjectCF.Options;
-using ProjectCF.Services;
+using CrowdFundCore.Models;
+using CrowdFundCore.Options;
+using CrowdFundCore.Services;
 using ProjectCF_Console.Data;
 
 namespace ProjectCF_Console

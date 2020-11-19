@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ProjectCF.Models;
+using CrowdFundCore.Models;
 
 namespace ProjectCF_Console.Models
 {

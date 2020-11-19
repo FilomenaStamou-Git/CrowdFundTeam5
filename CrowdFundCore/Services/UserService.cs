@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ProjectCF.Models;
-using ProjectCF.Options;
+using CrowdFundCore.Models;
+using CrowdFundCore.Options;
 using ProjectCF_Console.Data;
 
-namespace ProjectCF.Services
+namespace CrowdFundCore.Services
 {
     public class UserService : IUserService
     {
-        private readonly CFDBContext dbContext = new CFDBContext();
+        private readonly CFDBContext dbContext;
 
         public UserService(CFDBContext dbContext)
         {
@@ -54,6 +54,37 @@ namespace ProjectCF.Services
             
         }
 
+        public List<UserOption> GetAllUsers()
+        {           
+            List<User> users = dbContext.Users.ToList();
+            List<UserOption> usersOpt = new List<UserOption>();
+            users.ForEach(user => usersOpt.Add(new UserOption
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Password = user.Password,
+                Id = user.Id
+            }));
+
+            return usersOpt;
+        }
+
+        public UserOption GetUserById(int id)
+        {
+            User user = dbContext.Users.Find(id);
+                if (user == null) return null;          
+                return new UserOption
+                {
+                    Id = user.Id,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
+                    Password = user.Password,                   
+                };
+            
+        }
+
         public UserOption UpdateUser(UserOption userOption, string email)
         {
             User user = dbContext.Users.Find(email);
@@ -66,6 +97,8 @@ namespace ProjectCF.Services
                 Email = user.Email,
                 Password = user.Password
             };
-        }        
+        }
+        
+
     }
 }

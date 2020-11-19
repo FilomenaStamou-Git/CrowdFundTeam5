@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
-using ProjectCF.Models;
+using CrowdFundCore.Models;
 using ProjectCF_Console.Models;
 
 namespace ProjectCF_Console.Data
