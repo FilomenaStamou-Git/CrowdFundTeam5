@@ -11,6 +11,6 @@ namespace ProjectCF.Services
     {
         UserOption CreateUser(UserOption userOption);
         UserOption UpdateUser(UserOption userOption, string email);
-        UserOption DeleteUser(UserOption userOption, string email);
+        bool DeleteUser(string email);
     }
 }

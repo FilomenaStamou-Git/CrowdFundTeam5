@@ -28,7 +28,7 @@ namespace ProjectCF.Services
                 {
                     FirstName = userOption.FirstName,
                     LastName = userOption.LastName,
-                    Email = userOption.Email
+                    Email = userOption.Email,
                     Password = userOption.Password
                 };
 
@@ -44,7 +44,7 @@ namespace ProjectCF.Services
             };
             }
 
-        public UserOption DeleteUser(UserOption userOption, string email)
+        public bool DeleteUser(string email)
         {
             User user = dbContext.Users.Find(email);
             if (user == null) return false;
@@ -57,7 +57,7 @@ namespace ProjectCF.Services
         public UserOption UpdateUser(UserOption userOption, string email)
         {
             User user = dbContext.Users.Find(email);
-            userOptionToUser(userOption, user);
+            //userOptionToUser(userOption, user);
             dbContext.SaveChanges();
             return new UserOption
             {
