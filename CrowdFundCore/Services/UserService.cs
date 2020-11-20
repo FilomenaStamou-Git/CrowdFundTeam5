@@ -55,9 +55,9 @@ namespace CrowdFundCore.Services
             };
         }
 
-        public bool DeleteUser(string email)
+        public bool DeleteUser(int id)
         {
-            User user = dbContext.Users.Find(email);
+            User user = dbContext.Users.Find(id);
             if (user == null) return false;
             dbContext.Users.Remove(user);
             dbContext.SaveChanges();
@@ -92,7 +92,6 @@ namespace CrowdFundCore.Services
             };
         }
         private static void userOptToUser(UserOption userOpt, User user)
-
         {
             user.FirstName = userOpt.FirstName;
             user.LastName = userOpt.LastName;
