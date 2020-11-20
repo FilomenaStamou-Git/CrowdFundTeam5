@@ -2,9 +2,9 @@
 using CrowdFundCore.Models;
 using CrowdFundCore.Options;
 using CrowdFundCore.Services;
-using ProjectCF_Console.Data;
+using CrowdFundCore.Data;
 
-namespace ProjectCF_Console
+namespace CrowdFundCore
 {
     class Program
     {
@@ -27,9 +27,9 @@ namespace ProjectCF_Console
             using var db = new CFDBContext();
                 User user = new User
             {
-                FirstName = "John",
+                FirstName = "Danai",
                 LastName = "Macs",
-                Email = "John@gmail.com",               
+                Email = "Jdan@gmail.com",               
             };
                    
             db.Users.Add(user);           

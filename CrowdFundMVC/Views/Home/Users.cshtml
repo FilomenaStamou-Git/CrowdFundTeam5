@@ -1,4 +1,5 @@
-﻿@model CrowdFundMVC.Models.UserModel
+﻿
+@model CrowdFundMVC.Models.UserModel
 @* 
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -20,14 +21,14 @@
     @{
         foreach (var user in Model.Users)
         {
-            <tr>
+            <tr>s
                 <td> @user.Id</td>
                 <td> @user.FirstName</td>
                 <td> @user.LastName</td>
                 <td> @user.Email   </td>
                 <td> @user.Password   </td>
                 <td> <a href="~/home/updateuserwithdetails/@user.Id"><img src="~/images/update.png" width="25" /></a>Update</td>
-                <td> <a href="~/home/DeleteCustomerFromView/@user.Id"><img src="~/images/delete.png" width="25" /></a>Delete</td>
+                <td> <a href="~/home/DeleteUserFromView/@user.Id"><img src="~/images/delete.png" width="25" /></a>Delete</td>
             </tr>
 
         }

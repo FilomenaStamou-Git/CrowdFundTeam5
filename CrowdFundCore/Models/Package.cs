@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using CrowdFundCore.Models;
 
-namespace ProjectCF_Console.Models
+namespace CrowdFundCore.Models
 {
     public class Package
     {
