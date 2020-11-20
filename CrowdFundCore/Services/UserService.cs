@@ -20,7 +20,6 @@ namespace CrowdFundCore.Services
 
         public List<UserOption> GetAllUsers()
         {
-            using CFDBContext dbContext = new CFDBContext();
             List<User> users = dbContext.Users.ToList();
             List<UserOption> usersOpt = new List<UserOption>();
             users.ForEach(user => usersOpt.Add(new UserOption
