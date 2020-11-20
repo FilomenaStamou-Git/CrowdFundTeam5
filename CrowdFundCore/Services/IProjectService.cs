@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ProjectCF.Models;
-using ProjectCF.Options;
+using CrowdFundCore.Models;
+using CrowdFundCore.Options;
 
-namespace ProjectCF.Services
+namespace CrowdFundCore.Services
 {
     public interface IProjectService
     {

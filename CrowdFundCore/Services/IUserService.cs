@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ProjectCF.Models;
-using ProjectCF.Options;
+using CrowdFundCore.Models;
+using CrowdFundCore.Options;
 
-namespace ProjectCF.Services
+namespace CrowdFundCore.Services
 {
-    interface IUserService
+    public interface IUserService
     {
         UserOption CreateUser(UserOption userOption);
-        UserOption UpdateUser(UserOption userOption, string email);
-        UserOption DeleteUser(UserOption userOption, string email);
+        UserOption UpdateUser(UserOption userOption, int id);
+        bool DeleteUser(string email);
+        List<UserOption> GetAllUsers();
+        UserOption GetUserById(int id);
     }
 }

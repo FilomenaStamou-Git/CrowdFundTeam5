@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProjectCF_Console.Options
+namespace CrowdFundCore.Options
 {
     public class PackageOption
     {

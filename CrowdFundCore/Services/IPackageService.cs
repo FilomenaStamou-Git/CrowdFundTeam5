@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ProjectCF_Console.Models;
-using ProjectCF_Console.Options;
+using CrowdFundCore.Models;
+using CrowdFundCore.Options;
 
-namespace ProjectCF_Console.Services
+namespace CrowdFundCoreServices
 {
     public interface IPackageService
     {

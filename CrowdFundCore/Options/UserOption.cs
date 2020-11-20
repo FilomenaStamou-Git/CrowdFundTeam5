@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjectCF.Options
+namespace CrowdFundCore.Options
 {
     public class UserOption
     {

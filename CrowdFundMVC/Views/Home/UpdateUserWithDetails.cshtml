@@ -1,0 +1,62 @@
+﻿@model CrowdFundMVC.Models.UserOptionModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<h1> Update Usercode = @Model.user.Email </h1>
+
+<form>
+    <table align="center">
+        <tr align="center">
+            <td>
+                Id
+            </td>
+            <td> <input type="text" id="Id" value="@Model.user.Id" readonly /></td>
+        </tr>
+
+
+        <tr align="center">
+            <td>
+                FirstName
+            </td>
+            <td> <input type="text" id="FirstName" value="@Model.user.FirstName" /></td>
+        </tr>
+
+        <tr align="center">
+            <td>
+                LastName
+            </td>
+            <td>
+                <input type="text" id="LastName" value="@Model.user.LastName" />
+            </td>
+        </tr>
+
+        <tr align="center">
+            <td>
+                Email
+            </td>
+            <td>
+                <input type="text" id="Email" value="@Model.user.Email" />
+
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+
+                Password
+            </td>
+            <td>
+                <input type="text" id="Password" value="@Model.user.Password" />
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                <input type="button" value="Submit data" onclick="updateUser()" />
+            </td>
+        </tr>
+
+    </table>
+</form>

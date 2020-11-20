@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ProjectCF_Console.Migrations
+namespace CrowdFundCore.Migrations
 {
     public partial class addmodels : Migration
     {

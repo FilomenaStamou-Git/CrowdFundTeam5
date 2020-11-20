@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjectCF.Services
+namespace CrowdFundCore.Services
 {
     public interface IFundingService
     {
