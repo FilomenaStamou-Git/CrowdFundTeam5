@@ -51,9 +51,9 @@ namespace CrowdFundMVC.Controllers
             return View(model);
         }
 
-        public IActionResult DeleteUserFromView([FromRoute] string email)
+        public IActionResult DeleteUserFromView([FromRoute] int id)
         {
-            userService.DeleteUser(email);
+            userService.DeleteUser(id);
 
             return Redirect("/Home/Users");
         }

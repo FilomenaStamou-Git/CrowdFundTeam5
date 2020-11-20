@@ -31,16 +31,16 @@ namespace CrowdFundMVC.Controllers
                 return userOption;
             }
 
-        [HttpPut("{email}")]
-        public UserOption UpdateUser(int id, UserOption userOpt)
+        [HttpPut("{id}")]
+        public UserOption UpdateUser(UserOption userOpt, int id)
         {
             return userService.UpdateUser(userOpt, id);
 
         }
-        [HttpDelete("{email}")]
-        public bool DeleteUser(string email)
+        [HttpDelete("{id}")]
+        public bool DeleteUser(int id)
         {
-            return userService.DeleteUser(email);
+            return userService.DeleteUser(id);
         }
     }
 }

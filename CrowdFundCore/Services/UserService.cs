@@ -20,7 +20,6 @@ namespace CrowdFundCore.Services
 
         public List<UserOption> GetAllUsers()
         {
-            using CFDBContext dbContext = new CFDBContext();
             List<User> users = dbContext.Users.ToList();
             List<UserOption> usersOpt = new List<UserOption>();
             users.ForEach(user => usersOpt.Add(new UserOption
@@ -55,9 +54,9 @@ namespace CrowdFundCore.Services
             };
         }
 
-        public bool DeleteUser(string email)
+        public bool DeleteUser(int id)
         {
-            User user = dbContext.Users.Find(email);
+            User user = dbContext.Users.Find(id);
             if (user == null) return false;
             dbContext.Users.Remove(user);
             dbContext.SaveChanges();
@@ -92,7 +91,6 @@ namespace CrowdFundCore.Services
             };
         }
         private static void userOptToUser(UserOption userOpt, User user)
-
         {
             user.FirstName = userOpt.FirstName;
             user.LastName = userOpt.LastName;
