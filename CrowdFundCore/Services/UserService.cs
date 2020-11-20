@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CrowdFundCore.Models;
 using CrowdFundCore.Options;
-using ProjectCF_Console.Data;
+using CrowdFundCore.Data;
 
 namespace CrowdFundCore.Services
 {
@@ -17,24 +17,35 @@ namespace CrowdFundCore.Services
             this.dbContext = dbContext;
         }
 
-        public UserOption CreateUser(UserOption userOption)
-            {
-            //validation
-            if (userOption == null) return null;
-            if (userOption.FirstName == null) return null;
 
+        public List<UserOption> GetAllUsers()
+        {
+            using CFDBContext dbContext = new CFDBContext();
+            List<User> users = dbContext.Users.ToList();
+            List<UserOption> usersOpt = new List<UserOption>();
+            users.ForEach(user => usersOpt.Add(new UserOption
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Id = user.Id
+            }));
+
+            return usersOpt;
+        }
+
+        public UserOption CreateUser(UserOption userOption)
+        {
             User user = new User
-    
-                {
-                    FirstName = userOption.FirstName,
-                    LastName = userOption.LastName,
-                    Email = userOption.Email,
-                    Password = userOption.Password
-                };
+            {
+                FirstName = userOption.FirstName,
+                LastName = userOption.LastName,
+                Email = userOption.Email,
+                Password = userOption.Password
+            };
 
             dbContext.Users.Add(user);
             dbContext.SaveChanges();
-
             return new UserOption
             {
                 FirstName = user.FirstName,
@@ -42,7 +53,7 @@ namespace CrowdFundCore.Services
                 Email = user.Email,
                 Password = user.Password
             };
-            }
+        }
 
         public bool DeleteUser(string email)
         {
@@ -51,45 +62,14 @@ namespace CrowdFundCore.Services
             dbContext.Users.Remove(user);
             dbContext.SaveChanges();
             return true;
-            
         }
 
-        public List<UserOption> GetAllUsers()
-        {           
-            List<User> users = dbContext.Users.ToList();
-            List<UserOption> usersOpt = new List<UserOption>();
-            users.ForEach(user => usersOpt.Add(new UserOption
-            {
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email,
-                Password = user.Password,
-                Id = user.Id
-            }));
-
-            return usersOpt;
-        }
-
-        public UserOption GetUserById(int id)
+        public UserOption UpdateUser(UserOption userOpt, int id)
         {
             User user = dbContext.Users.Find(id);
-                if (user == null) return null;          
-                return new UserOption
-                {
-                    Id = user.Id,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Email = user.Email,
-                    Password = user.Password,                   
-                };
-            
-        }
-
-        public UserOption UpdateUser(UserOption userOption, string email)
-        {
-            User user = dbContext.Users.Find(email);
-            //userOptionToUser(userOption, user);
+            userOptToUser(userOpt, user);
             dbContext.SaveChanges();
+
             return new UserOption
             {
                 FirstName = user.FirstName,
@@ -98,7 +78,27 @@ namespace CrowdFundCore.Services
                 Password = user.Password
             };
         }
-        
+
+        public UserOption GetUserById(int id)
+        {
+            User user= dbContext.Users.Find(id);
+            return new UserOption
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Password = user.Password,
+                Id = user.Id 
+            };
+        }
+        private static void userOptToUser(UserOption userOpt, User user)
+
+        {
+            user.FirstName = userOpt.FirstName;
+            user.LastName = userOpt.LastName;
+            user.Email = userOpt.Email;
+            user.Password = userOpt.Password;
+        }
 
     }
 }

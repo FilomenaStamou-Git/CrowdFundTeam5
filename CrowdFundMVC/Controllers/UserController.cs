@@ -18,11 +18,29 @@ namespace CrowdFundMVC.Controllers
             {
                 this.userService = userService;
             }
-            [HttpPost]
+        [HttpGet]
+        public List<UserOption> GetAllUsers()
+        {
+            return userService.GetAllUsers();
+        }
+
+        [HttpPost]
             public UserOption AddUser(UserOption userOpt)
             {
                 UserOption userOption = userService.CreateUser(userOpt);
                 return userOption;
             }
+
+        [HttpPut("{email}")]
+        public UserOption UpdateUser(int id, UserOption userOpt)
+        {
+            return userService.UpdateUser(userOpt, id);
+
+        }
+        [HttpDelete("{email}")]
+        public bool DeleteUser(string email)
+        {
+            return userService.DeleteUser(email);
+        }
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using CrowdFundCore.Models;
-using ProjectCF_Console.Models;
+using CrowdFundCore.Models;
 
-namespace ProjectCF_Console.Data
+namespace CrowdFundCore.Data
 {
     public class CFDBContext:DbContext
     {
@@ -17,11 +17,7 @@ namespace ProjectCF_Console.Data
 
 
         public readonly static string connectionString =
-            "Server=tcp:ioanchri-server.database.windows.net,1433;" +
-            "Initial Catalog=Team5DB;Persist Security Info=False;" +
-            "User ID=ioanchri;Password=1234qwer!;" +
-            "MultipleActiveResultSets=False;Encrypt=True;" +
-            "TrustServerCertificate=False;Connection Timeout=30;";
+            "Server=tcp:danaikp.database.windows.net,1433;Initial Catalog=Team5;Persist Security Info=False;User ID=dkape;Password={};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         protected override void OnConfiguring
            (DbContextOptionsBuilder optionsBuilder)

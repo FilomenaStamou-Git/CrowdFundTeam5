@@ -15,11 +15,12 @@ namespace CrowdFundMVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly UserService userService;
+        private readonly IUserService userService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IUserService _userService)
         {
             _logger = logger;
+            userService = _userService;
         }
 
         public IActionResult Index()
@@ -33,6 +34,31 @@ namespace CrowdFundMVC.Controllers
         }
 
         public IActionResult AddUser()
+        {
+            return View();
+        }
+
+        public IActionResult UpdateUser()
+        {
+            return View();
+        }
+
+        public IActionResult UpdateUserWithDetails([FromRoute] int id)
+        {
+            UserOption userOptions = userService.GetUserById(id);
+            UserOptionModel model = new UserOptionModel { user = userOptions };
+
+            return View(model);
+        }
+
+        public IActionResult DeleteUserFromView([FromRoute] string email)
+        {
+            userService.DeleteUser(email);
+
+            return Redirect("/Home/Users");
+        }
+
+        public IActionResult DeleteUser()
         {
             return View();
         }

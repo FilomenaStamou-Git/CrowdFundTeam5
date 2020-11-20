@@ -10,7 +10,7 @@ namespace CrowdFundCore.Services
     public interface IUserService
     {
         UserOption CreateUser(UserOption userOption);
-        UserOption UpdateUser(UserOption userOption, string email);
+        UserOption UpdateUser(UserOption userOption, int id);
         bool DeleteUser(string email);
         List<UserOption> GetAllUsers();
         UserOption GetUserById(int id);
