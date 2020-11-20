@@ -1,15 +1,36 @@
-﻿@{
+﻿@model CrowdFundMVC.Models.ProjectModel
+@{
     ViewData["Title"] = "My Projects";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
-<table id="userTable" border="1" cellpadding="10" cellspacing="0">
+
+<table id="projectTable" border="1" cellpadding="10" cellspacing="0">
     <tr>
         <th> Code </th>
         <th> Title</th>
         <th> Description</th>
-        <th>Category</th>
-        <th>Update info</th>
+        <th> Category</th>
+        <th> Update info</th>
+        <th> Ammount</th>
+
     </tr>
 </table>
+
+@{
+    foreach (var project in Model.Projects)
+    {
+    <tr>
+        s
+        <td> @project.Id</td>
+        <td> @project.Title</td>
+        <td> @project.Description</td>
+        <td> @project.Category   </td>
+        <td> @project.Update   </td>
+        <td> @project.Ammount   </td>
+        <td> <a href="~/home/updateprojectwithdetails/@project.Id"><img src="~/images/update.png" width="25" /></a>Update</td>
+        <td> <a href="~/home/DeleteProjectFromView/@project.Id"><img src="~/images/delete.png" width="25" /></a>Delete</td>
+    </tr>
+
+    }
+}

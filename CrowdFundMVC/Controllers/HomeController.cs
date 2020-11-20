@@ -16,11 +16,13 @@ namespace CrowdFundMVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IUserService userService;
+        private readonly IProjectService projectService;
 
-        public HomeController(ILogger<HomeController> logger, IUserService _userService)
+        public HomeController(ILogger<HomeController> logger, IUserService _userService, IProjectService _projectService)
         {
             _logger = logger;
             userService = _userService;
+            projectService = _projectService;
         }
 
         public IActionResult Index()
@@ -65,7 +67,9 @@ namespace CrowdFundMVC.Controllers
 
         public IActionResult Projects()
         {
-            return View();
+            List<ProjectOption> projects = projectService.GetAllProjects();
+            ProjectModel projectModel = new ProjectModel { Projects = projects };
+            return View(projectModel);
         }
 
         public IActionResult Users()

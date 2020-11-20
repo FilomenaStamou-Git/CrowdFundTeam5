@@ -27,6 +27,8 @@ namespace CrowdFundMVC
         {
             services.AddDbContext<CFDBContext>(options => options.UseSqlServer(CFDBContext.connectionString));
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IProjectService, ProjectService>();
+
             services.AddControllersWithViews();
         }
 
