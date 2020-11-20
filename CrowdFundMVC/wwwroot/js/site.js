@@ -107,7 +107,7 @@ function deleteUser() {
 function findToUpdateUser() {
 
     id = $("#Id").val()
-    actionUrl = "/Home/UpdateUserWithDetails/" + id
+    actionUrl = "/Home/UpdateUser/" + id
 
     window.open(actionUrl, "_self");
 
