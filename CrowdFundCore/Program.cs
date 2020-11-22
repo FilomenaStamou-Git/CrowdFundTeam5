@@ -10,34 +10,16 @@ namespace CrowdFundCore
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the test area of the CrowdFunding website!");
-            Console.WriteLine("I brought giannis branch to main");
-
-            //var userOpt = new UserOption()
-            //{
-            //    FirstName = "Firstname",
-            //    LastName = "Lastname",
-            //    Email = "test@gmail.com",
-            //    Password = "test",
-            //    Dob = DateTime.Today
-
-
-            //};
-
             using var db = new CFDBContext();
-                User user = new User
+            Package package = new Package()
             {
-                FirstName = "Danai",
-                LastName = "Macs",
-                Email = "Jdan@gmail.com",               
+                Amount = 50,
+                Description = "This is a description",
+                Reward = "Reward here",
+                IsActive = true
             };
-                   
-            db.Users.Add(user);           
-            db.SaveChanges(); 
-
-           // User user1 = db.Users.Find(1);
-           // Console.WriteLine(user1.FirstName);
-
+            db.Packages.Add(package);
+            db.SaveChanges();
         }
     }
 }

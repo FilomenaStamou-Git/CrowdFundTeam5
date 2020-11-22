@@ -1,0 +1,62 @@
+﻿@model CrowdFundMVC.Models.PackageOptionModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<h1> Update Packagecode = @Model.package.Id </h1>
+
+<form>
+    <table align="center">
+        <tr align="center">
+            <td>
+                Id
+            </td>
+            <td> <input type="text" id="Id" value="@Model.package.Id" readonly /></td>
+        </tr>
+
+
+        <tr align="center">
+            <td>
+                Amount
+            </td>
+            <td> <input type="text" id="Amount" value="@Model.package.Amount" /></td>
+        </tr>
+
+        <tr align="center">
+            <td>
+                Description
+            </td>
+            <td>
+                <input type="text" id="Description" value="@Model.package.Description" />
+            </td>
+        </tr>
+
+        <tr align="center">
+            <td>
+                Reward
+            </td>
+            <td>
+                <input type="text" id="Reward" value="@Model.package.Reward" />
+
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+
+                IsActive
+            </td>
+            <td>
+                <input type="text" id="IsActive" value="@Model.package.IsActive" />
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                <input type="button" value="Submit data" onclick="updatePackage()" />
+            </td>
+        </tr>
+
+    </table>
+</form>

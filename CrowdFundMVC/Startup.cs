@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CrowdFundCore.Data;
 using CrowdFundCore.Services;
+using CrowdFundCoreServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,8 @@ namespace CrowdFundMVC
         {
             services.AddDbContext<CFDBContext>(options => options.UseSqlServer(CFDBContext.connectionString));
             services.AddScoped<IUserService, UserService>();
+
+            services.AddScoped<IPackageService, PackageService>();
             services.AddControllersWithViews();
         }
 

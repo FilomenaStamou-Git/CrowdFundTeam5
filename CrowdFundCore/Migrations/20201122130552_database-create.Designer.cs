@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CrowdFundCore.Migrations
 {
     [DbContext(typeof(CFDBContext))]
-    [Migration("20201120003950_add-models")]
-    partial class addmodels
+    [Migration("20201122130552_database-create")]
+    partial class databasecreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,7 +53,7 @@ namespace CrowdFundCore.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("Ammount")
+                    b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Description")
@@ -82,7 +82,7 @@ namespace CrowdFundCore.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("Ammount")
+                    b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Category")
@@ -151,7 +151,7 @@ namespace CrowdFundCore.Migrations
             modelBuilder.Entity("CrowdFundCore.Models.Package", b =>
                 {
                     b.HasOne("CrowdFundCore.Models.Project", "Project")
-                        .WithMany()
+                        .WithMany("Packages")
                         .HasForeignKey("ProjectId");
                 });
 

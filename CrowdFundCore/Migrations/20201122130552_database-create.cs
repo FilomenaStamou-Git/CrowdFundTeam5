@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CrowdFundCore.Migrations
 {
-    public partial class addmodels : Migration
+    public partial class databasecreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,7 +34,7 @@ namespace CrowdFundCore.Migrations
                     Category = table.Column<string>(nullable: true),
                     Update = table.Column<string>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
-                    Ammount = table.Column<decimal>(nullable: false),
+                    Amount = table.Column<decimal>(nullable: false),
                     Fundings = table.Column<decimal>(nullable: false),
                     UserId = table.Column<int>(nullable: true)
                 },
@@ -82,7 +82,7 @@ namespace CrowdFundCore.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Ammount = table.Column<decimal>(nullable: false),
+                    Amount = table.Column<decimal>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     Reward = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),

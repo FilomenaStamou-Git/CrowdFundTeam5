@@ -8,41 +8,44 @@
     <table align="center">
         <tr align="center">
             <td>
-                FirstName
-            </td>
-            <td> <input type="text" id="FirstName" placeholder="First Name" /></td>
-        </tr>
-
-        <tr align="center">
-            <td>
-                LastName
+                Amount
             </td>
             <td>
-                <input type="text" id="LastName" placeholder="Last Name" />
+                <input type="number" id="Amount" placeholder="Amount"> 
             </td>
         </tr>
 
         <tr align="center">
             <td>
-                Email
+                Description
             </td>
             <td>
-                <input type="text" id="Email" placeholder="Email" />
-
-            </td>
-        </tr>
-        <tr align="center">
-            <td>
-
-                Password
-            </td>
-            <td>
-                <input type="text" id="Password" placeholder="Password" />
+                <input type="text" id="Description" placeholder="Description">
             </td>
         </tr>
+
         <tr align="center">
             <td>
-                <input type="button" value="Submit data" onclick="addUser()" />
+                Reward
+            </td>
+            <td>
+                <input type="text" id="Reward" placeholder="Reward">
+            </td>
+        </tr>
+
+
+        <tr align="center">
+            <td>
+                IsActive
+            </td>
+            <td>
+                <input type="checkbox" id="IsActive" name="IsActive">
+            </td>
+        </tr>
+
+        <tr align="center">
+            <td>
+                <input type="button" value="Submit data" onclick="addPackage()">
             </td>
         </tr>
     </table>
