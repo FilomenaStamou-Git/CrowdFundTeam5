@@ -26,7 +26,7 @@ namespace CrowdFundCore.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Ammount")
+                    b.Property<int>("Amount")
                         .HasColumnType("int");
 
                     b.Property<int?>("ProjectId")
@@ -51,7 +51,7 @@ namespace CrowdFundCore.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("Ammount")
+                    b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Description")
@@ -80,7 +80,7 @@ namespace CrowdFundCore.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("Ammount")
+                    b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Category")
@@ -95,6 +95,9 @@ namespace CrowdFundCore.Migrations
                     b.Property<decimal>("Fundings")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -103,6 +106,9 @@ namespace CrowdFundCore.Migrations
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Video")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -149,7 +155,7 @@ namespace CrowdFundCore.Migrations
             modelBuilder.Entity("CrowdFundCore.Models.Package", b =>
                 {
                     b.HasOne("CrowdFundCore.Models.Project", "Project")
-                        .WithMany()
+                        .WithMany("Packages")
                         .HasForeignKey("ProjectId");
                 });
 

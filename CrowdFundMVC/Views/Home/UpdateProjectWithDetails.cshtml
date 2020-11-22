@@ -1,0 +1,101 @@
+﻿@model CrowdFundMVC.Models.ProjectOptionModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1> Updating Project with Title <b><i>@Model.project.Title</i></b></h1>
+<form>
+    <table align="center">
+        <tr align="center">
+            <td>
+                Title
+            </td>
+            <td>
+                <input type="text" id="Title" value="@Model.project.Id" readonly />
+            </td>
+        </tr>
+
+        <tr align="center">
+            <td>
+                Title
+            </td>
+            <td>
+                <input type="text" id="Title" value="@Model.project.Title" />
+            </td>
+        </tr>
+
+
+        <tr align="center">
+            <td>
+                Description
+            </td>
+            <td>
+                <input type="text" id="Description" value="@Model.project.Description" />
+
+            </td>
+        </tr>
+
+        <tr align="center">
+            <td>
+
+                Category
+            </td>
+            <td>
+                <input type="text" id="Category" value="@Model.project.Category" />
+            </td>
+        </tr>
+
+        <tr align="center">
+            <td>
+                Update
+            </td>
+            <td>
+                <input type="text" id="Update" value="@Model.project.Update" />
+
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                Update
+            </td>
+            <td>
+                <input type="file" id="Picture" value="@Model.project.Photo" />
+
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                Update
+            </td>
+            <td>
+                <input type="file" id="Video" value="@Model.project.Video" />
+
+            </td>
+        </tr>
+
+        <tr align="center">
+            <td>
+                Amount
+            </td>
+            <td>
+                <input type="number" id="Amount" value="@Model.project.Amount" />
+
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                Created on
+            </td>
+            <td>
+                <input type="text" id="Created" value="@Model.project.Created" readonly />
+
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                <input type="button" value="Submit data" class="btn-outline-primary" onclick="updateProject()" />
+            </td>
+        </tr>
+    </table>
+</form>

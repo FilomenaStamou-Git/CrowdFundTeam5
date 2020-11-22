@@ -5,6 +5,10 @@
 <h1>@ViewData["Title"]</h1>
 
 
+<hr />
+To add a new project press <a href="~/home/AddProject">here</a>
+<hr />
+
 <table id="projectTable" border="1" cellpadding="10" cellspacing="0">
     <tr>
         <th> Code </th>
@@ -12,25 +16,35 @@
         <th> Description</th>
         <th> Category</th>
         <th> Update info</th>
-        <th> Ammount</th>
+        <th> Amount</th>
+        <th> Photos</th>
+        <th> Videos</th>
+        <th> Update</th>
+        <th> Delete</th>
 
     </tr>
-</table>
 
-@{
-    foreach (var project in Model.Projects)
-    {
-    <tr>
-        s
-        <td> @project.Id</td>
-        <td> @project.Title</td>
-        <td> @project.Description</td>
-        <td> @project.Category   </td>
-        <td> @project.Update   </td>
-        <td> @project.Ammount   </td>
-        <td> <a href="~/home/updateprojectwithdetails/@project.Id"><img src="~/images/update.png" width="25" /></a>Update</td>
-        <td> <a href="~/home/DeleteProjectFromView/@project.Id"><img src="~/images/delete.png" width="25" /></a>Delete</td>
-    </tr>
 
+    @{
+        foreach (var project in Model.Projects)
+        {
+        <tr>
+
+            <td> @project.Id</td>
+            <td> @project.Title</td>
+            <td> @project.Description</td>
+            <td> @project.Category   </td>
+            <td> @project.Update   </td>
+            <td> @project.Amount   </td>
+            <td> <img src="~/uploadedimages/@project.Photo" height="25" /></td>
+            <td> <img src="~/uploadedvideos/@project.Video" height="25" /></td>
+            <td> <a href="~/home/updateprojectwithdetails/@project.Id"><img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="25" /></a></td>
+            <td> <a href="~/home/DeleteProjectFromView/@project.Id"><img src="https://icons-for-free.com/iconfiles/png/512/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png" width="25" /></a></td>
+
+        </tr>
+
+        }
     }
-}
+
+
+</table>

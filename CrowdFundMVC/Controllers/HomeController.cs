@@ -30,15 +30,11 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         public IActionResult AddUser()
         {
             return View();
         }
+
 
         public IActionResult UpdateUser()
         {
@@ -71,6 +67,36 @@ namespace CrowdFundMVC.Controllers
             ProjectModel projectModel = new ProjectModel { Projects = projects };
             return View(projectModel);
         }
+
+        public IActionResult AddProject()
+        {
+            return View();
+        }
+
+        public IActionResult DeleteProjectFromView([FromRoute] int id)
+        {
+            projectService.DeleteProject(id);
+
+            return Redirect("/Home/Projects");
+        }
+
+        public IActionResult UpdateProjectWithDetails([FromRoute] int id)
+        {
+            ProjectOption projectOptions = projectService.GetProjectById(id);
+            ProjectOptionModel model = new ProjectOptionModel { project = projectOptions };
+
+            return View(model);
+        }
+        public IActionResult UpdateProject()
+        {
+            return View();
+        }
+        public IActionResult DeleteProject()
+        {
+            return View();
+        }
+
+
 
         public IActionResult Users()
         {

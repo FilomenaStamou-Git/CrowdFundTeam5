@@ -14,9 +14,11 @@ namespace CrowdFundCore.Models
         public string Category { get; set; }  //LIST? Enumeration??
         public string Update { get; set; }
         public DateTime Created { get; set; }
-        public decimal Ammount { get; set; }
+        public decimal Amount { get; set; }
+        public string Photo { get; set; }
+        public string Video { get; set; }
         public decimal Fundings { get; set; }
         public User User { get; set; }
-        List<Package> Packages { get; set; } //Do we need PackageProject model??
+        public List<Package> Packages { get; set; } 
     }
 }
