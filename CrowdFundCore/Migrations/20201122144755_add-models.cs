@@ -34,7 +34,9 @@ namespace CrowdFundCore.Migrations
                     Category = table.Column<string>(nullable: true),
                     Update = table.Column<string>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
-                    Ammount = table.Column<decimal>(nullable: false),
+                    Amount = table.Column<decimal>(nullable: false),
+                    Photo = table.Column<string>(nullable: true),
+                    Video = table.Column<string>(nullable: true),
                     Fundings = table.Column<decimal>(nullable: false),
                     UserId = table.Column<int>(nullable: true)
                 },
@@ -55,7 +57,7 @@ namespace CrowdFundCore.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Ammount = table.Column<int>(nullable: false),
+                    Amount = table.Column<int>(nullable: false),
                     ProjectId = table.Column<int>(nullable: true),
                     UserId = table.Column<int>(nullable: true)
                 },
@@ -82,7 +84,7 @@ namespace CrowdFundCore.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Ammount = table.Column<decimal>(nullable: false),
+                    Amount = table.Column<decimal>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     Reward = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),

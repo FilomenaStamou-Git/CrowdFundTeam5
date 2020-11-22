@@ -12,7 +12,9 @@ namespace CrowdFundCore.Services
         ProjectOption CreateProject(ProjectOption projectOption);
         ProjectOption UpdateProject(ProjectOption projectOption, int id);
         bool DeleteProject(int id);
-        List<ProjectOption> FindAllProjects();
-        List<ProjectOption> FindAllProjects(string searchCriteria); 
+        List<ProjectOption> GetAllProjects();
+        List<ProjectOption> GetAllProjects(string searchCriteria);
+        ProjectOption GetProjectById(int id);
+
     }
 }
