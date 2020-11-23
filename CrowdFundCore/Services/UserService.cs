@@ -78,9 +78,9 @@ namespace CrowdFundCore.Services
             };
         }
 
-        public UserOption GetUserById(int id)
+        public UserOption GetUserById(string email)
         {
-            User user= dbContext.Users.Find(id);
+            User user= dbContext.Users.Find(email);
             return new UserOption
             {
                 FirstName = user.FirstName,

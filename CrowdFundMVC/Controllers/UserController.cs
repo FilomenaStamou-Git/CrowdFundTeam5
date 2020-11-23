@@ -31,6 +31,13 @@ namespace CrowdFundMVC.Controllers
                 return userOption;
             }
 
+        [HttpPost]
+        public UserOption loginUser(string email)
+        {
+            UserOption userOption = userService.GetUserById(email);
+            return userOption;
+        }
+
         [HttpPut("{id}")]
         public UserOption UpdateUser(UserOption userOpt, int id)
         {
