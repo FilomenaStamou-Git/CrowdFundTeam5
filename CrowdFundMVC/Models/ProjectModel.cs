@@ -24,6 +24,7 @@ namespace CrowdFundMVC.Models
         public string Update { get; set; }
         public string Photo { get; set; }
         public string Video { get; set; }
+        public decimal Amount { get; set; }
         public IFormFile Picture { get; set; }       
     }
 

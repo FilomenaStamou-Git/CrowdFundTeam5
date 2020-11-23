@@ -63,6 +63,7 @@ namespace CrowdFundMVC.Controllers
                 Update = projectOptWithFileModel.Update,
                 Photo = projectOptWithFileModel.Photo,
                 Video = projectOptWithFileModel.Video,
+                Amount = projectOptWithFileModel.Amount
             };
 
             projectOpt.Photo = filename;
