@@ -17,7 +17,7 @@ namespace CrowdFundMVC.Models
 
     public class ProjectWithFileModel
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
@@ -25,6 +25,7 @@ namespace CrowdFundMVC.Models
         public string Photo { get; set; }
         public string Video { get; set; }
         public decimal Amount { get; set; }
+        public decimal Fundings { get; set; }
         public IFormFile Picture { get; set; }       
     }
 

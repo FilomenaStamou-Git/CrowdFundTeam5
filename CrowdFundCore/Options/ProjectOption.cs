@@ -15,6 +15,7 @@ namespace CrowdFundCore.Options
         public string Video { get; set; }
         public string Update { get; set; }
         public DateTime Created { get; set; }
-        public decimal Amount { get; set; }        
+        public decimal Amount { get; set; }
+        public decimal Fundings { get; set; }
     }
 }
