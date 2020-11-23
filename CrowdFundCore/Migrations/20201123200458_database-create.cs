@@ -82,10 +82,9 @@ namespace CrowdFundCore.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Amount = table.Column<decimal>(nullable: false),
+                    Amount = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Reward = table.Column<string>(nullable: true),
-                    IsActive = table.Column<bool>(nullable: false),
                     ProjectId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

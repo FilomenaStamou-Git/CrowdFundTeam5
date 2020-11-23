@@ -15,7 +15,6 @@ function addUser() {
         "password": $("#Password").val()
     }
 
-
     $.ajax({
         url: actionUrl,
         dataType: actionDataType,
@@ -36,7 +35,6 @@ function addUser() {
     });
 
 }
-
 
 function updateUser() {
     id = $("#Id").val()
@@ -52,7 +50,6 @@ function updateUser() {
         "password": $("#Password").val()
     }
 
-
     $.ajax({
         url: actionUrl,
         dataType: actionDataType,
@@ -74,7 +71,6 @@ function updateUser() {
     });
 
 }
-
 
 function deleteUser() {
 
@@ -112,102 +108,72 @@ function findToUpdateUser() {
 
 }
 
-debugger;
-
-/*
 function addPackage() {
-    actionUrl = "/api/package"
+    var actionUrl = "/api/package"
     actiontype = "POST"
     actionDataType = "json"
+    var input = document.getElementById('Picture');
+    var files = input.files;
+    var formData = new FormData();
 
-    sendData = {
-        "amount": $("#Amount").val(),
-        "description": $("#Description").val(),
-        "reward": $("#Reward").val()
+    for (var i = 0; i != files.length; i++) {
+        formData.append("Picture", files[i]);
     }
 
+    formData.append("amount", $('#Amount').val());
+    formData.append("description", $("#Description").val());
+    formData.append("reward", $("#Reward").val());
 
     $.ajax({
         url: actionUrl,
-        dataType: actionDataType,
-        type: actiontype,
-        data: JSON.stringify(sendData),
-        contentType: 'application/json',
+        data: formData,
         processData: false,
+        contentType: false,
+        type: "POST",
 
-        success: function (data, textStatus, jQxhr) {
-
-            alert(JSON.stringify(data))
+        success: function (data) {
             window.open("/home/packages", "_self")
         },
         error: function (jqXhr, textStatus, errorThrown) {
-            alert(errorThrown);
+            alert("Error from server:" + errorThrown);
         }
 
     });
-
 }
-*/
-
-function addPackage() {
-    var actionUrl = "/api/package"
-    var formData = new FormData();
-
-    formData.append("amount", $('#Amount').val());
-    formData.append("description", $('#Description').val());
-    formData.append("reward", $('#Reward').val());
-    formData.append("isactive", $('#IsActive').val());
- 
-    $.ajax(
-        {
-            url: actionUrl,
-            data: JSON.stringify(formData),
-            contentType: "application / json; odata=verbose", //'application/json',
-            dataType: 'json',
-            type: "POST",
-            success: function (data, textStatus, jQxhr) {
-                alert(JSON.stringify(data))
-                window.open("/home/packages", "_self")
-            },
-            error: function (jqXhr, textStatus, errorThrown) {
-                alert("Error from server: " + errorThrown);
-            }
-        }
-    );
-       
-}
-
-//function changeIsActive() {}
 
 function updatePackage() {
     id = $("#Id").val()
-    actionUrl = "/api/package/" + id
 
-    formData = new FormData();
+    actionUrl = "/api/package/" + id
+    actiontype = "PUT"
+    actionDataType = "json"
+    var input = document.getElementById('Picture');
+    var files = input.files;
+    var formData = new FormData();
+
+    for (var i = 0; i != files.length; i++) {
+        formData.append("Picture", files[i]);
+    }
 
     formData.append("amount", $('#Amount').val());
-    formData.append("description", $('#Description').val());
-    formData.append("reward", $('#Reward').val());
-    formData.append("isactive", $('#IsActive').val());
+    formData.append("description", $("#Description").val());
+    formData.append("reward", $("#Reward").val());
 
-    $.ajax(
-        {
-            url: actionUrl,
-            data: JSON.stringify(formData),
-            processData: false,
-            contentType: 'application/json',
-            type: "PUT",
-            success: function (data) {
-                window.open("/home/packages", "_self")
-            },
-            error: function (jqXhr, textStatus, errorThrown) {
-                alert("Error from server: " + errorThrown);
-            }
+    $.ajax({
+        url: actionUrl,
+        data: formData,
+        processData: false,
+        contentType: false,
+        type: "PUT",
+
+        success: function (data) {
+            window.open("/home/packages", "_self")
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            alert("Error from server:" + errorThrown);
         }
-    );
 
-
-
+    });
 }
 
 function deletePackage() {
@@ -239,10 +205,8 @@ function deletePackage() {
 }
 
 function findToUpdatePackage() {
-
     id = $("#Id").val()
     actionUrl = "/Home/UpdatePackageWithDetails/" + id
 
     window.open(actionUrl, "_self");
-
 }

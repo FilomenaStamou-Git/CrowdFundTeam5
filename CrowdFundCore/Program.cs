@@ -15,8 +15,7 @@ namespace CrowdFundCore
             {
                 Amount = 50,
                 Description = "This is a description",
-                Reward = "Reward here",
-                IsActive = true
+                Reward = "Reward here"
             };
             db.Packages.Add(package);
             db.SaveChanges();

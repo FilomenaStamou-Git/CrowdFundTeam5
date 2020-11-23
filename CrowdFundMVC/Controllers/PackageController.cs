@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using CrowdFundCore.Options;
 using CrowdFundCore.Services;
 using CrowdFundCoreServices;
+using Microsoft.AspNetCore.Hosting;
+using CrowdFundMVC.Models;
+using System.IO;
 
 namespace CrowdFundMVC.Controllers
 {
@@ -14,9 +17,12 @@ namespace CrowdFundMVC.Controllers
     public class PackageController : ControllerBase
     {
         private readonly IPackageService packageService;
-        public PackageController(IPackageService packageService)
+        private readonly IWebHostEnvironment hostingEnvironment;
+
+        public PackageController(IPackageService packageService, IWebHostEnvironment environment)
         {
             this.packageService = packageService;
+            hostingEnvironment = environment;
         }
 
         [HttpGet]
@@ -26,8 +32,34 @@ namespace CrowdFundMVC.Controllers
         }
 
         [HttpPost]
-        public PackageOption AddPackage(PackageOption packageOpt)
+        public PackageOption AddPackage([FromForm] PackageWithFileModel packageOptWithFileModel)
         {
+
+            if (packageOptWithFileModel == null) return null;
+            var formFile = packageOptWithFileModel.Picture;
+
+            var filename = packageOptWithFileModel.Picture.FileName;
+
+            if (formFile.Length > 0)
+            {
+
+                var filePath = Path.Combine(hostingEnvironment.WebRootPath, "uploadedimages", filename);
+                using (var stream = System.IO.File.Create(filePath))
+                {
+                    formFile.CopyTo(stream);
+                }
+            }
+
+            PackageOption packageOpt = new PackageOption
+            {
+                Amount = packageOptWithFileModel.Amount,
+                Description = packageOptWithFileModel.Description,
+                Reward = packageOptWithFileModel.Reward,
+                Photo = packageOptWithFileModel.Photo
+            };
+
+            packageOpt.Photo = filename;
+
             PackageOption packageOption = packageService.CreatePackage(packageOpt);
             return packageOption;
         }

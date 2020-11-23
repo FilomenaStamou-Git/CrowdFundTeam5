@@ -27,7 +27,7 @@ namespace CrowdFundCore.Services
                 Amount = package.Amount,
                 Description = package.Description,
                 Reward = package.Reward,
-                IsActive = package.IsActive,
+                Photo = package.Photo,
                 Id = package.Id
             }));
 
@@ -42,7 +42,7 @@ namespace CrowdFundCore.Services
                 Amount = packageOption.Amount,
                 Description = packageOption.Description,
                 Reward = packageOption.Reward,
-                IsActive = false //by default is TRUE
+                Photo = packageOption.Photo
             };
 
             dbContext.Packages.Add(package);
@@ -52,7 +52,7 @@ namespace CrowdFundCore.Services
                 Amount = package.Amount,
                 Description = package.Description,
                 Reward = package.Reward,
-                IsActive = package.IsActive
+                Photo = packageOption.Photo
             };
         }
 
@@ -76,7 +76,7 @@ namespace CrowdFundCore.Services
                 Amount = package.Amount,
                 Description = package.Description,
                 Reward = package.Reward,
-                IsActive = package.IsActive
+                Photo = package.Photo
             };
         }
 
@@ -88,7 +88,7 @@ namespace CrowdFundCore.Services
                 Amount = package.Amount,
                 Description = package.Description,
                 Reward = package.Reward,
-                IsActive = package.IsActive,
+                Photo = package.Photo,
                 Id = package.Id
             };
         }
@@ -98,7 +98,7 @@ namespace CrowdFundCore.Services
             package.Amount = packageOpt.Amount;
             package.Description = packageOpt.Description;
             package.Reward = packageOpt.Reward;
-            package.IsActive = packageOpt.IsActive;
+            package.Photo = packageOpt.Photo;
         }
     }
 }
