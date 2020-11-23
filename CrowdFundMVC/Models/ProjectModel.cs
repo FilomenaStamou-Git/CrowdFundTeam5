@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CrowdFundCore.Options;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CrowdFundMVC.Models
 {
@@ -26,7 +24,7 @@ namespace CrowdFundMVC.Models
         public string Update { get; set; }
         public string Photo { get; set; }
         public string Video { get; set; }
-
-        public IFormFile Picture { get; set; }
+        public IFormFile Picture { get; set; }       
     }
+
 }
