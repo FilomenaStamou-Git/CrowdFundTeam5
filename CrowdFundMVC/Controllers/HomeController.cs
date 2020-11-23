@@ -30,6 +30,11 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
+        public IActionResult About()
+        {
+            return View();
+        }
+
         public IActionResult AddUser()
         {
             return View();
@@ -96,6 +101,10 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
 
 
         public IActionResult Users()

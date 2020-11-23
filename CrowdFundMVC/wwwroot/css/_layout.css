@@ -198,8 +198,10 @@ footer {
     background: #fff;
     padding-left: 16px;
     padding-right: 16px;
+    width:100%;
     border-bottom: 1px solid #d6d6d6;
     box-shadow: 0 0 4px rgba(0,0,0,.1);
+    display-inline;
 }
 
 .nav-link img {
@@ -209,6 +211,7 @@ footer {
     margin: -8px 0;
     float: left;
     margin-right: 10px;
+
 }
 
 .navbar .navbar-brand {
@@ -318,12 +321,6 @@ footer {
     background: transparent !important;
 }
 
-@media (min-width: 1200px) {
-    .form-inline .input-group {
-        width: 300px;
-        margin-left: 30px;
-    }
-}
 
 @media (max-width: 1199px) {
     .form-inline {
