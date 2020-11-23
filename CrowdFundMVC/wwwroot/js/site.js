@@ -26,7 +26,7 @@ function addUser() {
         success: function (data, textStatus, jQxhr) {
 
             alert(JSON.stringify(data))
-            window.open("/home/users", "_self")
+            window.open("/Home/Dashboard", "_self")
         },
         error: function (jqXhr, textStatus, errorThrown) {
             alert(errorThrown);
@@ -106,6 +106,60 @@ function findToUpdateUser() {
 
     window.open(actionUrl, "_self");
 
+}
+
+function addProject() {
+    var actionUrl = "/api/project"
+    var input = document.getElementById('Picture');
+    var files = input.files;
+    var formData = new FormData();
+
+
+    for (var i = 0; i != files.length; i++) {
+        formData.append("Picture", files[i]);
+    }
+
+        formData.append("Title", $('#Title').val());
+        formData.append("Description", $("#Description").val());
+        formData.append("Category", $("#Category").val());
+        formData.append("Update", $("#Update").val());
+        formData.append("Amount", $("Amount").val());
+
+
+    $.ajax({
+        url: actionUrl,
+        data: formData,
+        processData: false,
+        contentType: false,
+        type: "POST",
+
+        success: function (data) {
+            window.open("/home/projects", "_self")
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            alert("Error from server:" + errorThrown);
+        }
+
+    });
+
+}
+
+function updateProject() {
+    id = $("#Id").val()
+
+    actionUrl = "/api/project/" + id
+    actiontype = "PUT"
+    actionDataType = "json"
+
+    sendData = {
+        "Title": $("#Title").val(),
+        "Description": $("#Description").val(),
+        "Category": $("#Category").val(),
+        "Update": $("#Update").val(),
+        "Amount": $("Amount").val(),
+        "Photo": $("Photo").val(),
+        "Video": $("Video").val()
+    }
 }
 
 function addPackage() {
@@ -209,4 +263,35 @@ function findToUpdatePackage() {
     actionUrl = "/Home/UpdatePackageWithDetails/" + id
 
     window.open(actionUrl, "_self");
+}
+
+    $.ajax({
+        url: actionUrl,
+        dataType: actionDataType,
+        type: actiontype,
+        data: JSON.stringify(sendData),
+        contentType: 'application/json',
+        processData: false,
+
+        success: function (data, textStatus, jQxhr) {
+
+            alert(JSON.stringify(data))
+
+            window.open("/home/projects", "_self")
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+
+    });
+
+}
+
+function findToUpdateProject() {
+
+    id = $("#Id").val()
+    actionUrl = "/Home/UpdateProject/" + id
+
+    window.open(actionUrl, "_self");
+
 }

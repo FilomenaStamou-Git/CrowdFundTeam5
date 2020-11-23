@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CrowdFundCore.Data;
+using CrowdFundCore.Extensions;
 using CrowdFundCore.Services;
 using CrowdFundCoreServices;
 using Microsoft.AspNetCore.Builder;
@@ -25,12 +26,9 @@ namespace CrowdFundMVC
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddDbContext<CFDBContext>(options => options.UseSqlServer(CFDBContext.connectionString));
-            services.AddScoped<IUserService, UserService>();
-
-            services.AddScoped<IPackageService, PackageService>();
+        {            
             services.AddControllersWithViews();
+            services.AddCFServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

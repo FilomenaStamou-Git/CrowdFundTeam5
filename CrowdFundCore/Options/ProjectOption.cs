@@ -11,8 +11,11 @@ namespace CrowdFundCore.Options
         public string Title { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }  //LIST? Enumeration??
+        public string Photo { get; set; }
+        public string Video { get; set; }
         public string Update { get; set; }
         public DateTime Created { get; set; }
-        public decimal Ammount { get; set; }
+        public decimal Amount { get; set; }
+        
     }
 }

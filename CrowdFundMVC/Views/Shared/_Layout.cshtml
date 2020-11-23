@@ -2,59 +2,121 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@ViewData["Title"] - CrowdFundMVC</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/_layout.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda+One">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CrowdFundMVC</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Users">View Users</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AddUser">Add User</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Projects">View Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AddProject">Add Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Packages">View Packages</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AddPackage">Add Packages</a>
-                        </li>
-                    </ul>
-                </div>
+</html>
+
+
+<body style="background-color:aliceblue">
+
+    <!-- <nav class="navbar navbar-expand-xl navbar-light bg-dark">
+         <a href="#" class="navbar-brand text-light"><i class="fa fa-cube"></i>Brand<b>Name</b></a>
+         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+             <span class="navbar-toggler-icon"></span>
+         </button>
+
+         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+             <div class="navbar-nav">
+                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Users">View Users</a>
+                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Projects">View Projects</a>
+                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                 <a href="#" class="nav-item nav-link text-light">Contact</a>
+             </div>
+             <form class="navbar-form form-inline">
+                 <div class="input-group search-box">
+                     <input type="text" id="search" class="form-control" placeholder="Search by Name">
+                     <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+                 </div>
+             </form>
+             <div class="navbar-nav ml-auto">
+                 <!-- <a href="#" class="nav-item nav-link notifications text-light"><i class="fa fa-bell-o"></i><span class="badge">1</span></a>
+                 <a href="#" class="nav-item nav-link messages text-light"><i class="fa fa-envelope-o"></i><span class="badge">10</span></a> -->
+    <!--<a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="AddUser" style="background-color: #5383d3;border-radius:4px">Sign Up</a>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+                    -->
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - CrowdFundMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer-distributed">
+
+        <div class="footer-left">
+
+            <h3>Fund<span>Astic</span></h3>
+
+            <p class="footer-links">
+                <a href="Index">Home</a>
+                ·
+                <a href="#">Blog</a>
+                ·
+                <a href="#">Pricing</a>
+                ·
+                <a href="#">About</a>
+                ·
+                <a href="#">Faq</a>
+                ·
+                <a href="#">Contact</a>
+            </p>
+
+            <p class="footer-company-name">fundastic &copy; 2020</p>
         </div>
+
+        <div class="footer-center">
+
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Web Only</span></p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+30 555 1234560</p>
+            </div>
+
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:support@company.com">contact@fundastic.com</a></p>
+            </div>
+
+        </div>
+
+        <div class="footer-right">
+
+            <p class="footer-company-about">
+                <span>About the company</span>
+                FundAstic is a crowd funding platform for the web, where one, could share their wildest idea and others could contribute financially to see it happening.
+            </p>
+
+            <div class="footer-icons">
+                <!--<a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>-->
+                <a href="https://github.com/ioanchri/CrowdFundTeam5"><i class="fa fa-github"></i></a>
+
+            </div>
+
+        </div>
+
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
-</html>

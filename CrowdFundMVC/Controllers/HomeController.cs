@@ -17,12 +17,14 @@ namespace CrowdFundMVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IUserService userService;
+        private readonly IProjectService projectService;
         private readonly IPackageService packageService;
 
-        public HomeController(ILogger<HomeController> logger, IUserService _userService, IPackageService _packageService)
+        public HomeController(ILogger<HomeController> logger, IUserService _userService, IProjectService _projectService, IPackageService _packageService)
         {
             _logger = logger;
             userService = _userService;
+            projectService = _projectService;
             packageService = _packageService;
         }
 
@@ -31,7 +33,7 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             return View();
         }
@@ -93,8 +95,45 @@ namespace CrowdFundMVC.Controllers
 
         public IActionResult DeletePackage()
         {
+            List<ProjectOption> projects = projectService.GetAllProjects();
+            ProjectModel projectModel = new ProjectModel { Projects = projects };
+            return View(projectModel);
+        }
+
+        public IActionResult AddProject()
+        {
             return View();
         }
+
+        public IActionResult DeleteProjectFromView([FromRoute] int id)
+        {
+            projectService.DeleteProject(id);
+
+            return Redirect("/Home/Projects");
+        }
+
+        public IActionResult UpdateProjectWithDetails([FromRoute] int id)
+        {
+            ProjectOption projectOptions = projectService.GetProjectById(id);
+            ProjectOptionModel model = new ProjectOptionModel { project = projectOptions };
+
+            return View(model);
+        }
+        public IActionResult UpdateProject()
+        {
+            return View();
+        }
+        public IActionResult DeleteProject()
+        {
+            return View();
+        }
+
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+
+
         public IActionResult Users()
         {
             List<UserOption> users = userService.GetAllUsers();
