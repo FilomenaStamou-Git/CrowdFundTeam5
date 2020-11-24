@@ -19,7 +19,7 @@
 </html>
 <body style="background-color:aliceblue">
     <nav class="navbar navbar-expand-xl navbar-light bg-dark">
-        <a href="#" class="navbar-brand text-light"><i class="fa fa-cube"></i>Brand<b>Name</b></a>
+        <a href="Index" class="navbar-brand text-light"><i class="fa fa-cube"></i>Fund<b>Astic</b></a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,10 +28,8 @@
             <div class="navbar-nav">
                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Dashboard">Home</a>
                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Users">View Backers</a>
                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Projects">View Projects</a>
                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="About">About</a>
-                <a href="#" class="nav-item nav-link text-light">Contact</a>
             </div>
             <form class="navbar-form form-inline">
                 <div class="input-group search-box">
@@ -42,7 +40,7 @@
             <div class="navbar-nav ml-auto">
                 <!-- <a href="#" class="nav-item nav-link notifications text-light"><i class="fa fa-bell-o"></i><span class="badge">1</span></a>
                 <a href="#" class="nav-item nav-link messages text-light"><i class="fa fa-envelope-o"></i><span class="badge">10</span></a> -->
-                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Logout" style="background-color: rebeccapurple;border-radius:4px">Logout</a>
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index" style="background-color: rebeccapurple;border-radius:4px">Logout</a>
             </div>
         </div>
     </nav>
@@ -62,7 +60,7 @@
                         <div class="w3-display-container">
                             <img src="/img/avatarf.png" style="width:100px" alt="Avatar">
                             <div class="w3-text-white">
-                                <h2>Jane Doe</h2>
+                                <h2>John Doe</h2>
                             </div>
                         </div>
                         <div class="w3-container text-light">
@@ -73,14 +71,20 @@
                             <p class="w3-large">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Users">View Users</a>
                                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Projects">View Projects</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Fundings">View Fundings</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="CreateProject">Add Project</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="UpdateUser">Edit Profile</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="DeleteUser">Delete Profile</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
                             </p>
-                            <br>
-                            <br>
+                        <br>
+                        <br>
                         </div>
-                    </div><br>
+                 </div>
+            <br>
 
-                    <!-- End Left Column -->
-                </div>
+    <!-- End Left Column -->
+</div>
 
                 <!-- End Grid -->
             </div>

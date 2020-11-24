@@ -1,11 +1,6 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-
-body {
-    background-color: aliceblue
-}
-
 footer {
     position: relative bottom: 0;
 }
@@ -163,9 +158,9 @@ footer {
 
 .main {
     line-height: normal;
-    font-size: auto;
+ /*   font-size: auto;*/
 }
-}
+
 
 .button {
     border: none;
@@ -191,17 +186,16 @@ footer {
 }
 
 .navbar-header.col {
-    padding: 0 !important;
+/*    padding: 0 !important;*/
 }
 
 .navbar {
     background: #fff;
     padding-left: 16px;
     padding-right: 16px;
-    width:100%;
+    max-width:100%;
     border-bottom: 1px solid #d6d6d6;
     box-shadow: 0 0 4px rgba(0,0,0,.1);
-    display-inline;
 }
 
 .nav-link img {
@@ -265,28 +259,6 @@ footer {
     background: none !important;
 }
 
-.navbar .dropdown-menu {
-    border-radius: 1px;
-    border-color: #e5e5e5;
-    box-shadow: 0 2px 8px rgba(0,0,0,.05);
-}
-
-    .navbar .dropdown-menu a {
-        color: #777;
-        padding: 8px 20px;
-        line-height: normal;
-    }
-
-        .navbar .dropdown-menu a:hover, .navbar .dropdown-menu a:active {
-            color: #333;
-        }
-
-.navbar .dropdown-item .material-icons {
-    font-size: 21px;
-    line-height: 16px;
-    vertical-align: middle;
-    margin-top: -2px;
-}
 
 .navbar .badge {
     color: #fff;
@@ -300,14 +272,7 @@ footer {
     top: 5px;
 }
 
-.navbar a.notifications, .navbar a.messages {
-    position: relative;
-    margin-right: 10px;
-}
 
-.navbar a.messages {
-    margin-right: 20px;
-}
 
 .navbar a.notifications .badge {
     margin-left: -8px;
@@ -317,11 +282,11 @@ footer {
     margin-left: -4px;
 }
 
-.navbar .active a, .navbar .active a:hover, .navbar .active a:focus {
+/*.navbar .active a, .navbar .active a:hover, .navbar .active a:focus {
     background: transparent !important;
 }
-
-
+*/
+/*
 @media (max-width: 1199px) {
     .form-inline {
         display: block;
@@ -331,4 +296,4 @@ footer {
     .input-group {
         width: 100%;
     }
-}
+}*/

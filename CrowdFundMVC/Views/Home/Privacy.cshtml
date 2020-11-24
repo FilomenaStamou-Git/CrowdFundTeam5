@@ -1,6 +1,65 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-<p>Use this page to display your projects</p>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+</html>
+<body style="background-color:aliceblue">
+    <nav class="navbar navbar-expand-xl navbar-light bg-dark">
+        <a href="Index" class="navbar-brand text-light"><i class="fa fa-cube"></i>Fund<b>Astic</b></a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+            <div class="navbar-nav">
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Users">View Users</a>
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Projects">View Projects</a>
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="About">About</a>
+            </div>
+            <form class="navbar-form form-inline">
+                <div class="input-group search-box">
+                    <input type="text" id="search" class="form-control" placeholder="Search by Name">
+                    <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+                </div>
+            </form>
+            <div class="navbar-nav ml-auto">
+                <!-- <a href="#" class="nav-item nav-link notifications text-light"><i class="fa fa-bell-o"></i><span class="badge">1</span></a>
+                <a href="#" class="nav-item nav-link messages text-light"><i class="fa fa-envelope-o"></i><span class="badge">10</span></a> -->
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="AddUser" style="background-color: #5383d3;border-radius:4px;margin:5px 5px 5px 5px;width:80px;height:40px;text-align: center">Sign Up</a>
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Login" style="background-color: rebeccapurple;border-radius:4px;margin:5px 5px 5px 5px;width:80px;height:40px;text-align: center">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid" style="margin:100px 200px 100px 200px; padding: 50px; border-radius: 15px 50px; width:60%;background-color:white">
+        <h1 style="text-align:center">@ViewData["Title"]</h1>
+
+        <h5 style="text-align:center">What Types of Information Do We Collect and How?</h5>
+        <br />
+        <h2>PERSONAL INFORMATION.</h2>
+        <p>In order for you to make donations through the Sites, register with the Sites, or take certain other actions on the Sites , we may require you to provide us with applicable information that personally identifies you (“Personal Information”). Personal Information includes the following types of data:</p>
+        <p>
+            Contact Data such as name, mailing address, e-mail address, and Fundheartly user-name, account number, and password
+            Financial Data such as your account or credit card number
+            Demographic Data such as your zip code, age, and gender
+            Company Data such as your business name, size, and business type
+            Activity Data such as your donation history, fundraising history, events attended, etc.
+            Social Media information such as friend lists, likes, photos, and other information
+        </p>
+        <br />
+        <h2>How do we collect Traffic Data?</h2>
+        <br />
+        <p>As is true of most websites, we use cookies (a small text file placed on your computer or device to identify your computer and web browser) to collect Traffic Data related to the Sites. We use Service Providers (defined below) to place cookies on your computer or device to compile this non-personally identifiable information so we can aggregate statistical information about usage of the Sites. Most web browsers are initially set up to accept cookies. You can reset your web browser to refuse all cookies or to indicate when a cookie is being sent, however, certain features of the Site or Services may not work if you delete or disable cookies.</p>
+        <br />
+        <h2>Is my Personal Information kept confidential?</h2>
+        <p>Except as otherwise provided in this Privacy Policy or agreed by User, we will keep your Personal Information private and will not share it with other third parties unless such disclosure is necessary to: (i) comply with a court order or other legal process, (ii) to protect our rights or property, (iii) in connection with our sale, merger, consolidation, change of control, or transfer of substantial assets, or (iv) to enforce our Terms of Service. Please keep in mind that while we take reasonable precautions to safeguard your Personal Information no amount of protection can guarantee its security.</p>
+    </div>
+</body>

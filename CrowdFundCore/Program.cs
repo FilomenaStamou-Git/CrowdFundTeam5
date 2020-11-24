@@ -10,6 +10,19 @@ namespace CrowdFundCore
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Welcome to the test area of the CrowdFunding website!");
+
+            //var userOpt = new UserOption()
+            //{
+            //    FirstName = "Firstname",
+            //    LastName = "Lastname",
+            //    Email = "test@gmail.com",
+            //    Password = "test",
+            //    Dob = DateTime.Today
+
+
+            //};
+
             using var db = new CFDBContext();
             Package package = new Package()
             {

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CrowdFundCore.Options;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CrowdFundMVC.Models
 {
@@ -19,14 +17,16 @@ namespace CrowdFundMVC.Models
 
     public class ProjectWithFileModel
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
         public string Update { get; set; }
         public string Photo { get; set; }
         public string Video { get; set; }
-
-        public IFormFile Picture { get; set; }
+        public decimal Amount { get; set; }
+        public decimal Fundings { get; set; }
+        public IFormFile Picture { get; set; }       
     }
+
 }

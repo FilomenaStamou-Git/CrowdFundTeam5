@@ -133,6 +133,15 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
 
         public IActionResult Users()
         {
@@ -153,4 +162,5 @@ namespace CrowdFundMVC.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
+
 }

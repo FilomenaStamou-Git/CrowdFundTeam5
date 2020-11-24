@@ -123,7 +123,7 @@ function addProject() {
         formData.append("Description", $("#Description").val());
         formData.append("Category", $("#Category").val());
         formData.append("Update", $("#Update").val());
-        formData.append("Amount", $("Amount").val());
+        formData.append("Amount", $("#Amount").val());
 
 
     $.ajax({
