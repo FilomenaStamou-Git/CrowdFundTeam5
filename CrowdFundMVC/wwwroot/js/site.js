@@ -17,7 +17,6 @@ function addUser() {
         "password": $("#Password").val()
     }
 
-
     $.ajax({
         url: actionUrl,
         dataType: actionDataType,
@@ -39,7 +38,6 @@ function addUser() {
 
 }
 
-
 function updateUser() {
     id = $("#Id").val()
 
@@ -53,7 +51,6 @@ function updateUser() {
         "email": $("#Email").val(),
         "password": $("#Password").val()
     }
-
 
     $.ajax({
         url: actionUrl,
@@ -76,7 +73,6 @@ function updateUser() {
     });
 
 }
-
 
 function deleteUser() {
 
@@ -104,8 +100,6 @@ function deleteUser() {
 
     });
 }
-
-
 
 function findToUpdateUser() {
 
@@ -174,7 +168,109 @@ function updateProject() {
         "Photo": $("Photo").val(),
         "Video": $("Video").val()
     }
+}
 
+function addPackage() {
+    var actionUrl = "/api/package"
+    actiontype = "POST"
+    actionDataType = "json"
+    var input = document.getElementById('Picture');
+    var files = input.files;
+    var formData = new FormData();
+
+    for (var i = 0; i != files.length; i++) {
+        formData.append("Picture", files[i]);
+    }
+
+    formData.append("amount", $('#Amount').val());
+    formData.append("description", $("#Description").val());
+    formData.append("reward", $("#Reward").val());
+
+    $.ajax({
+        url: actionUrl,
+        data: formData,
+        processData: false,
+        contentType: false,
+        type: "POST",
+
+        success: function (data) {
+            window.open("/home/packages", "_self")
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            alert("Error from server:" + errorThrown);
+        }
+
+    });
+}
+
+function updatePackage() {
+    id = $("#Id").val()
+
+    actionUrl = "/api/package/" + id
+    actiontype = "PUT"
+    actionDataType = "json"
+    var input = document.getElementById('Picture');
+    var files = input.files;
+    var formData = new FormData();
+
+    for (var i = 0; i != files.length; i++) {
+        formData.append("Picture", files[i]);
+    }
+
+    formData.append("amount", $('#Amount').val());
+    formData.append("description", $("#Description").val());
+    formData.append("reward", $("#Reward").val());
+
+    $.ajax({
+        url: actionUrl,
+        data: formData,
+        processData: false,
+        contentType: false,
+        type: "PUT",
+
+        success: function (data) {
+            window.open("/home/packages", "_self")
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            alert("Error from server:" + errorThrown);
+        }
+
+    });
+}
+
+function deletePackage() {
+
+    id = $("#Id").val()
+
+    actionUrl = "/api/package/" + id
+    actiontype = "DELETE"
+    actionDataType = "json"
+
+    $.ajax({
+        url: actionUrl,
+        dataType: actionDataType,
+        type: actiontype,
+
+        contentType: 'application/json',
+        processData: false,
+
+        success: function (data, textStatus, jQxhr) {
+
+            alert(JSON.stringify(data))
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+
+    });
+
+}
+
+function findToUpdatePackage() {
+    id = $("#Id").val()
+    actionUrl = "/Home/UpdatePackageWithDetails/" + id
+
+    window.open(actionUrl, "_self");
 
     $.ajax({
         url: actionUrl,
@@ -195,7 +291,6 @@ function updateProject() {
         }
 
     });
-
 }
 
 function findToUpdateProject() {

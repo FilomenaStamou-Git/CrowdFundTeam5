@@ -25,11 +25,11 @@ namespace CrowdFundMVC.Controllers
         }
 
         [HttpPost]
-            public UserOption AddUser(UserOption userOpt)
-            {
-                UserOption userOption = userService.CreateUser(userOpt);
-                return userOption;
-            }
+        public UserOption AddUser(UserOption userOpt)
+        {
+            UserOption userOption = userService.CreateUser(userOpt);
+            return userOption;
+        }
 
         [HttpPut("{id}")]
         public UserOption UpdateUser(UserOption userOpt, int id)

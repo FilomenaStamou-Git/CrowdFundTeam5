@@ -11,8 +11,7 @@ namespace CrowdFundCore.Models
         public decimal Amount { get; set; }
         public string Description { get; set; }
         public string Reward { get; set; }
-        public bool IsActive { get; set; }
+        public string Photo { get; set; }
         public Project Project { get; set; }
-       // public User User { get; set; } Do we need it?
     }
 }
