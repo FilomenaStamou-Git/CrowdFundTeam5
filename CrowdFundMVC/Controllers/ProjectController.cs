@@ -57,12 +57,15 @@ namespace CrowdFundMVC.Controllers
 
             ProjectOption projectOpt = new ProjectOption
             {
+                Id = projectOptWithFileModel.Id,
                 Title = projectOptWithFileModel.Title,
                 Description = projectOptWithFileModel.Description,
                 Category = projectOptWithFileModel.Category,
                 Update = projectOptWithFileModel.Update,
                 Photo = projectOptWithFileModel.Photo,
                 Video = projectOptWithFileModel.Video,
+                Amount = projectOptWithFileModel.Amount,
+                Fundings = projectOptWithFileModel.Fundings
             };
 
             projectOpt.Photo = filename;

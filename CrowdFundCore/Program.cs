@@ -11,7 +11,6 @@ namespace CrowdFundCore
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the test area of the CrowdFunding website!");
-            Console.WriteLine("I brought giannis branch to main");
 
             //var userOpt = new UserOption()
             //{

@@ -30,7 +30,8 @@ namespace CrowdFundCore.Services
                 Created = DateTime.UtcNow,
                 Amount = projectOption.Amount,
                 Photo = projectOption.Photo,
-                Video = projectOption.Video
+                Video = projectOption.Video,
+                Fundings = 0
             };
             dbContext.Projects.Add(project);
             dbContext.SaveChanges();
@@ -44,8 +45,8 @@ namespace CrowdFundCore.Services
                 Created = DateTime.UtcNow,
                 Amount = project.Amount,
                 Photo = project.Photo,
-                Video = project.Video
-
+                Video = project.Video,
+                Fundings = project.Fundings
             };
         }
 
@@ -71,6 +72,7 @@ namespace CrowdFundCore.Services
                 Category = project.Category,
                 Update = project.Update,
                 Amount = project.Amount,
+                Fundings = project.Fundings,
                 Photo = project.Photo,
                 Video = project.Video
             }));
@@ -91,6 +93,7 @@ namespace CrowdFundCore.Services
                 Category = project.Category,
                 Update = project.Update,
                 Amount = project.Amount,
+                Fundings = project.Fundings,
                 Photo = project.Photo,
                 Video = project.Video
             })) ;
@@ -109,6 +112,7 @@ namespace CrowdFundCore.Services
                 Category = project.Category,
                 Update = project.Update,
                 Created = DateTime.UtcNow,
+                Fundings = project.Fundings,
                 Amount = project.Amount,
                 Photo = project.Photo,
                 Video = project.Video
@@ -127,6 +131,7 @@ namespace CrowdFundCore.Services
                 Description = project.Description,
                 Category = project.Category,
                 Update = project.Update,
+                Fundings =project.Fundings,
                 Created = DateTime.UtcNow,
                 Amount = project.Amount,
                 Photo = project.Photo,
@@ -143,6 +148,7 @@ namespace CrowdFundCore.Services
             project.Category = projectOpt.Category;
             project.Update = projectOpt.Update;
             project.Created = DateTime.UtcNow;
+            project.Fundings = projectOpt.Fundings;
             project.Amount = projectOpt.Amount;
             project.Photo = projectOpt.Photo;
             project.Video = projectOpt.Video;
