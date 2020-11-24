@@ -2,6 +2,9 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+
+// ---------------------------USER------------------------------
 function addUser() {
     actionUrl = "/api/user"
     actiontype = "POST"
@@ -147,6 +150,12 @@ function findToUpdateUser() {
 
 }
 
+
+
+
+
+// --------------------PROJECT----------------------------
+
 function addProject() {
     var actionUrl = "/api/project"
     var input = document.getElementById('Picture');
@@ -231,3 +240,24 @@ function findToUpdateProject() {
     window.open(actionUrl, "_self");
 
 }
+
+function searchProject() {
+
+    searchText = $("#searchText").val()
+    actionUrl = "/Home/SearchProjectDisplay?text=" + searchText
+
+    window.open(actionUrl, "_self");
+
+}
+
+
+    function handle(e) {
+        if (e.keyCode === 13) {
+            e.preventDefault(); 
+            searchProject();
+        }
+
+
+    }
+
+let $successAlert = $('#create-profile-success')

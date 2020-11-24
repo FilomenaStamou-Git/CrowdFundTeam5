@@ -83,7 +83,11 @@ namespace CrowdFundCore.Services
         public List<ProjectOption> GetAllProjects(string searchCriteria)
         {
 
-            List<Project> projects = dbContext.Projects.ToList();
+            List<Project> projects = dbContext.Projects
+                .Where(p=>p.Title.Contains(searchCriteria)
+                || p.Category.Contains(searchCriteria))
+                .ToList();
+
             List<ProjectOption> projectsOpt = new List<ProjectOption>();
             projects.ForEach(project => projectsOpt.Add(new ProjectOption
             {
@@ -152,6 +156,30 @@ namespace CrowdFundCore.Services
             project.Amount = projectOpt.Amount;
             project.Photo = projectOpt.Photo;
             project.Video = projectOpt.Video;
+        }
+
+        public List<ProjectOption> GetTopProjects()
+        {
+            List<Project> projects = dbContext.Projects
+                .Take(5)
+                .OrderByDescending(p =>p.Fundings)
+                .ThenBy(p=>p.Title)                
+                .ToList();
+            List<ProjectOption> projectsOpt = new List<ProjectOption>();
+            projects.ForEach(project => projectsOpt.Add(new ProjectOption
+            {
+                Id = project.Id,
+                Title = project.Title,
+                Description = project.Description,
+                Category = project.Category,
+                Update = project.Update,
+                Amount = project.Amount,
+                Fundings = project.Fundings,
+                Photo = project.Photo,
+                Video = project.Video
+            }));
+            return projectsOpt;
+
         }
     }
 }

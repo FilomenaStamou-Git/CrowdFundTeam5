@@ -14,6 +14,7 @@ namespace CrowdFundCore.Services
         bool DeleteProject(int id);
         List<ProjectOption> GetAllProjects();
         List<ProjectOption> GetAllProjects(string searchCriteria);
+        List<ProjectOption> GetTopProjects();
         ProjectOption GetProjectById(int id);
 
     }
