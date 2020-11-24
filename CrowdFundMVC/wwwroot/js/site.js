@@ -263,7 +263,6 @@ function findToUpdatePackage() {
     actionUrl = "/Home/UpdatePackageWithDetails/" + id
 
     window.open(actionUrl, "_self");
-}
 
     $.ajax({
         url: actionUrl,
@@ -284,7 +283,6 @@ function findToUpdatePackage() {
         }
 
     });
-
 }
 
 function findToUpdateProject() {
