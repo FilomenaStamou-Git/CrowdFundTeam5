@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using CrowdFundCore.Models;
-
+using CrowdFundCore.Models;
 
 namespace CrowdFundCore.Data
 {

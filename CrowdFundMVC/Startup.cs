@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CrowdFundCore.Data;
 using CrowdFundCore.Extensions;
 using CrowdFundCore.Services;
+using CrowdFundCoreServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;

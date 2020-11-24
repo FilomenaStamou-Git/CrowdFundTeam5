@@ -87,7 +87,7 @@ namespace CrowdFundCore.Migrations
                     Amount = table.Column<decimal>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     Reward = table.Column<string>(nullable: true),
-                    IsActive = table.Column<bool>(nullable: false),
+                    Photo = table.Column<string>(nullable: true),
                     ProjectId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

@@ -1,0 +1,36 @@
+﻿
+@model CrowdFundMVC.Models.PackageModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1> Package Management</h1>
+
+<table id="packageTable" border="1" cellpadding="10" cellspacing="0">
+    <tr>
+        <th> Id</th>
+        <th> Amount</th>
+        <th> Description</th>
+        <th>Reward</th>
+        <th>Photo</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+
+    @{
+        foreach (var package in Model.Packages)
+        {
+        <tr>
+            <td> @package.Id</td>
+            <td> @package.Amount</td>
+            <td> @package.Description</td>
+            <td> @package.Reward   </td>
+            <td> <img src="~/uploadedimages/@package.Photo" height="25" /> </td>
+            <td> <a href="~/home/updatepackagewithdetails/@package.Id"><img src="~/images/update.png" width="25" /></a>Update</td>
+            <td> <a href="~/home/DeletePackageFromView/@package.Id"><img src="~/images/delete.png" width="25" /></a>Delete</td>
+        </tr>
+
+        }
+    }
+</table>

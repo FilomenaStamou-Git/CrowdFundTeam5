@@ -24,19 +24,14 @@ namespace CrowdFundCore
             //};
 
             using var db = new CFDBContext();
-                User user = new User
+            Package package = new Package()
             {
-                FirstName = "Danai",
-                LastName = "Macs",
-                Email = "Jdan@gmail.com",               
+                Amount = 50,
+                Description = "This is a description",
+                Reward = "Reward here"
             };
-                   
-            db.Users.Add(user);           
-            db.SaveChanges(); 
-
-           // User user1 = db.Users.Find(1);
-           // Console.WriteLine(user1.FirstName);
-
+            db.Packages.Add(package);
+            db.SaveChanges();
         }
     }
 }
