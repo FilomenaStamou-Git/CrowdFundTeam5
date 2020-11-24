@@ -156,6 +156,13 @@ namespace CrowdFundMVC.Controllers
             return View(packageModel);
         }
 
+        public IActionResult Projects()
+        {
+            List<ProjectOption> projects = projectService.GetAllProjects();
+            ProjectModel projectModel = new ProjectModel { Projects = projects };
+            return View(projectModel);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
