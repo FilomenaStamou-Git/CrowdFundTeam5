@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CrowdFundCore.Migrations
 {
     [DbContext(typeof(CFDBContext))]
-    [Migration("20201122223423_add-db")]
-    partial class adddb
+    [Migration("20201124202412_add-model")]
+    partial class addmodel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

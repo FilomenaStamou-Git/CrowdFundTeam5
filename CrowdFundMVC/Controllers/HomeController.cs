@@ -123,6 +123,8 @@ namespace CrowdFundMVC.Controllers
             return View(userModel);
         }
 
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
