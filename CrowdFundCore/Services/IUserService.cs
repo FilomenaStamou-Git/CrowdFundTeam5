@@ -13,6 +13,6 @@ namespace CrowdFundCore.Services
         UserOption UpdateUser(UserOption userOption, int id);
         bool DeleteUser(int id);
         List<UserOption> GetAllUsers();
-        UserOption GetUserById(int id);
+        UserOption GetUserById(string email);
     }
 }

@@ -46,9 +46,9 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
-        public IActionResult UpdateUserWithDetails([FromRoute] int id)
+        public IActionResult UpdateUserWithDetails([FromRoute] string email)
         {
-            UserOption userOptions = userService.GetUserById(id);
+            UserOption userOptions = userService.GetUserById(email);
             UserOptionModel model = new UserOptionModel { user = userOptions };
 
             return View(model);
@@ -106,6 +106,15 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
 
         public IActionResult Users()
         {
@@ -120,4 +129,5 @@ namespace CrowdFundMVC.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
+
 }
