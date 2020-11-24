@@ -46,9 +46,9 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
-        public IActionResult UpdateUserWithDetails([FromRoute] string email)
+        public IActionResult UpdateUserWithDetails([FromRoute] int id)
         {
-            UserOption userOptions = userService.GetUserById(email);
+            UserOption userOptions = userService.GetUserById(id);
             UserOptionModel model = new UserOptionModel { user = userOptions };
 
             return View(model);

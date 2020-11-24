@@ -39,40 +39,6 @@ function addUser() {
 
 }
 
-function loginUser() {
-    actionUrl = "/api/user"
-    actiontype = "Get"
-    actionDataType = "json"
-
-    sendData = {
-        "email": $("#Email").val(),
-        "password": $("#Password").val()
-    }
-
-
-    $.ajax({
-        url: actionUrl,
-        dataType: actionDataType,
-        type: actiontype,
-        data: JSON.stringify(sendData),
-        contentType: 'application/json',
-        processData: false,
-
-        success: function (data, textStatus, jQxhr) {
-
-            alert(JSON.stringify(data))
-            window.open("/Home/Dashboard", "_self")
-        },
-        error: function (jqXhr, textStatus, errorThrown) {
-            alert(errorThrown);
-        }
-
-    });
-
-}
-
-
-
 
 function updateUser() {
     id = $("#Id").val()
