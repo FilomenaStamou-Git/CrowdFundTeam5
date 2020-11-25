@@ -3,6 +3,38 @@
 
 // Write your JavaScript code.
 
+if (getUserId()) {
+    $('#logout-btn').show();
+}
+$('#login-btn').on('click', function () {
+    let userEmail = $('#Email').val();
+    let password = $('#Password').val();
+
+    let loginOptions = {
+        email: userEmail,
+        password: password
+    };
+
+    $.ajax({
+        url: '/home/login',
+        contentType: 'application/json',
+        type: 'POST',
+        data: JSON.stringify(loginOptions),
+        success: function (data) {
+            localStorage.setItem('Id', data.Id);
+            $('#logout-btn').show();
+        },
+        error: function () {
+            alert('Login denied');
+        }
+    });
+});
+
+$('#logout-btn').on('click', function () {
+    localStorage.removeItem('Id');
+    $('#logout-btn').hide();
+});
+
 function addUser() {
     actionUrl = "/api/user"
     actiontype = "POST"

@@ -163,6 +163,23 @@ namespace CrowdFundMVC.Controllers
             return View(projectModel);
         }
 
+        [HttpPost]
+        public IActionResult Login([FromBody] LoginOptions options)
+        {
+            if (options.Email == "dimitris")
+            {
+                return Ok(new
+                {
+                    Id = "1234"
+                });
+            }
+
+            return Forbid();
+        }
+
+
+
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -171,5 +188,8 @@ namespace CrowdFundMVC.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
+
+
+
 
 }
