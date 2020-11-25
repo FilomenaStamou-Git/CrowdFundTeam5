@@ -60,7 +60,7 @@ namespace CrowdFundMVC.Controllers
                 Id = projectOptWithFileModel.Id,
                 Title = projectOptWithFileModel.Title,
                 Description = projectOptWithFileModel.Description,
-                Category = projectOptWithFileModel.Category,
+                Categories = projectOptWithFileModel.Categories,
                 Update = projectOptWithFileModel.Update,
                 Photo = projectOptWithFileModel.Photo,
                 Video = projectOptWithFileModel.Video,

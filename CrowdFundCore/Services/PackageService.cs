@@ -24,7 +24,6 @@ namespace CrowdFundCore.Services
             List<PackageOption> packagesOpt = new List<PackageOption>();
             packages.ForEach(package => packagesOpt.Add(new PackageOption
             {
-                Amount = package.Amount,
                 Description = package.Description,
                 Reward = package.Reward,
                 Photo = package.Photo,
@@ -37,19 +36,29 @@ namespace CrowdFundCore.Services
 
         public PackageOption CreatePackage(PackageOption packageOption)
         {
+
+            var project = dbContext
+               .Set<Project>()
+               .Where(p => p.Id == packageOption.ProjectId)  //Include(p=>p.Package)
+               .SingleOrDefault();
+
+
             Package package = new Package
             {
-                Amount = packageOption.Amount,
                 Description = packageOption.Description,
                 Reward = packageOption.Reward,
-                Photo = packageOption.Photo
+                Photo = packageOption.Photo,
+                IsActive = true,
+                
             };
 
+
+            project.Packages.Add(package);
+            dbContext.Update(project);
             dbContext.Packages.Add(package);
             dbContext.SaveChanges();
             return new PackageOption
             {
-                Amount = package.Amount,
                 Description = package.Description,
                 Reward = package.Reward,
                 Photo = packageOption.Photo
@@ -67,13 +76,19 @@ namespace CrowdFundCore.Services
 
         public PackageOption UpdatePackage(PackageOption packageOpt, int id)
         {
-            Package package = dbContext.Packages.Find(id);
+            //var project = dbContext
+            //    .Set<Project>()
+            //    .Where(p => p.Id == packageOpt.ProjectId)               // .Include(p => p.Package)
+            //    .SingleOrDefault();
+            //project.Packages.Add(package);
+            //dbContext.Update(project);
+
+            Package package = dbContext.Packages.Find(id);         
             packageOptToPackage(packageOpt, package);
             dbContext.SaveChanges();
 
             return new PackageOption
             {
-                Amount = package.Amount,
                 Description = package.Description,
                 Reward = package.Reward,
                 Photo = package.Photo
@@ -85,7 +100,6 @@ namespace CrowdFundCore.Services
             Package package = dbContext.Packages.Find(id);
             return new PackageOption
             {
-                Amount = package.Amount,
                 Description = package.Description,
                 Reward = package.Reward,
                 Photo = package.Photo,
@@ -95,7 +109,6 @@ namespace CrowdFundCore.Services
 
         private static void packageOptToPackage(PackageOption packageOpt, Package package)
         {
-            package.Amount = packageOpt.Amount;
             package.Description = packageOpt.Description;
             package.Reward = packageOpt.Reward;
             package.Photo = packageOpt.Photo;

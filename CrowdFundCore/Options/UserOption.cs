@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CrowdFundCore.Models;
 
 namespace CrowdFundCore.Options
 {
@@ -12,5 +13,8 @@ namespace CrowdFundCore.Options
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public List<FundingProject> FundingProjects { get; set; }
+        public List<Project> Project { get; set; }
+
     }
 }

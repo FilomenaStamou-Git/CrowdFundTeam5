@@ -52,7 +52,6 @@ namespace CrowdFundMVC.Controllers
 
             PackageOption packageOpt = new PackageOption
             {
-                Amount = packageOptWithFileModel.Amount,
                 Description = packageOptWithFileModel.Description,
                 Reward = packageOptWithFileModel.Reward,
                 Photo = packageOptWithFileModel.Photo
