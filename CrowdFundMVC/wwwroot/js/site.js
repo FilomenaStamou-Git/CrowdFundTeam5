@@ -3,6 +3,7 @@
 
 // Write your JavaScript code.
 
+<<<<<<< HEAD
 if (getUserId()) {
     $('#logout-btn').show();
 }
@@ -35,6 +36,10 @@ $('#logout-btn').on('click', function () {
     $('#logout-btn').hide();
 });
 
+=======
+
+// ---------------------------USER------------------------------
+>>>>>>> 822e15e0f3de0d42e868beb833e26ebcf3ead451
 function addUser() {
     actionUrl = "/api/user"
     actiontype = "POST"
@@ -140,8 +145,20 @@ function findToUpdateUser() {
 
 }
 
-function addProject() {
-    var actionUrl = "/api/project"
+
+
+//submit-project-create 
+
+// --------------------PROJECT----------------------------
+
+
+
+let successAlert = $('#success-alert-project').hide();
+let dangerAlert = $('#danger-alert-project').hide();
+
+btn = $('#addProject').on('click', () => {
+    debugger;
+    var actionUrl = "/api/project/"
     var input = document.getElementById('Picture');
     var files = input.files;
     var formData = new FormData();
@@ -152,9 +169,9 @@ function addProject() {
     }
 
         formData.append("Title", $('#Title').val());
-        formData.append("Description", $("#Description").val());
-        formData.append("Category", $("#Category").val());
-        formData.append("Update", $("#Update").val());
+    formData.append("Description", $("#Description").val());
+    formData.append("Categories", $("#Categories").val());
+    formData.append("UserId", parseInt($("#User-Id").val()));
         formData.append("Amount", $("#Amount").val());
 
 
@@ -167,14 +184,17 @@ function addProject() {
 
         success: function (data) {
             window.open("/home/projects", "_self")
+            $('#success-alert-project').fadeIn(1000);
+
         },
         error: function (jqXhr, textStatus, errorThrown) {
-            alert("Error from server:" + errorThrown);
+            console.log("Error from server:" + errorThrown);
+            $('#danger-alert-project').fadeIn(2000);
         }
 
     });
 
-}
+})
 
 function updateProject() {
     id = $("#Id").val()
@@ -325,3 +345,28 @@ function findToUpdateProject() {
     window.open(actionUrl, "_self");
 
 }
+
+searchBtn = $('.searchProject').on('click', () => {
+
+
+        searchText = $("#searchText").val()
+        actionUrl = "/Home/SearchProjectDisplay?text=" + searchText
+
+        window.open(actionUrl, "_self");
+})
+
+searchEnter = $('.handleEnter').on('keypress', function (e) {
+
+    if (e.keyCode == 13) {
+        // Cancel the default action on keypress event
+        e.preventDefault();
+
+        searchText = $("#searchText").val()
+        actionUrl = "/Home/SearchProjectDisplay?text=" + searchText
+
+        window.open(actionUrl, "_self");
+    }
+}
+);
+    
+//let $successAlert = $('#create-profile-success')

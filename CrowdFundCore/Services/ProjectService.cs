@@ -18,35 +18,48 @@ namespace CrowdFundCore.Services
             this.dbContext = dbContext;
         }
 
+
+        
         public ProjectOption CreateProject(ProjectOption projectOption)
         {
+
+            var user = dbContext.Set<User>()
+                .Where(o => o.Id == projectOption.UserId)
+                .SingleOrDefault();
+
+
             Project project = new Project
             {
                 Id = projectOption.Id,
                 Title = projectOption.Title,
                 Description = projectOption.Description,
-                Category = projectOption.Category,
+                Categories = projectOption.Categories,
                 Update = projectOption.Update,
                 Created = DateTime.UtcNow,
                 Amount = projectOption.Amount,
                 Photo = projectOption.Photo,
                 Video = projectOption.Video,
+                UserId = projectOption.UserId,
                 Fundings = 0
             };
             dbContext.Projects.Add(project);
+            dbContext.Users.Update(user);
             dbContext.SaveChanges();
+
+
             return new ProjectOption
             {
                 Id = project.Id,
                 Title = project.Title,
                 Description = project.Description,
-                Category = project.Category,
+                Categories = project.Categories,
                 Update = project.Update,
                 Created = DateTime.UtcNow,
                 Amount = project.Amount,
                 Photo = project.Photo,
                 Video = project.Video,
-                Fundings = project.Fundings
+                Fundings = project.Fundings,
+                UserId = project.UserId
             };
         }
 
@@ -69,7 +82,7 @@ namespace CrowdFundCore.Services
                 Id = project.Id,
                 Title = project.Title,
                 Description = project.Description,
-                Category = project.Category,
+                Categories = project.Categories,
                 Update = project.Update,
                 Amount = project.Amount,
                 Fundings = project.Fundings,
@@ -83,14 +96,17 @@ namespace CrowdFundCore.Services
         public List<ProjectOption> GetAllProjects(string searchCriteria)
         {
 
-            List<Project> projects = dbContext.Projects.ToList();
+            List<Project> projects = dbContext.Projects
+                .Where(p => p.Title.Contains(searchCriteria))
+                .ToList();
+
             List<ProjectOption> projectsOpt = new List<ProjectOption>();
             projects.ForEach(project => projectsOpt.Add(new ProjectOption
             {
                 Id = project.Id,
                 Title = project.Title,
                 Description = project.Description,
-                Category = project.Category,
+                Categories = project.Categories,
                 Update = project.Update,
                 Amount = project.Amount,
                 Fundings = project.Fundings,
@@ -109,7 +125,7 @@ namespace CrowdFundCore.Services
                 Id = project.Id,
                 Title = project.Title,
                 Description = project.Description,
-                Category = project.Category,
+                Categories = project.Categories,
                 Update = project.Update,
                 Created = DateTime.UtcNow,
                 Fundings = project.Fundings,
@@ -129,7 +145,7 @@ namespace CrowdFundCore.Services
                 Id = project.Id,
                 Title = project.Title,
                 Description = project.Description,
-                Category = project.Category,
+                Categories = project.Categories,
                 Update = project.Update,
                 Fundings =project.Fundings,
                 Created = DateTime.UtcNow,
@@ -145,13 +161,37 @@ namespace CrowdFundCore.Services
             project.Id = projectOpt.Id;
             project.Title = projectOpt.Title;
             project.Description = projectOpt.Description;
-            project.Category = projectOpt.Category;
+            project.Categories = projectOpt.Categories;
             project.Update = projectOpt.Update;
             project.Created = DateTime.UtcNow;
             project.Fundings = projectOpt.Fundings;
             project.Amount = projectOpt.Amount;
             project.Photo = projectOpt.Photo;
             project.Video = projectOpt.Video;
+        }
+
+        public List<ProjectOption> GetTopProjects()
+        {
+            List<Project> projects = dbContext.Projects
+                .Take(5)
+                .OrderByDescending(p =>p.Fundings)
+                .ThenBy(p=>p.Title)                
+                .ToList();
+            List<ProjectOption> projectsOpt = new List<ProjectOption>();
+            projects.ForEach(project => projectsOpt.Add(new ProjectOption
+            {
+                Id = project.Id,
+                Title = project.Title,
+                Description = project.Description,
+                Categories = project.Categories,
+                Update = project.Update,
+                Amount = project.Amount,
+                Fundings = project.Fundings,
+                Photo = project.Photo,
+                Video = project.Video
+            }));
+            return projectsOpt;
+
         }
     }
 }

@@ -3,6 +3,8 @@ using CrowdFundCore.Models;
 using CrowdFundCore.Options;
 using CrowdFundCore.Services;
 using CrowdFundCore.Data;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace CrowdFundCore
 {
@@ -11,6 +13,9 @@ namespace CrowdFundCore
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the test area of the CrowdFunding website!");
+
+            //--------------CREATE USER--------------------------
+
 
             //var userOpt = new UserOption()
             //{
@@ -23,15 +28,43 @@ namespace CrowdFundCore
 
             //};
 
+            //using var db = new CFDBContext();
+            //    User user = new User
+            //{
+            //    FirstName = "Danai",
+            //    LastName = "Macs",
+            //    Email = "Jdan@gmail.com",               
+            //};
+
+            //db.Users.Add(user);           
+            //db.SaveChanges(); 
+
+            // User user1 = db.Users.Find(1);
+            // Console.WriteLine(user1.FirstName);
+
+            //------------------------Add Project------------------
+
+
+
             using var db = new CFDBContext();
-            Package package = new Package()
+            Project project = new Project
             {
-                Amount = 50,
-                Description = "This is a description",
-                Reward = "Reward here"
+                Title = "Drone Delivery",
+                Amount = 25000,
+                Fundings = 8300,
+                Description = "Desc 10",
+                Categories = Category.Fashion,
+                Created = DateTime.Now,
+                UserId = 3
+
             };
-            db.Packages.Add(package);
-            db.SaveChanges();
+
+            // db.Projects.Add(project);
+            // db.SaveChanges();
+
+            Console.WriteLine(project.Categories);
+
+
         }
     }
 }

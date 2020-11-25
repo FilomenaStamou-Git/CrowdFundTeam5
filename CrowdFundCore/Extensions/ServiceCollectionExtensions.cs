@@ -17,6 +17,7 @@ namespace CrowdFundCore.Extensions
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IProjectService, ProjectService>();
             services.AddScoped<IPackageService, PackageService>();
+            services.AddScoped<IFundingProjectService, FundingProjectService>();
 
         }
     }

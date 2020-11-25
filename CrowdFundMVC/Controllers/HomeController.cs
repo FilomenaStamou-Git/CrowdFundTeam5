@@ -100,9 +100,25 @@ namespace CrowdFundMVC.Controllers
             return View(projectModel);
         }
 
+
+
+        public IActionResult SearchProjectDisplay([FromQuery] string text)
+        {
+            List<ProjectOption> projects = projectService.GetAllProjects(text);
+            ProjectModel projectModel = new ProjectModel { Projects = projects };
+            return View("Projects", projectModel);
+        }
+
         public IActionResult AddProject()
         {
             return View();
+        }
+
+        public IActionResult TopProjectsDisplay()
+        {
+            List<ProjectOption> projects = projectService.GetTopProjects();
+            ProjectModel projectModel = new ProjectModel { Projects = projects };
+            return View("Projects", projectModel);
         }
 
         public IActionResult DeleteProjectFromView([FromRoute] int id)
