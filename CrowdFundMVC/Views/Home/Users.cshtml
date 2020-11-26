@@ -15,14 +15,14 @@
             <div class="col-md-3">
                 <div class="card">
 
-                    <img src="/img/avatarf.png" alt="Avatar" style="width:100%">
+                    <img src="/img/avatarf.png" alt="Avatar" style="width:200px;position:center">
 
-                    <h2>@user.FirstName</h2>
-                    <h2>@user.LastName</h2>
-                    <p>@user.Email</p>
-                    <p>@user.Id</p>
-                    <a href="~/home/updateuserwithdetails/@user.Id">Edit User</a>
-                    <a href="~/home/DeleteUserFromView/@user.Id">Delete User </a>
+                    <p><b>FirstName: </b>@user.FirstName</p>
+                    <p><b>LastName: </b>@user.LastName</p>
+                    <p><b>Email: </b>@user.Email</p>
+                    <p><b>UserId: </b>@user.Id</p>
+                    <a href="~/home/updateuserwithdetails/@user.Id" style="color:white;background-color:royalblue;width:150px;height:40px;border-radius:6px;margin-bottom:20px;text-align:center;padding:5px;position:center">Edit User</a>
+                    <a href="~/home/DeleteUserFromView/@user.Id" style="color:white;background-color:darkred;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center">Delete User</a>
 
                 </div>
             </div>
