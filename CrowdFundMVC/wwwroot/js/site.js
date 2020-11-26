@@ -3,6 +3,8 @@
 
 // Write your JavaScript code.
 
+
+// ---------------------------USER------------------------------
 function addUser() {
     actionUrl = "/api/user"
     actiontype = "POST"
@@ -108,8 +110,19 @@ function findToUpdateUser() {
 
 }
 
-function addProject() {
-    var actionUrl = "/api/project"
+
+
+
+// --------------------PROJECT----------------------------
+
+
+
+let successAlert = $('#success-alert-project').hide();
+let dangerAlert = $('#danger-alert-project').hide();
+
+btn = $('#addProject').on('click', () => {
+    debugger;
+    var actionUrl = "/api/project/"
     var input = document.getElementById('Picture');
     var files = input.files;
     var formData = new FormData();
@@ -120,9 +133,8 @@ function addProject() {
     }
 
         formData.append("Title", $('#Title').val());
-        formData.append("Description", $("#Description").val());
-        formData.append("Category", $("#Category").val());
-        formData.append("Update", $("#Update").val());
+    formData.append("Description", $("#Description").val());
+    formData.append("Categories", $("#Categories").val());
         formData.append("Amount", $("#Amount").val());
 
 
@@ -134,18 +146,22 @@ function addProject() {
         type: "POST",
 
         success: function (data) {
-            window.open("/home/projects", "_self")
+            
+            $('#success-alert-project').fadeIn(1000);
+            window.open("/home/projects", "_self"),3000
+
         },
         error: function (jqXhr, textStatus, errorThrown) {
-            alert("Error from server:" + errorThrown);
+            console.log("Error from server:" + errorThrown);
+            $('#danger-alert-project').fadeIn(2000);
         }
 
     });
 
-}
+})
 
 function updateProject() {
-    id = $("#Id").val()
+    id = $("#ProjectId").val()
 
     actionUrl = "/api/project/" + id
     actiontype = "PUT"
@@ -154,13 +170,35 @@ function updateProject() {
     sendData = {
         "Title": $("#Title").val(),
         "Description": $("#Description").val(),
-        "Category": $("#Category").val(),
+        "Categories": $("#Categories").val(),
         "Update": $("#Update").val(),
         "Amount": $("Amount").val(),
         "Photo": $("Photo").val(),
-        "Video": $("Video").val()
     }
+
+    $.ajax({
+        url: actionUrl,
+        data: sendData,
+        processData: false,
+        contentType: false,
+        type: "PUT",
+
+        success: function (data) {
+
+            window.open("/home/projects", "_self"), 3000
+
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log("Error from server:" + errorThrown);
+            $('#danger-alert-project').fadeIn(2000);
+        }
+
+    });
 }
+
+
+
+//------------------------------- PACKAGE ----------------------------------------
 
 function addPackage() {
     var actionUrl = "/api/package"
@@ -293,3 +331,37 @@ function findToUpdateProject() {
     window.open(actionUrl, "_self");
 
 }
+
+ProjectDetails = $('.js-project-details').on('click', () => {
+    id = $('.js-ProjectId').val()
+    actionUrl = "/Home/ProjectDetails/" + id
+    window.open(actionUrl, "_self");
+})
+
+
+
+
+searchBtn = $('.searchProject').on('click', () => {
+
+
+        searchText = $("#searchText").val()
+        actionUrl = "/Home/SearchProjectDisplay?text=" + searchText
+
+        window.open(actionUrl, "_self");
+})
+
+searchEnter = $('.handleEnter').on('keypress', function (e) {
+
+    if (e.keyCode == 13) {
+        // Cancel the default action on keypress event
+        e.preventDefault();
+
+        searchText = $("#searchText").val()
+        actionUrl = "/Home/SearchProjectDisplay?text=" + searchText
+
+        window.open(actionUrl, "_self");
+    }
+}
+);
+    
+//let $successAlert = $('#create-profile-success')

@@ -1,81 +1,56 @@
-﻿@*
+﻿@{
+    ViewData["Title"] = "AddProject";
+
+}
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
 
-<form>
-    <table align="center">
-        <tr align="center">
-            <td>
-                Title
-            </td>
-            <td> <input type="text" id="Title" placeholder="Title" /></td>
-        </tr>
+<h1 class="text-center text-primary">Create a new Project</h1>
 
+<form method="post">
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Title</label>
+        <input type="email" class="form-control" id="Title" placeholder="Enter the Title of your project">
+    </div>
+    <div class="form-group">
 
-        <tr align="center">
-            <td>
-                Description
-            </td>
-            <td>
-                <input type="text" id="Description" placeholder="Add a description" />
+        <select class="custom-select" id="Categories">
+            <option selected>Choose a category</option>
+            <option>Technology</option>
+            <option>Food</option>
+            <option>Education</option>
+            <option>Music</option>
+            <option>Fashion</option>
+            <option>Photography</option>
+            <option>Travel</option>
+            <option>Health</option>
+            <option>WebSeries</option>
+            <option>Transportation</option>
+        </select>
+    </div>
 
-            </td>
-        </tr>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea class="form-control" id="Description" rows="3" placeholder="Try to be as specific as you can"></textarea>
+    </div> 
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" id="Picture">
+        <label class="custom-file-label" for="Picture">Choose a Picture</label>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Amount</label>
+        <input type="number" class="form-control" id="Amount" placeholder="Enter the Amount that you wish to collect">
+    </div>
+    <button type="button" class="btn btn-primary btn-lg btn-block" id="addProject">Create your Project!</button>
 
-        <tr align="center">
-            <td>
+    <div class="alert alert-success " id="success-alert-project" role="alert">
+        Project was created successsfully!
+    </div>
+    <div class="alert alert-danger" id="danger-alert-project" role="alert">
+        Project could not be created.Try again.
+    </div>
 
-                Category
-            </td>
-            <td>
-                <input type="text" id="Category" placeholder="Category" />
-            </td>
-        </tr>
-
-        <tr align="center">
-            <td>
-                Update
-            </td>
-            <td>
-                <input type="text" id="Update" placeholder="Update status" />
-
-            </td>
-        </tr>
-        <tr align="center">
-            <td>
-                Photo
-            </td>
-            <td>
-                <input type="file" id="Picture" placeholder="Insert Photo" />
-
-            </td>
-        </tr>
-        <tr align="center">
-            <td>
-                Video
-            </td>
-            <td>
-                <input type="file" id="Video" placeholder="Insert Video" />
-
-            </td>
-        </tr>
-
-        <tr align="center">
-            <td>
-                Amount
-            </td>
-            <td>
-                <input type="number" id="Amount" placeholder="Amount" />
-
-            </td>
-        </tr>
-
-        <tr align="center">
-            <td>
-                <input type="button" class="btn-info" value="Submit data" onclick="addProject()" />
-            </td>
-        </tr>
-    </table>
 </form>

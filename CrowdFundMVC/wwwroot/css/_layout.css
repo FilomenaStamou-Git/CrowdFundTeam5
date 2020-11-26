@@ -185,9 +185,9 @@ footer {
     display: inline-block;
 }
 
-.navbar-header.col {
+/*.navbar-header.col {*/
 /*    padding: 0 !important;*/
-}
+/*}
 
 .navbar {
     background: #fff;
@@ -280,7 +280,7 @@ footer {
 
 .navbar a.messages .badge {
     margin-left: -4px;
-}
+}*/
 
 /*.navbar .active a, .navbar .active a:hover, .navbar .active a:focus {
     background: transparent !important;

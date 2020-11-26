@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CrowdFundCore.Models;
 using CrowdFundCore.Options;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -7,12 +8,12 @@ namespace CrowdFundMVC.Models
 {
     public class ProjectModel
     {
-        public List<ProjectOption> Projects { get; set; }
+        public List<ProjectwithFileModel> Projects { get; set; }
     }
 
     public class ProjectOptionModel
     {
-        public ProjectOption project { get; set; }
+        public ProjectwithFileModel project { get; set; }
     }
 
     public class ProjectWithFileModel
@@ -20,7 +21,7 @@ namespace CrowdFundMVC.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string Category { get; set; }
+        public Category Categories { get; set; }
         public string Update { get; set; }
         public string Photo { get; set; }
         public string Video { get; set; }

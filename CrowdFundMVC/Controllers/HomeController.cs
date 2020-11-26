@@ -95,14 +95,30 @@ namespace CrowdFundMVC.Controllers
 
         public IActionResult DeletePackage()
         {
-            List<ProjectOption> projects = projectService.GetAllProjects();
+            List<ProjectwithFileModel> projects = projectService.GetAllProjects();
             ProjectModel projectModel = new ProjectModel { Projects = projects };
             return View(projectModel);
+        }
+
+
+
+        public IActionResult SearchProjectDisplay([FromQuery] string text)
+        {
+            List<ProjectwithFileModel> projects = projectService.GetAllProjects(text);
+            ProjectModel projectModel = new ProjectModel { Projects = projects };
+            return View("Projects", projectModel);
         }
 
         public IActionResult AddProject()
         {
             return View();
+        }
+
+        public IActionResult TopProjectsDisplay()
+        {
+            List<ProjectwithFileModel> projects = projectService.GetTopProjects();
+            ProjectModel projectModel = new ProjectModel { Projects = projects };
+            return View("Projects", projectModel);
         }
 
         public IActionResult DeleteProjectFromView([FromRoute] int id)
@@ -114,7 +130,14 @@ namespace CrowdFundMVC.Controllers
 
         public IActionResult UpdateProjectWithDetails([FromRoute] int id)
         {
-            ProjectOption projectOptions = projectService.GetProjectById(id);
+            ProjectwithFileModel projectOptions = projectService.GetProjectById(id);
+            ProjectOptionModel model = new ProjectOptionModel { project = projectOptions };
+
+            return View(model);
+        }
+        public IActionResult ProjectDetails([FromRoute] int id)
+        {
+            ProjectwithFileModel projectOptions = projectService.GetProjectById(id);
             ProjectOptionModel model = new ProjectOptionModel { project = projectOptions };
 
             return View(model);
@@ -158,10 +181,12 @@ namespace CrowdFundMVC.Controllers
 
         public IActionResult Projects()
         {
-            List<ProjectOption> projects = projectService.GetAllProjects();
+            List<ProjectwithFileModel> projects = projectService.GetAllProjects();
             ProjectModel projectModel = new ProjectModel { Projects = projects };
             return View(projectModel);
         }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

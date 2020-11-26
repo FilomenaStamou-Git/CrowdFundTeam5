@@ -18,14 +18,17 @@ namespace CrowdFundCore.Services
             this.dbContext = dbContext;
         }
 
-        public ProjectOption CreateProject(ProjectOption projectOption)
+
+        
+        public ProjectwithFileModel CreateProject(ProjectwithFileModel projectOption)
         {
+
             Project project = new Project
             {
                 Id = projectOption.Id,
                 Title = projectOption.Title,
                 Description = projectOption.Description,
-                Category = projectOption.Category,
+                Categories = projectOption.Categories,
                 Update = projectOption.Update,
                 Created = DateTime.UtcNow,
                 Amount = projectOption.Amount,
@@ -35,18 +38,20 @@ namespace CrowdFundCore.Services
             };
             dbContext.Projects.Add(project);
             dbContext.SaveChanges();
-            return new ProjectOption
+
+
+            return new ProjectwithFileModel
             {
                 Id = project.Id,
                 Title = project.Title,
                 Description = project.Description,
-                Category = project.Category,
+                Categories = project.Categories,
                 Update = project.Update,
                 Created = DateTime.UtcNow,
                 Amount = project.Amount,
                 Photo = project.Photo,
                 Video = project.Video,
-                Fundings = project.Fundings
+                Fundings = project.Fundings,
             };
         }
 
@@ -59,17 +64,17 @@ namespace CrowdFundCore.Services
             return true;
         }
 
-        public List<ProjectOption> GetAllProjects()
+        public List<ProjectwithFileModel> GetAllProjects()
         {
             using CFDBContext dbContext = new CFDBContext();
             List<Project> projects = dbContext.Projects.ToList();
-            List<ProjectOption> projectsOpt = new List<ProjectOption>();
-            projects.ForEach(project => projectsOpt.Add(new ProjectOption
+            List<ProjectwithFileModel> projectsOpt = new List<ProjectwithFileModel>();
+            projects.ForEach(project => projectsOpt.Add(new ProjectwithFileModel
             {
                 Id = project.Id,
                 Title = project.Title,
                 Description = project.Description,
-                Category = project.Category,
+                Categories = project.Categories,
                 Update = project.Update,
                 Amount = project.Amount,
                 Fundings = project.Fundings,
@@ -80,17 +85,20 @@ namespace CrowdFundCore.Services
             return projectsOpt;
         }
 
-        public List<ProjectOption> GetAllProjects(string searchCriteria)
+        public List<ProjectwithFileModel> GetAllProjects(string searchCriteria)
         {
 
-            List<Project> projects = dbContext.Projects.ToList();
-            List<ProjectOption> projectsOpt = new List<ProjectOption>();
-            projects.ForEach(project => projectsOpt.Add(new ProjectOption
+            List<Project> projects = dbContext.Projects
+                .Where(p => p.Title.Contains(searchCriteria) || Enum.IsDefined(typeof(Category),searchCriteria))
+                .ToList();
+
+           List <ProjectwithFileModel> projectsOpt = new List<ProjectwithFileModel>();
+            projects.ForEach(project => projectsOpt.Add(new ProjectwithFileModel
             {
                 Id = project.Id,
                 Title = project.Title,
                 Description = project.Description,
-                Category = project.Category,
+                Categories = project.Categories,
                 Update = project.Update,
                 Amount = project.Amount,
                 Fundings = project.Fundings,
@@ -101,15 +109,15 @@ namespace CrowdFundCore.Services
             return projectsOpt;
         }
 
-        public ProjectOption GetProjectById(int id)
+        public ProjectwithFileModel GetProjectById(int id)
         {
             Project project = dbContext.Projects.Find(id);
-            return new ProjectOption
+            return new ProjectwithFileModel
             {
                 Id = project.Id,
                 Title = project.Title,
                 Description = project.Description,
-                Category = project.Category,
+                Categories = project.Categories,
                 Update = project.Update,
                 Created = DateTime.UtcNow,
                 Fundings = project.Fundings,
@@ -119,17 +127,17 @@ namespace CrowdFundCore.Services
             };
         }
 
-        public ProjectOption UpdateProject(ProjectOption projectOpt, int id)
+        public ProjectwithFileModel UpdateProject(ProjectwithFileModel projectOpt, int id)
         {
             Project project = dbContext.Projects.Find(id);
             projectOptToProject(projectOpt, project);
             dbContext.SaveChanges();
-            return new ProjectOption
+            return new ProjectwithFileModel
             {
                 Id = project.Id,
                 Title = project.Title,
                 Description = project.Description,
-                Category = project.Category,
+                Categories = project.Categories,
                 Update = project.Update,
                 Fundings =project.Fundings,
                 Created = DateTime.UtcNow,
@@ -139,19 +147,43 @@ namespace CrowdFundCore.Services
             };
 
         }
-        private static void projectOptToProject(ProjectOption projectOpt, Project project)
+        private static void projectOptToProject(ProjectwithFileModel projectOpt, Project project)
 
         {
             project.Id = projectOpt.Id;
             project.Title = projectOpt.Title;
             project.Description = projectOpt.Description;
-            project.Category = projectOpt.Category;
+            project.Categories = projectOpt.Categories;
             project.Update = projectOpt.Update;
             project.Created = DateTime.UtcNow;
             project.Fundings = projectOpt.Fundings;
             project.Amount = projectOpt.Amount;
             project.Photo = projectOpt.Photo;
             project.Video = projectOpt.Video;
+        }
+
+        public List<ProjectwithFileModel> GetTopProjects()
+        {
+            List<Project> projects = dbContext.Projects
+                .Take(5)
+                .OrderByDescending(p =>p.Fundings)
+                .ThenBy(p=>p.Title)                
+                .ToList();
+            List<ProjectwithFileModel> projectsOpt = new List<ProjectwithFileModel>();
+            projects.ForEach(project => projectsOpt.Add(new ProjectwithFileModel
+            {
+                Id = project.Id,
+                Title = project.Title,
+                Description = project.Description,
+                Categories = project.Categories,
+                Update = project.Update,
+                Amount = project.Amount,
+                Fundings = project.Fundings,
+                Photo = project.Photo,
+                Video = project.Video
+            }));
+            return projectsOpt;
+
         }
     }
 }

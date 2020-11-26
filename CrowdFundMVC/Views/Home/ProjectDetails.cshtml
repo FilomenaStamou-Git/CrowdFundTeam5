@@ -1,0 +1,37 @@
+﻿@model CrowdFundMVC.Models.ProjectOptionModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@if (Model == null)
+{
+    <div class="alert alert-primary" role="alert">
+        Project Not Found!
+    </div>
+    return;
+}
+
+<h1 class="text-center"><b><i>@Model.project.Title</i></b></h1>
+
+
+
+<div class="card mb-3">
+    <img class="card-img-top" src="~/uploadedimages/@Model.project.Photo" alt="Card image cap">
+    <div class="card-body">
+        <p class="card-text">@Model.project.Description</p>
+    </div>
+    <div class="card-body">
+        <p class="card-text">Project Id: @Model.project.Id</p>
+        <p class="card-text">Category: @Model.project.Categories</p>
+        <p class="card-text">Amount: @Model.project.Amount</p>
+        <p class="card-text">Fundings: @Model.project.Fundings</p>
+        <p class="card-text">Update Status: @Model.project.Update</p>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: @Model.project.Fundings%;" aria-valuenow="@Model.project.Fundings" aria-valuemin="0" aria-valuemax="@Model.project.Amount"></div>
+        </div>
+        <p class="card-text">Created On: @Model.project.Created</p>
+
+    </div>
+</div>
