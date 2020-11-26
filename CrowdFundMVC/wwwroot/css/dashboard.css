@@ -34,3 +34,9 @@
     background-size: cover;
     background-repeat: no-repeat
 }
+.avatar {
+    vertical-align: middle;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
