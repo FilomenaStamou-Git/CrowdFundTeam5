@@ -95,7 +95,7 @@ namespace CrowdFundMVC.Controllers
 
         public IActionResult DeletePackage()
         {
-            List<ProjectOption> projects = projectService.GetAllProjects();
+            List<ProjectwithFileModel> projects = projectService.GetAllProjects();
             ProjectModel projectModel = new ProjectModel { Projects = projects };
             return View(projectModel);
         }
@@ -104,7 +104,7 @@ namespace CrowdFundMVC.Controllers
 
         public IActionResult SearchProjectDisplay([FromQuery] string text)
         {
-            List<ProjectOption> projects = projectService.GetAllProjects(text);
+            List<ProjectwithFileModel> projects = projectService.GetAllProjects(text);
             ProjectModel projectModel = new ProjectModel { Projects = projects };
             return View("Projects", projectModel);
         }
@@ -116,7 +116,7 @@ namespace CrowdFundMVC.Controllers
 
         public IActionResult TopProjectsDisplay()
         {
-            List<ProjectOption> projects = projectService.GetTopProjects();
+            List<ProjectwithFileModel> projects = projectService.GetTopProjects();
             ProjectModel projectModel = new ProjectModel { Projects = projects };
             return View("Projects", projectModel);
         }
@@ -130,7 +130,14 @@ namespace CrowdFundMVC.Controllers
 
         public IActionResult UpdateProjectWithDetails([FromRoute] int id)
         {
-            ProjectOption projectOptions = projectService.GetProjectById(id);
+            ProjectwithFileModel projectOptions = projectService.GetProjectById(id);
+            ProjectOptionModel model = new ProjectOptionModel { project = projectOptions };
+
+            return View(model);
+        }
+        public IActionResult ProjectDetails([FromRoute] int id)
+        {
+            ProjectwithFileModel projectOptions = projectService.GetProjectById(id);
             ProjectOptionModel model = new ProjectOptionModel { project = projectOptions };
 
             return View(model);
@@ -174,7 +181,7 @@ namespace CrowdFundMVC.Controllers
 
         public IActionResult Projects()
         {
-            List<ProjectOption> projects = projectService.GetAllProjects();
+            List<ProjectwithFileModel> projects = projectService.GetAllProjects();
             ProjectModel projectModel = new ProjectModel { Projects = projects };
             return View(projectModel);
         }

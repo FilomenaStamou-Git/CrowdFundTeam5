@@ -112,7 +112,6 @@ function findToUpdateUser() {
 
 
 
-//submit-project-create 
 
 // --------------------PROJECT----------------------------
 
@@ -136,7 +135,6 @@ btn = $('#addProject').on('click', () => {
         formData.append("Title", $('#Title').val());
     formData.append("Description", $("#Description").val());
     formData.append("Categories", $("#Categories").val());
-    formData.append("UserId", parseInt($("#User-Id").val()));
         formData.append("Amount", $("#Amount").val());
 
 
@@ -148,8 +146,9 @@ btn = $('#addProject').on('click', () => {
         type: "POST",
 
         success: function (data) {
-            window.open("/home/projects", "_self")
+            
             $('#success-alert-project').fadeIn(1000);
+            window.open("/home/projects", "_self"),3000
 
         },
         error: function (jqXhr, textStatus, errorThrown) {
@@ -162,7 +161,7 @@ btn = $('#addProject').on('click', () => {
 })
 
 function updateProject() {
-    id = $("#Id").val()
+    id = $("#ProjectId").val()
 
     actionUrl = "/api/project/" + id
     actiontype = "PUT"
@@ -171,13 +170,35 @@ function updateProject() {
     sendData = {
         "Title": $("#Title").val(),
         "Description": $("#Description").val(),
-        "Category": $("#Category").val(),
+        "Categories": $("#Categories").val(),
         "Update": $("#Update").val(),
         "Amount": $("Amount").val(),
         "Photo": $("Photo").val(),
-        "Video": $("Video").val()
     }
+
+    $.ajax({
+        url: actionUrl,
+        data: sendData,
+        processData: false,
+        contentType: false,
+        type: "PUT",
+
+        success: function (data) {
+
+            window.open("/home/projects", "_self"), 3000
+
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log("Error from server:" + errorThrown);
+            $('#danger-alert-project').fadeIn(2000);
+        }
+
+    });
 }
+
+
+
+//------------------------------- PACKAGE ----------------------------------------
 
 function addPackage() {
     var actionUrl = "/api/package"
@@ -310,6 +331,15 @@ function findToUpdateProject() {
     window.open(actionUrl, "_self");
 
 }
+
+ProjectDetails = $('.js-project-details').on('click', () => {
+    id = $('.js-ProjectId').val()
+    actionUrl = "/Home/ProjectDetails/" + id
+    window.open(actionUrl, "_self");
+})
+
+
+
 
 searchBtn = $('.searchProject').on('click', () => {
 

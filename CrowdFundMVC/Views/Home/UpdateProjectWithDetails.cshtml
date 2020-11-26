@@ -5,95 +5,64 @@
 @{
 }
 <h1> Updating Project with Title <b><i>@Model.project.Title</i></b></h1>
-<form>
-    <table align="center">
-        <tr align="center">
-            <td>
-                Id
-            </td>
-            <td>
-                <input type="text" id="Title" value="@Model.project.Id" readonly />
-            </td>
-        </tr>
 
-        <tr align="center">
-            <td>
-                Title
-            </td>
-            <td>
-                <input type="text" id="Title" value="@Model.project.Title" />
-            </td>
-        </tr>
+<form method="post">
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Id</label>
+        <input type="email" class="form-control" id="Title" value="@Model.project.Id" readonly>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Title</label>
+        <input type="email" class="form-control" id="Title" value="@Model.project.Title">
+    </div>
+    <div class="form-group">
 
+        <select class="custom-select" id="Categories">
+            <option selected>Choose a category</option>
+            <option>Technology</option>
+            <option>Food</option>
+            <option>Education</option>
+            <option>Music</option>
+            <option>Fashion</option>
+            <option>Photography</option>
+            <option>Travel</option>
+            <option>Health</option>
+            <option>WebSeries</option>
+            <option>Transportation</option>
+        </select>
+    </div>
 
-        <tr align="center">
-            <td>
-                Description
-            </td>
-            <td>
-                <input type="text" id="Description" value="@Model.project.Description" />
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea class="form-control" id="Description" rows="3" value="@Model.project.Description"></textarea>
+    </div>
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" id="Picture">
+        <label class="custom-file-label" for="Picture">Choose a Picture</label>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Amount</label>
+        <input type="number" class="form-control" id="Amount" value="@Model.project.Amount">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Fundings</label>
+        <input type="number" class="form-control" id="Fundings" value="@Model.project.Fundings"readonly>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Update Status Post</label>
+        <textarea class="form-control" id="Update" rows="2" value="@Model.project.Update"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Created on</label>
+        <input type="text" class="form-control" value="@Model.project.Created" readonly>
+    </div>
+    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="updateProject()">Update</button>
 
-            </td>
-        </tr>
+    <div class="alert alert-success " id="success-alert-project" role="alert">
+        Project was updated successsfully!
+    </div>
+    <div class="alert alert-danger" id="danger-alert-project" role="alert">
+        Project could not be updated.Try again.
+    </div>
 
-        <tr align="center">
-            <td>
-
-                Category
-            </td>
-            <td>
-                <input type="text" id="Categories" value="@Model.project.Categories" />
-            </td>
-        </tr>
-        <tr align="center">
-            <td>
-                Update
-            </td>
-            <td>
-                <input type="text" id="Update" value="@Model.project.Fundings"readonly />
-
-            </td>
-        </tr>
-
-        <tr align="center">
-            <td>
-                Update info
-            </td>
-            <td>
-                <input type="text" id="Update" value="@Model.project.Update" />
-
-            </td>
-        </tr>
-        <tr align="center">
-            <td>
-                Photo
-            </td>
-            <td>
-                <input type="file" id="Picture" value="@Model.project.Photo" />
-
-            </td>
-
-        <tr align="center">
-            <td>
-                Amount
-            </td>
-            <td>
-                <input type="number" id="Amount" value="@Model.project.Amount" />
-            </td>
-        </tr>
-        <tr align="center">
-            <td>
-                Created on
-            </td>
-            <td>
-                <input type="text" id="Created" value="@Model.project.Created" readonly />
-
-            </td>
-        </tr>
-        <tr align="center">
-            <td>
-                <input type="button" value="Submit data" class="btn-outline-primary" onclick="updateProject()" />
-            </td>
-        </tr>
-    </table>
 </form>

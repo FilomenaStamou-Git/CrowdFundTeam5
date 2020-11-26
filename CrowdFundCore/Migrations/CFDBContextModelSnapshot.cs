@@ -120,7 +120,7 @@ namespace CrowdFundCore.Migrations
                     b.Property<string>("Update")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.Property<string>("Video")
@@ -187,9 +187,7 @@ namespace CrowdFundCore.Migrations
                 {
                     b.HasOne("CrowdFundCore.Models.User", "User")
                         .WithMany("Projects")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

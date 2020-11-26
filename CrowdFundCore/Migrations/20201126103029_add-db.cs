@@ -53,7 +53,7 @@ namespace CrowdFundCore.Migrations
                     Video = table.Column<string>(nullable: true),
                     Fundings = table.Column<decimal>(nullable: false),
                     Categories = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false)
+                    UserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -63,7 +63,7 @@ namespace CrowdFundCore.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

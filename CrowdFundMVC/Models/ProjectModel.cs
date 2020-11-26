@@ -8,12 +8,12 @@ namespace CrowdFundMVC.Models
 {
     public class ProjectModel
     {
-        public List<ProjectOption> Projects { get; set; }
+        public List<ProjectwithFileModel> Projects { get; set; }
     }
 
     public class ProjectOptionModel
     {
-        public ProjectOption project { get; set; }
+        public ProjectwithFileModel project { get; set; }
     }
 
     public class ProjectWithFileModel

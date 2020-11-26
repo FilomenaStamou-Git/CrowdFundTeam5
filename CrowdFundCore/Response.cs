@@ -10,4 +10,6 @@ namespace CrowdFundCore
         public string ErrorMessage { get; set; }
         public T Data { get; set; }
     }
+    
+
 }
