@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model CrowdFundMVC.Models.ProjectModel
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -60,8 +62,43 @@
             </div>
         </div>
     </div>
+    <div>
+    </div>
 
-    <div class="container">
+        @*<hr />
+        To add a new project press <a href="~/home/AddProject">here</a>
+        <hr />
+        <h2 style="text-align:center">Projects</h2>
+        <div class="row">
+            @{
+                foreach (var project in Model.Projects)
+                {
+
+                    <div class="col-md-3">
+                        <div class="card" style="padding:20px">
+
+                            <img src="~/uploadedimages/@project.Photo" style="height:150px;width:150px" />
+                            <p><b>Title: </b>@project.Title</p>
+                            <p><b>Description: </b>@project.Description</p>
+                            <p><b>Category: </b>@project.Categories</p>
+                            <p><b>Fundings: </b>@project.Fundings</p>
+                            <p><b>Update: </b>@project.Update</p>
+                            <p><b>Update: </b>@project.Update</p>
+                            <a data-toggle="modal" href="#exampleModal" class="btn btn-primary">Details</a>
+                            <a href="~/home/updateprojectwithdetails/@project.Id" style="color:white;background-color:royalblue;width:150px;height:40px;border-radius:6px;margin-bottom:20px;text-align:center;padding:5px;position:center">Edit Project</a>
+                            <a href="~/home/projectdetails/@project.Id" style="color:white;background-color:darkred;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center">Delete Project</a>*@
+
+                        <!--</div>
+                    </div>
+
+
+                }
+            }
+
+        </div>
+    </div>-->
+
+<div class="container">
         <br />
         <h1 style="text-align:center">Top Projects</h1>
         <br />
