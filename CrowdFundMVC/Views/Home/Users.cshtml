@@ -1,24 +1,51 @@
 ﻿
 @model CrowdFundMVC.Models.UserModel
-@* 
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
-<h1> User Management</h1>
 
-<table id="userTable" border="1" cellpadding="10" cellspacing="0">
-    <tr>
-        <th> Code </th>
-        <th> FirstName</th>
-        <th> LastName</th>
-        <th>Email</th>
-        <th>Password</th>
-        <th>Update</th>
-        <th>Delete</th>
-    </tr>
-
+<h2 style="text-align:center">Users</h2>
+<div class="row">
     @{
+        foreach (var user in Model.Users)
+        {
+
+            <div class="col-md-3">
+                <div class="card">
+
+                    <img src="/img/avatarf.png" alt="Avatar" style="width:200px;position:center">
+
+                    <p><b>FirstName: </b>@user.FirstName</p>
+                    <p><b>LastName: </b>@user.LastName</p>
+                    <p><b>Email: </b>@user.Email</p>
+                    <p><b>UserId: </b>@user.Id</p>
+                    <a href="~/home/updateuserwithdetails/@user.Id" style="color:white;background-color:royalblue;width:150px;height:40px;border-radius:6px;margin-bottom:20px;text-align:center;padding:5px;position:center">Edit User</a>
+                    <a href="~/home/DeleteUserFromView/@user.Id" style="color:white;background-color:darkred;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center">Delete User</a>
+
+                </div>
+            </div>
+
+
+        }
+    }
+
+</div>
+@*<h1> User Management</h1>
+
+    <table id="userTable" border="1" cellpadding="10" cellspacing="0">
+        <tr>
+            <th> Code </th>
+            <th> FirstName</th>
+            <th> LastName</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>*@
+
+@*@{
         foreach (var user in Model.Users)
         {
             <tr>
@@ -33,4 +60,4 @@
 
         }
     }
-</table>
+    </table>*@

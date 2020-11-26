@@ -112,7 +112,6 @@ function findToUpdateUser() {
 
 
 
-
 // --------------------PROJECT----------------------------
 
 
@@ -132,10 +131,10 @@ btn = $('#addProject').on('click', () => {
         formData.append("Picture", files[i]);
     }
 
-        formData.append("Title", $('#Title').val());
+    formData.append("Title", $('#Title').val());
     formData.append("Description", $("#Description").val());
     formData.append("Categories", $("#Categories").val());
-        formData.append("Amount", $("#Amount").val());
+    formData.append("Amount", $("#Amount").val());
 
 
     $.ajax({
@@ -146,9 +145,9 @@ btn = $('#addProject').on('click', () => {
         type: "POST",
 
         success: function (data) {
-            
+
             $('#success-alert-project').fadeIn(1000);
-            window.open("/home/projects", "_self"),3000
+            window.open("/home/projects", "_self"), 3000
 
         },
         error: function (jqXhr, textStatus, errorThrown) {
@@ -344,10 +343,10 @@ ProjectDetails = $('.js-project-details').on('click', () => {
 searchBtn = $('.searchProject').on('click', () => {
 
 
-        searchText = $("#searchText").val()
-        actionUrl = "/Home/SearchProjectDisplay?text=" + searchText
+    searchText = $("#searchText").val()
+    actionUrl = "/Home/SearchProjectDisplay?text=" + searchText
 
-        window.open(actionUrl, "_self");
+    window.open(actionUrl, "_self");
 })
 
 searchEnter = $('.handleEnter').on('keypress', function (e) {
@@ -363,5 +362,5 @@ searchEnter = $('.handleEnter').on('keypress', function (e) {
     }
 }
 );
-    
+
 //let $successAlert = $('#create-profile-success')

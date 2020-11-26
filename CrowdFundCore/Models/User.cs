@@ -13,7 +13,7 @@ namespace CrowdFundCore.Models
         public string Email { get; set; }
         public string Password { get; set; }   
         public List<Project> Projects { get; set; } 
-        public List<FundingPackage> Fundings { get; set; }
+       // public List<FundingPackage> Fundings { get; set; }
         public User()
         {
             Projects = new List<Project>();
