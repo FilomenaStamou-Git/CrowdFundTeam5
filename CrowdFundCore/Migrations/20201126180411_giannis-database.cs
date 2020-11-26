@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CrowdFundCore.Migrations
 {
-    public partial class adddb : Migration
+    public partial class giannisdatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
