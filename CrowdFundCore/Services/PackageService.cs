@@ -37,10 +37,10 @@ namespace CrowdFundCore.Services
         public PackageOption CreatePackage(PackageOption packageOption)
         {
 
-            var project = dbContext
-               .Set<Project>()
-               .Where(p => p.Id == packageOption.ProjectId)  //Include(p=>p.Package)
-               .SingleOrDefault();
+            //var project = dbContext
+            //   .Set<Project>()
+            //   .Where(p => p.Id == packageOption.ProjectId)  //Include(p=>p.Package)
+            //   .SingleOrDefault();
 
 
             Package package = new Package
@@ -53,8 +53,8 @@ namespace CrowdFundCore.Services
             };
 
 
-            project.Packages.Add(package);
-            dbContext.Update(project);
+            //project.Packages.Add(package);
+            //dbContext.Update(project);
             dbContext.Packages.Add(package);
             dbContext.SaveChanges();
             return new PackageOption

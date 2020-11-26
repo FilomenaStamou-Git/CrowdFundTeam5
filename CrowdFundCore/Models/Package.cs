@@ -13,10 +13,6 @@ namespace CrowdFundCore.Models
         public string Photo { get; set; }
         public bool IsActive { get; set; }
         public Project Project { get; set; }
-        public Package()
-        {
-            IsActive = true;           
-        }
     }
 }
 

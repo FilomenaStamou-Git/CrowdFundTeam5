@@ -7,7 +7,7 @@
     <title>@ViewData["Title"] - CrowdFundMVC</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/dashboard.css" />
+    <link rel="stylesheet" href="~/css/_layout.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda+One">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -15,84 +15,134 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 </html>
+
+
 <body style="background-color:aliceblue">
-    <nav class="navbar navbar-expand-xl navbar-light bg-dark">
-        <a href="Index" class="navbar-brand text-light"><i class="fa fa-cube"></i>Fund<b>Astic</b></a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- Collection of nav links, forms, and other content for toggling -->
-        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-            <div class="navbar-nav">
-                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Dashboard">Home</a>
-                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Projects">View Projects</a>
-                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="About">About</a>
-            </div>
-            <form class="navbar-form form-inline">
-                <div class="input-group search-box">
-                    <input type="text" id="search" class="form-control" placeholder="Search by Name">
-                    <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+
+    <div class="container">
+
+        <div class="row" style="margin-top: 2%;">
+            <div class="col-sm-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="~/img/img1.jpg" alt="Card image cap" width="286" height="180">
+                    <div class="card-body">
+                        <h5 class="card-title">Project1</h5>
+                        <p class="card-text">
+                            Description: <br />
+                            Amount: <br />
+                            Packages: <br />
+                        </p>
+                        <a data-toggle="modal" href="#exampleModal" class="btn btn-primary">Details</a>
+                    </div>
                 </div>
-            </form>
-            <div class="navbar-nav ml-auto">
-                <!-- <a href="#" class="nav-item nav-link notifications text-light"><i class="fa fa-bell-o"></i><span class="badge">1</span></a>
-                <a href="#" class="nav-item nav-link messages text-light"><i class="fa fa-envelope-o"></i><span class="badge">10</span></a> -->
-                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index" style="background-color: rebeccapurple;border-radius:4px">Logout</a>
+            </div>
+            <div class="col-sm-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="~/img/img1.jpg" alt="Card image cap" width="286" height="180">
+                    <div class="card-body">
+                        <h5 class="card-title">Project2</h5>
+                        <p class="card-text">
+                            Description: <br />
+                            Amount: <br />
+                            Packages: <br />
+                        </p>
+                        <a data-toggle="modal" href="#exampleModal" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="~/img/img1.jpg" alt="Card image cap" width="286" height="180">
+                    <div class="card-body">
+                        <h5 class="card-title">Project3</h5>
+                        <p class="card-text">
+                            Description: <br />
+                            Amount: <br />
+                            Packages: <br />
+                        </p>
+                        <a data-toggle="modal" href="#exampleModal" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
 
-    <div class="w3-text-white">
-
-        <!-- Page Container -->
-        <div class="w3-content w3-margin-top" style="height:100%;width:25%">
-
-            <!-- The Grid -->
-            <div class="w3-row-padding text-white">
-
-                <!-- Left Column -->
-                <div class="w3-third text-white bg-dark">
-
-                    <div class="w3-white w3-text-white">
-                        <div class="w3-display-container">
-                            <img src="/img/avatarf.png" style="width:100px" alt="Avatar">
-                            <div class="w3-text-white">
-                                <h2>John Doe</h2>
-                            </div>
-                        </div>
-                        <div class="w3-container text-light">
-                            <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-white"></i>Username</p>
-                            <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-white"></i>Email</p>
-                            <hr>
-
-                            <p class="w3-large">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Users">View Users</a>
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Projects">View Projects</a>
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Fundings">View Fundings</a>
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="CreateProject">Add Project</a>
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="UpdateUser">Edit Profile</a>
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="DeleteUser">Delete Profile</a>
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
-                            </p>
-                        <br>
-                        <br>
-                        </div>
-                 </div>
-            <br>
-
-    <!-- End Left Column -->
-</div>
-
-                <!-- End Grid -->
+        <div class="row" style="margin-top: 5%;">
+            <div class="col-sm-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="~/img/img1.jpg" alt="Card image cap" width="286" height="180">
+                    <div class="card-body">
+                        <h5 class="card-title">Project4</h5>
+                        <p class="card-text">
+                            Description: <br />
+                            Amount: <br />
+                            Packages: <br />
+                        </p>
+                        <a data-toggle="modal" href="#exampleModal" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
             </div>
-
-            <!-- End Page Container -->
+            <div class="col-sm-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="~/img/img1.jpg" alt="Card image cap" width="286" height="180">
+                    <div class="card-body">
+                        <h5 class="card-title">Project5</h5>
+                        <p class="card-text">
+                            Description: <br />
+                            Amount: <br />
+                            Packages: <br />
+                        </p>
+                        <a data-toggle="modal" href="#exampleModal" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="~/img/img1.jpg" alt="Card image cap" width="286" height="180">
+                    <div class="card-body">
+                        <h5 class="card-title">Project6</h5>
+                        <p class="card-text">
+                            Description: <br />
+                            Amount: <br />
+                            Packages: <br />
+                        </p>
+                        <a data-toggle="modal" href="#exampleModal" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
 
 
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        project Details
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
 </body>

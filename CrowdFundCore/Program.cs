@@ -55,7 +55,7 @@ namespace CrowdFundCore
                 Description = "Desc 10",
                 Categories = Category.Fashion,
                 Created = DateTime.Now,
-                UserId = 3
+                //UserId = 3
 
             };
 

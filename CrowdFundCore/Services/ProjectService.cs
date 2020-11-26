@@ -23,9 +23,9 @@ namespace CrowdFundCore.Services
         public ProjectOption CreateProject(ProjectOption projectOption)
         {
 
-            var user = dbContext.Set<User>()
-                .Where(o => o.Id == projectOption.UserId)
-                .SingleOrDefault();
+            //var user = dbContext.Set<User>()
+            //    .Where(o => o.Id == projectOption.UserId)
+            //    .SingleOrDefault();
 
 
             Project project = new Project
@@ -39,11 +39,9 @@ namespace CrowdFundCore.Services
                 Amount = projectOption.Amount,
                 Photo = projectOption.Photo,
                 Video = projectOption.Video,
-                UserId = projectOption.UserId,
                 Fundings = 0
             };
             dbContext.Projects.Add(project);
-            dbContext.Users.Update(user);
             dbContext.SaveChanges();
 
 
@@ -59,7 +57,6 @@ namespace CrowdFundCore.Services
                 Photo = project.Photo,
                 Video = project.Video,
                 Fundings = project.Fundings,
-                UserId = project.UserId
             };
         }
 

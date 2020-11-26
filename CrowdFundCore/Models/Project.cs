@@ -18,7 +18,6 @@ namespace CrowdFundCore.Models
         public string Video { get; set; }
         public decimal Fundings { get; set; }
         public Category Categories { get; set; }
-        public int UserId { get; set; }
         public User User { get; set; }
         public List<Package> Packages { get; set; }
         public Project()

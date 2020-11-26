@@ -3,43 +3,6 @@
 
 // Write your JavaScript code.
 
-<<<<<<< HEAD
-if (getUserId()) {
-    $('#logout-btn').show();
-}
-$('#login-btn').on('click', function () {
-    let userEmail = $('#Email').val();
-    let password = $('#Password').val();
-
-    let loginOptions = {
-        email: userEmail,
-        password: password
-    };
-
-    $.ajax({
-        url: '/home/login',
-        contentType: 'application/json',
-        type: 'POST',
-        data: JSON.stringify(loginOptions),
-        success: function (data) {
-            localStorage.setItem('Id', data.Id);
-            $('#logout-btn').show();
-        },
-        error: function () {
-            alert('Login denied');
-        }
-    });
-});
-
-$('#logout-btn').on('click', function () {
-    localStorage.removeItem('Id');
-    $('#logout-btn').hide();
-});
-
-=======
-
-// ---------------------------USER------------------------------
->>>>>>> 822e15e0f3de0d42e868beb833e26ebcf3ead451
 function addUser() {
     actionUrl = "/api/user"
     actiontype = "POST"
@@ -153,8 +116,8 @@ function findToUpdateUser() {
 
 
 
-let successAlert = $('#success-alert-project').hide();
-let dangerAlert = $('#danger-alert-project').hide();
+var successAlert = $('#success-alert-project').hide();
+var dangerAlert = $('#danger-alert-project').hide();
 
 btn = $('#addProject').on('click', () => {
     debugger;
@@ -214,21 +177,22 @@ function updateProject() {
     }
 }
 
-function addPackage() {
-    var actionUrl = "/api/package"
-    actiontype = "POST"
-    actionDataType = "json"
-    var input = document.getElementById('Picture');
-    var files = input.files;
-    var formData = new FormData();
+//--------------------------PACKAGE-------------------------------
+    btn = $('.js-submit-package-create').on('click', () => {
+    let projectId = parseInt($('.js-projectId').val());
 
-    for (var i = 0; i != files.length; i++) {
-        formData.append("Picture", files[i]);
-    }
 
-    formData.append("amount", $('#Amount').val());
-    formData.append("description", $("#Description").val());
-    formData.append("reward", $("#Reward").val());
+    for (var i = 1; i <= numRequest; i++) {
+
+        let description = $('#description_' + i).val();
+        let reward = parseInt($('#reward_' + i).val());
+
+        let data = {
+        description: description,
+            reward: reward,
+            projectId: projectId
+        }
+        
 
     $.ajax({
         url: actionUrl,
@@ -238,14 +202,48 @@ function addPackage() {
         type: "POST",
 
         success: function (data) {
-            window.open("/home/packages", "_self")
-        },
+        window.open("/home/packages", "_self")
+    },
         error: function (jqXhr, textStatus, errorThrown) {
-            alert("Error from server:" + errorThrown);
+        alert("Error from server:" + errorThrown);
         }
 
     });
 }
+
+//----------------------------------------------------------------
+//function addPackage() {
+//    var actionUrl = "/api/package"
+//    actiontype = "POST"
+//    actionDataType = "json"
+//    var input = document.getElementById('Picture');
+//    var files = input.files;
+//    var formData = new FormData();
+
+//    for (var i = 0; i != files.length; i++) {
+//        formData.append("Picture", files[i]);
+//    }
+
+//    formData.append("amount", $('#Amount').val());
+//    formData.append("description", $("#Description").val());
+//    formData.append("reward", $("#Reward").val());
+
+//    $.ajax({
+//        url: actionUrl,
+//        data: formData,
+//        processData: false,
+//        contentType: false,
+//        type: "POST",
+
+//        success: function (data) {
+//            window.open("/home/packages", "_self")
+//        },
+//        error: function (jqXhr, textStatus, errorThrown) {
+//            alert("Error from server:" + errorThrown);
+//        }
+
+//    });
+//}
 
 function updatePackage() {
     id = $("#Id").val()
