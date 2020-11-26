@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CrowdFundCore.Migrations
 {
     [DbContext(typeof(CFDBContext))]
-    [Migration("20201126132039_add-model")]
-    partial class addmodel
+    [Migration("20201126103029_add-db")]
+    partial class adddb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,47 @@ namespace CrowdFundCore.Migrations
                 .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("CrowdFundCore.Models.FundingPackage", b =>
+                {
+                    b.Property<int>("FundingProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PackageId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FundingProjectId", "PackageId");
+
+                    b.HasIndex("PackageId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FundingPackages");
+                });
+
+            modelBuilder.Entity("CrowdFundCore.Models.FundingProject", b =>
+                {
+                    b.Property<int>("FundingProjectId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal?>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FundingProjectId");
+
+                    b.ToTable("FundingProjects");
+                });
 
             modelBuilder.Entity("CrowdFundCore.Models.Package", b =>
                 {
@@ -116,6 +157,25 @@ namespace CrowdFundCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("CrowdFundCore.Models.FundingPackage", b =>
+                {
+                    b.HasOne("CrowdFundCore.Models.FundingProject", "FundingProject")
+                        .WithMany("FundingPackages")
+                        .HasForeignKey("FundingProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CrowdFundCore.Models.Package", "Package")
+                        .WithMany()
+                        .HasForeignKey("PackageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CrowdFundCore.Models.User", null)
+                        .WithMany("Fundings")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("CrowdFundCore.Models.Package", b =>

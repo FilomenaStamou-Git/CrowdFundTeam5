@@ -3,6 +3,8 @@
 
 // Write your JavaScript code.
 
+
+// ---------------------------USER------------------------------
 function addUser() {
     actionUrl = "/api/user"
     actiontype = "POST"
@@ -110,14 +112,13 @@ function findToUpdateUser() {
 
 
 
-//submit-project-create 
 
 // --------------------PROJECT----------------------------
 
 
 
-var successAlert = $('#success-alert-project').hide();
-var dangerAlert = $('#danger-alert-project').hide();
+let successAlert = $('#success-alert-project').hide();
+let dangerAlert = $('#danger-alert-project').hide();
 
 btn = $('#addProject').on('click', () => {
     debugger;
@@ -131,11 +132,10 @@ btn = $('#addProject').on('click', () => {
         formData.append("Picture", files[i]);
     }
 
-        formData.append("Title", $('#Title').val());
+    formData.append("Title", $('#Title').val());
     formData.append("Description", $("#Description").val());
     formData.append("Categories", $("#Categories").val());
-    formData.append("UserId", parseInt($("#User-Id").val()));
-        formData.append("Amount", $("#Amount").val());
+    formData.append("Amount", $("#Amount").val());
 
 
     $.ajax({
@@ -146,8 +146,9 @@ btn = $('#addProject').on('click', () => {
         type: "POST",
 
         success: function (data) {
-            window.open("/home/projects", "_self")
+
             $('#success-alert-project').fadeIn(1000);
+            window.open("/home/projects", "_self"), 3000
 
         },
         error: function (jqXhr, textStatus, errorThrown) {
@@ -160,7 +161,7 @@ btn = $('#addProject').on('click', () => {
 })
 
 function updateProject() {
-    id = $("#Id").val()
+    id = $("#ProjectId").val()
 
     actionUrl = "/api/project/" + id
     actiontype = "PUT"
@@ -169,30 +170,51 @@ function updateProject() {
     sendData = {
         "Title": $("#Title").val(),
         "Description": $("#Description").val(),
-        "Category": $("#Category").val(),
+        "Categories": $("#Categories").val(),
         "Update": $("#Update").val(),
         "Amount": $("Amount").val(),
         "Photo": $("Photo").val(),
-        "Video": $("Video").val()
     }
+
+    $.ajax({
+        url: actionUrl,
+        data: sendData,
+        processData: false,
+        contentType: false,
+        type: "PUT",
+
+        success: function (data) {
+
+            window.open("/home/projects", "_self"), 3000
+
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log("Error from server:" + errorThrown);
+            $('#danger-alert-project').fadeIn(2000);
+        }
+
+    });
 }
 
-//--------------------------PACKAGE-------------------------------
-    btn = $('.js-submit-package-create').on('click', () => {
-    let projectId = parseInt($('.js-projectId').val());
 
 
-    for (var i = 1; i <= numRequest; i++) {
+//------------------------------- PACKAGE ----------------------------------------
 
-        let description = $('#description_' + i).val();
-        let reward = parseInt($('#reward_' + i).val());
+function addPackage() {
+    var actionUrl = "/api/package"
+    actiontype = "POST"
+    actionDataType = "json"
+    var input = document.getElementById('Picture');
+    var files = input.files;
+    var formData = new FormData();
 
-        let data = {
-        description: description,
-            reward: reward,
-            projectId: projectId
-        }
-        
+    for (var i = 0; i != files.length; i++) {
+        formData.append("Picture", files[i]);
+    }
+
+    formData.append("amount", $('#Amount').val());
+    formData.append("description", $("#Description").val());
+    formData.append("reward", $("#Reward").val());
 
     $.ajax({
         url: actionUrl,
@@ -202,48 +224,14 @@ function updateProject() {
         type: "POST",
 
         success: function (data) {
-        window.open("/home/packages", "_self")
-    },
+            window.open("/home/packages", "_self")
+        },
         error: function (jqXhr, textStatus, errorThrown) {
-        alert("Error from server:" + errorThrown);
+            alert("Error from server:" + errorThrown);
         }
 
     });
 }
-
-//----------------------------------------------------------------
-//function addPackage() {
-//    var actionUrl = "/api/package"
-//    actiontype = "POST"
-//    actionDataType = "json"
-//    var input = document.getElementById('Picture');
-//    var files = input.files;
-//    var formData = new FormData();
-
-//    for (var i = 0; i != files.length; i++) {
-//        formData.append("Picture", files[i]);
-//    }
-
-//    formData.append("amount", $('#Amount').val());
-//    formData.append("description", $("#Description").val());
-//    formData.append("reward", $("#Reward").val());
-
-//    $.ajax({
-//        url: actionUrl,
-//        data: formData,
-//        processData: false,
-//        contentType: false,
-//        type: "POST",
-
-//        success: function (data) {
-//            window.open("/home/packages", "_self")
-//        },
-//        error: function (jqXhr, textStatus, errorThrown) {
-//            alert("Error from server:" + errorThrown);
-//        }
-
-//    });
-//}
 
 function updatePackage() {
     id = $("#Id").val()
@@ -344,13 +332,22 @@ function findToUpdateProject() {
 
 }
 
+ProjectDetails = $('.js-project-details').on('click', () => {
+    id = $('.js-ProjectId').val()
+    actionUrl = "/Home/ProjectDetails/" + id
+    window.open(actionUrl, "_self");
+})
+
+
+
+
 searchBtn = $('.searchProject').on('click', () => {
 
 
-        searchText = $("#searchText").val()
-        actionUrl = "/Home/SearchProjectDisplay?text=" + searchText
+    searchText = $("#searchText").val()
+    actionUrl = "/Home/SearchProjectDisplay?text=" + searchText
 
-        window.open(actionUrl, "_self");
+    window.open(actionUrl, "_self");
 })
 
 searchEnter = $('.handleEnter').on('keypress', function (e) {
@@ -366,5 +363,5 @@ searchEnter = $('.handleEnter').on('keypress', function (e) {
     }
 }
 );
-    
+
 //let $successAlert = $('#create-profile-success')

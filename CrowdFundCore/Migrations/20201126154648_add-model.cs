@@ -6,46 +6,15 @@ namespace CrowdFundCore.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Projects_Users_UserId",
-                table: "Projects");
-
             migrationBuilder.DropTable(
                 name: "FundingPackages");
 
             migrationBuilder.DropTable(
                 name: "FundingProjects");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "UserId",
-                table: "Projects",
-                nullable: true,
-                oldClrType: typeof(int),
-                oldType: "int");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Projects_Users_UserId",
-                table: "Projects",
-                column: "UserId",
-                principalTable: "Users",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Projects_Users_UserId",
-                table: "Projects");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "UserId",
-                table: "Projects",
-                type: "int",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldNullable: true);
-
             migrationBuilder.CreateTable(
                 name: "FundingProjects",
                 columns: table => new
@@ -101,14 +70,6 @@ namespace CrowdFundCore.Migrations
                 name: "IX_FundingPackages_UserId",
                 table: "FundingPackages",
                 column: "UserId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Projects_Users_UserId",
-                table: "Projects",
-                column: "UserId",
-                principalTable: "Users",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
         }
     }
 }

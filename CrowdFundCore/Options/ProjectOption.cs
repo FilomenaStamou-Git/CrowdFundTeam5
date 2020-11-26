@@ -6,7 +6,7 @@ using CrowdFundCore.Models;
 
 namespace CrowdFundCore.Options
 {
-    public class ProjectOption
+    public class ProjectwithFileModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -18,7 +18,7 @@ namespace CrowdFundCore.Options
         public DateTime Created { get; set; }
         public decimal Amount { get; set; }
         public decimal Fundings { get; set; }
-       // public List<Package> FundingPackages { get; set; }
+        public List<Package> FundingPackages { get; set; }
 
     }
 }

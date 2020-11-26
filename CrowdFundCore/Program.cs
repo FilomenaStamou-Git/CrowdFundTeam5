@@ -46,23 +46,23 @@ namespace CrowdFundCore
 
 
 
-            using var db = new CFDBContext();
-            Project project = new Project
-            {
-                Title = "Drone Delivery",
-                Amount = 25000,
-                Fundings = 8300,
-                Description = "Desc 10",
-                Categories = Category.Fashion,
-                Created = DateTime.Now,
-                //UserId = 3
+            //using var db = new CFDBContext();
+            //Project project = new Project
+            //{
+            //    Title = "Drone Delivery",
+            //    Amount = 25000,
+            //    Fundings = 8300,
+            //    Description = "Desc 10",
+            //    Categories = Category.Fashion,
+            //    Created = DateTime.Now,
+            //   // UserId = 2
 
-            };
+            //};
 
             // db.Projects.Add(project);
             // db.SaveChanges();
 
-            Console.WriteLine(project.Categories);
+          //  Console.WriteLine(project.Categories);
 
 
         }

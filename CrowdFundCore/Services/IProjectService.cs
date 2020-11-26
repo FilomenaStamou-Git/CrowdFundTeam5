@@ -9,13 +9,13 @@ namespace CrowdFundCore.Services
 {
     public interface IProjectService
     {
-        ProjectOption CreateProject(ProjectOption projectOption);
-        ProjectOption UpdateProject(ProjectOption projectOption, int id);
+        ProjectwithFileModel CreateProject(ProjectwithFileModel projectOption);
+        ProjectwithFileModel UpdateProject(ProjectwithFileModel projectOption, int id);
         bool DeleteProject(int id);
-        List<ProjectOption> GetAllProjects();
-        List<ProjectOption> GetAllProjects(string searchCriteria);
-        List<ProjectOption> GetTopProjects();
-        ProjectOption GetProjectById(int id);
+        List<ProjectwithFileModel> GetAllProjects();
+        List<ProjectwithFileModel> GetAllProjects(string searchCriteria);
+        List<ProjectwithFileModel> GetTopProjects();
+        ProjectwithFileModel GetProjectById(int id);
 
     }
 }
