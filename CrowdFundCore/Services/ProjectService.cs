@@ -34,7 +34,8 @@ namespace CrowdFundCore.Services
                 Amount = projectOption.Amount,
                 Photo = projectOption.Photo,
                 Video = projectOption.Video,
-                Fundings = 0
+                Fundings = 0,
+                UserId = projectOption.UserId
             };
             dbContext.Projects.Add(project);
             dbContext.SaveChanges();
@@ -52,6 +53,7 @@ namespace CrowdFundCore.Services
                 Photo = project.Photo,
                 Video = project.Video,
                 Fundings = project.Fundings,
+                UserId = project.UserId
             };
         }
 
@@ -134,7 +136,6 @@ namespace CrowdFundCore.Services
             dbContext.SaveChanges();
             return new ProjectwithFileModel
             {
-                Id = project.Id,
                 Title = project.Title,
                 Description = project.Description,
                 Categories = project.Categories,

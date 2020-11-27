@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "AddProject";
 
 }
@@ -7,79 +8,58 @@
 *@
 @{
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CrowdFundMVC</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/_layout.css" />
-</head>
-</html>
 <body>
-    <div class="container-fluid" style="margin:100px 200px 100px 200px; padding: 50px; border-radius: 15px 50px; width:60%;background-color:white">
-        <h2 class="text-center text-primary" style="text-align:center">Create a new Project</h2>
-        <form method="post">
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Title</label>
-                <input type="email" class="form-control" id="Title" placeholder="Enter the Title of your project">
-            </div>
-            <div class="form-group">
+<div class="container-fluid" style="margin:auto; padding: 50px; border-radius: 15px 50px; width:80%;background-color:white">
+    <h4 class="text-center text-dark">Create a new Project</h4>
 
-                <select class="custom-select" id="Categories">
-                    <option selected>Choose a category</option>
-                    <option>Technology</option>
-                    <option>Food</option>
-                    <option>Education</option>
-                    <option>Music</option>
-                    <option>Fashion</option>
-                    <option>Photography</option>
-                    <option>Travel</option>
-                    <option>Health</option>
-                    <option>WebSeries</option>
-                    <option>Transportation</option>
-                </select>
-            </div>
+    <form method="post">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Title</label>
+            <input type="email" class="form-control" id="Title" placeholder="Enter the Title of your project">
+        </div>
+        <div class="form-group">
 
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Description</label>
-                <textarea class="form-control" id="Description" rows="3" placeholder="Try to be as specific as you can"></textarea>
-            </div>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="Picture">
-                <label class="custom-file-label" for="Picture">Choose a Picture</label>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Amount</label>
-                <input type="number" class="form-control" id="Amount" placeholder="Enter the Amount that you wish to collect">
-            </div>
-            <div class="form-group">
-                <h6>Add your Packages</h6>
-                <label for="exampleFormControlInput1">Package 1</label>
-                <input type="text" class="form-control" id="Package1" placeholder="Enter your first Package">
-                <label for="exampleFormControlInput1">Package Reward</label>
-                <input type="text" class="form-control" id="Reward1" placeholder="Enter Reward for Package 1">
-                <label for="exampleFormControlInput1">Package 2</label>
-                <input type="text" class="form-control" id="Package2" placeholder="Enter your second Package">
-                <label for="exampleFormControlInput1">Package Reward</label>
-                <input type="text" class="form-control" id="Reward2" placeholder="Enter Reward for Package 2">
-                <label for="exampleFormControlInput1">Package 3</label>
-                <input type="text" class="form-control" id="Package3" placeholder="Enter your third Package">
-                <label for="exampleFormControlInput1">Package Reward</label>
-                <input type="text" class="form-control" id="Reward3" placeholder="Enter Reward for Package 3">
-            </div>
-            <button type="button" class="btn btn-primary btn-lg btn-block" id="addProject" style="width:200px">Create your Project</button>
+            <select class="custom-select" id="Categories">
+                <option selected>Choose a category</option>
+                <option>Technology</option>
+                <option>Food</option>
+                <option>Education</option>
+                <option>Music</option>
+                <option>Fashion</option>
+                <option>Photography</option>
+                <option>Travel</option>
+                <option>Health</option>
+                <option>WebSeries</option>
+                <option>Transportation</option>
+            </select>
+        </div>
 
-            <div class="alert alert-success " id="success-alert-project" role="alert">
-                Project was created successsfully!
-            </div>
-            <div class="alert alert-danger" id="danger-alert-project" role="alert">
-                Project could not be created.Try again.
-            </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Description</label>
+            <textarea class="form-control" id="Description" rows="3" placeholder="Try to be as specific as you can"></textarea>
+        </div>
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="Picture">
+            <label class="custom-file-label" for="Picture">Choose a Picture</label>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Amount</label>
+            <input type="number" class="form-control" id="Amount" placeholder="Enter the Amount that you wish to collect">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">UserId</label>
+            <input type="number" class="form-control" id="UserId" placeholder="Enter your ID">
+        </div>
 
+        <button type="button" class="btn btn-primary btn-lg btn-block" id="addProject" style="width:350px">Procceed to Packages Creation</button>
 
-        </form>
-    </div>
+        <div class="alert alert-success" id="success-alert-project" role="alert">
+            Project was created successsfully!
+        </div>
+        <div class="alert alert-danger" id="danger-alert-project" role="alert">
+            Project could not be created.Try again.
+        </div>
+
+    </form>
+</div>
 </body>

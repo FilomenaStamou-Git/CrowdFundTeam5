@@ -163,6 +163,7 @@ namespace CrowdFundMVC.Controllers
 
             return View(model);
         }
+
         public IActionResult UpdateProject()
         {
             return View();
@@ -188,6 +189,7 @@ namespace CrowdFundMVC.Controllers
             UserModel userModel = new UserModel { Users = users };
             return View(userModel);
         }
+
         public IActionResult Packages()
         {
             List<PackageOption> packages = packageService.GetAllPackages();

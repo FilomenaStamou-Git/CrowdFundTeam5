@@ -35,11 +35,11 @@ namespace CrowdFundCore.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProjectId")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Reward")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("Reward")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -79,7 +79,7 @@ namespace CrowdFundCore.Migrations
                     b.Property<string>("Update")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.Property<string>("Video")
@@ -120,14 +120,18 @@ namespace CrowdFundCore.Migrations
                 {
                     b.HasOne("CrowdFundCore.Models.Project", "Project")
                         .WithMany("Packages")
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CrowdFundCore.Models.Project", b =>
                 {
                     b.HasOne("CrowdFundCore.Models.User", "User")
                         .WithMany("Projects")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

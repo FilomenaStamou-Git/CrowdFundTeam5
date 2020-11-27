@@ -9,9 +9,10 @@ namespace CrowdFundCore.Models
     {
         public int Id { get; set; }
         public string Description { get; set; }
-        public string Reward { get; set; }
+        public decimal Reward { get; set; }
         public string Photo { get; set; }
         public bool IsActive { get; set; }
+        public int ProjectId { get; set; }
         public Project Project { get; set; }
     }
 }
