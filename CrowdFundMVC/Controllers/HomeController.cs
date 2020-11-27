@@ -27,6 +27,27 @@ namespace CrowdFundMVC.Controllers
             projectService = _projectService;
             packageService = _packageService;
         }
+//---------------LOGIN--------------------------------------------------------------
+        [HttpPost]
+        public IActionResult Login([FromBody] LoginOptions options)
+        {
+            if (options.Email == "danaykap13@gmail.com")
+            {
+                return Ok(new
+                {
+                    userId = "123"
+                });
+            }
+
+            return Forbid();
+        }
+
+
+        //-----------------------------------------------------------------------------------
+        public IActionResult Login_Form()
+        {
+            return View();
+        }
 
         public IActionResult Index()
         {
@@ -161,11 +182,6 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
-        public IActionResult Login()
-        {
-            return View();
-        }
-
         public IActionResult Users()
         {
             List<UserOption> users = userService.GetAllUsers();
@@ -187,13 +203,14 @@ namespace CrowdFundMVC.Controllers
             return View(projectModel);
         }
 
-
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
+
+
+
 
 }

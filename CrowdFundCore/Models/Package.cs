@@ -14,10 +14,6 @@ namespace CrowdFundCore.Models
         public bool IsActive { get; set; }
         public int ProjectId { get; set; }
         public Project Project { get; set; }
-        public Package()
-        {
-            IsActive = true;           
-        }
     }
 }
 

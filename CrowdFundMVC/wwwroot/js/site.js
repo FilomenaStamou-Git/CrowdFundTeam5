@@ -3,6 +3,48 @@
 
 // Write your JavaScript code.
 
+debugger;
+function getUserId() {
+    return localStorage.getItem('userId');
+}
+
+if (getUserId()) {
+    $('#logout-btn').show();
+}
+
+
+// Events
+
+$('#login-btn').on('click', function () {
+    var Email = $('#userEmail').val();
+    var Password = $('#userPassword').val();
+
+    var loginOptions = {
+        email: Email,
+        password: Password
+    };
+
+    $.ajax({
+        url: "/home/login",
+        contentType: 'application/json',
+        type: 'POST',
+        data: JSON.stringify(loginOptions),
+        success: function (data) {
+            localStorage.setItem('userId', data.userId);
+            window.open("/Home/Projects", "_self")
+            $('#logout-btn').show();
+        },
+        error: function () {
+            alert('Login denied');
+        }
+    });
+});
+
+$('#logout-btn').on('click', function () {
+    localStorage.removeItem('userId');
+    $('#logout-btn').hide();
+});
+
 
 // ---------------------------USER------------------------------
 function addUser() {
@@ -112,7 +154,6 @@ function findToUpdateUser() {
 
 
 
-
 // --------------------PROJECT----------------------------
 
 
@@ -147,7 +188,7 @@ btn = $('#addProject').on('click', () => {
         type: 'POST',
 
         success: function (data) {
-            
+
             $('#success-alert-project').fadeIn(1000);
             window.open('/home/addpackage', '_self')
 
@@ -490,5 +531,5 @@ searchEnter = $('.handleEnter').on('keypress', function (e) {
     }
 }
 );
-    
+
 //let $successAlert = $('#create-profile-success')
