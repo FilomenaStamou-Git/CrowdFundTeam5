@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using CrowdFundCore.Options;
 using CrowdFundCoreServices;
 using CrowdFundCore.Data;
@@ -17,51 +15,28 @@ namespace CrowdFundCore.Services
            this.dbContext = dbContext;
         }
 
-
-        public List<PackageOption> GetAllPackages()
-        {
-            List<Package> packages = dbContext.Packages.ToList();
-            List<PackageOption> packagesOpt = new List<PackageOption>();
-            packages.ForEach(package => packagesOpt.Add(new PackageOption
-            {
-                Description = package.Description,
-                Reward = package.Reward,
-                Photo = package.Photo,
-                Id = package.Id
-            }));
-
-            return packagesOpt;
-        }
-
-
         public PackageOption CreatePackage(PackageOption packageOption)
         {
 
-            var project = dbContext
-               .Set<Project>()
-               .Where(p => p.Id == packageOption.ProjectId)  //Include(p=>p.Package)
-               .SingleOrDefault();
-
-
             Package package = new Package
             {
+                Id =packageOption.Id,
                 Description = packageOption.Description,
                 Reward = packageOption.Reward,
-                Photo = packageOption.Photo,
                 IsActive = true,
-                
+                ProjectId = packageOption.ProjectId              
             };
 
-
-            project.Packages.Add(package);
-            dbContext.Update(project);
             dbContext.Packages.Add(package);
             dbContext.SaveChanges();
+
             return new PackageOption
             {
+                Id = package.Id,
                 Description = package.Description,
                 Reward = package.Reward,
-                Photo = packageOption.Photo
+                Photo = package.Photo,
+                ProjectId = package.ProjectId
             };
         }
 
@@ -92,6 +67,7 @@ namespace CrowdFundCore.Services
                 Description = package.Description,
                 Reward = package.Reward,
                 Photo = package.Photo
+                
             };
         }
 
@@ -100,10 +76,11 @@ namespace CrowdFundCore.Services
             Package package = dbContext.Packages.Find(id);
             return new PackageOption
             {
+                Id = package.Id,             
                 Description = package.Description,
                 Reward = package.Reward,
                 Photo = package.Photo,
-                Id = package.Id
+                ProjectId = package.ProjectId,
             };
         }
 
@@ -112,6 +89,28 @@ namespace CrowdFundCore.Services
             package.Description = packageOpt.Description;
             package.Reward = packageOpt.Reward;
             package.Photo = packageOpt.Photo;
+            package.Id = packageOpt.Id;
+            package.ProjectId = packageOpt.ProjectId;
         }
+
+        public List<PackageOption> GetAllPackages()
+        {
+            List<Package> packages = dbContext.Packages.ToList();
+            List<PackageOption> packagesOpt = new List<PackageOption>();
+            packages.ForEach(package => packagesOpt.Add(new PackageOption
+            {
+                Id = package.Id,
+                Description = package.Description,
+                Reward = package.Reward,
+                Photo = package.Photo,                
+                ProjectId =package.ProjectId
+            }));
+
+            return packagesOpt;
+        }
+
+
+
+
     }
 }

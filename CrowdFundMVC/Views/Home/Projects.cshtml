@@ -1,58 +1,57 @@
 ﻿@model CrowdFundMVC.Models.ProjectModel
-@{
-    ViewData["Title"] = "My Projects";
-}
-<h1>@ViewData["Title"]</h1>
-
-
-<hr />
-To add a new project press <a href="~/home/AddProject">here</a>
-<hr />
-
-
-
-
-<table class="table" id="projectTable">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Category</th>
-            <th scope="col">Fundings</th>
-            <th scope="col">Update Status</th>
-            <th scope="col">Photo</th>
-            <th scope="col">Update</th>
-            <th scope="col">Delete</th>
-            <th scope="col">View Details</th>
-        </tr>
-    </thead>
-
     @{
-        foreach (var project in Model.Projects)
-        {
-            <input class="js-ProjectId" type="hidden" value="@project.Id" />
-
-            <tbody>
-                <tr>
-
-                    <td> @project.Id</td>
-                    <td> @project.Title</td>
-                    <td> @project.Description</td>
-                    <td> @project.Categories   </td>
-                    <td> @project.Fundings   </td>
-                    <td> @project.Update   </td>
-                    <td> <img src="~/uploadedimages/@project.Photo" height="25" /></td>
-                    <td> <a href="~/home/updateprojectwithdetails/@project.Id"><img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="25" /></a></td>
-                    <td> <a href="~/home/DeleteProjectFromView/@project.Id"><img src="https://icons-for-free.com/iconfiles/png/512/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png" width="25" /></a></td>
-                    <td><a href="~/home/projectdetails/@project.Id"><button type="button" class="btn btn-primary js-project-details">Details</button></a></td>
-
-
-                </tr>
-
-            </tbody>
-        }
+        ViewData["Title"] = "My Projects";
     }
+    <h1>@ViewData["Title"]</h1>
 
 
-</table>
+    <hr />
+    To add a new project press <a href="~/home/AddProject">here</a>
+    <hr />
+
+
+
+    <table class="table" id="projectTable">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Category</th>
+                <th scope="col">Fundings</th>
+                <th scope="col">Update Status</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+                <th scope="col">View Details</th>
+            </tr>
+        </thead>
+
+        @{
+            foreach (var project in Model.Projects)
+            {
+                <input class="js-ProjectId" type="hidden" value="@project.Id" />
+
+                <tbody>
+                    <tr>
+
+                        <td> @project.Id</td>
+                        <td> @project.Title</td>
+                        <td> @project.Description</td>
+                        <td> @project.Categories   </td>
+                        <td> @project.Fundings   </td>
+                        <td> @project.Update   </td>
+                        <td> <img src="~/uploadedimages/@project.Photo" height="25" /></td>
+                        <td> <a href="~/home/updateprojectwithdetails/@project.Id"><img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="25" /></a></td>
+                        <td> <a href="~/home/DeleteProjectFromView/@project.Id"><img src="https://icons-for-free.com/iconfiles/png/512/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png" width="25" /></a></td>
+                        <td><a href="~/home/projectdetails/@project.Id"><button type="button" class="btn btn-primary js-project-details">Details</button></a></td>
+
+
+                    </tr>
+
+                </tbody>
+            }
+        }
+
+
+    </table>

@@ -35,7 +35,7 @@
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Description</label>
         <textarea class="form-control" id="Description" rows="3" placeholder="Try to be as specific as you can"></textarea>
-    </div> 
+    </div>
     <div class="custom-file">
         <input type="file" class="custom-file-input" id="Picture">
         <label class="custom-file-label" for="Picture">Choose a Picture</label>
@@ -44,9 +44,14 @@
         <label for="exampleFormControlInput1">Amount</label>
         <input type="number" class="form-control" id="Amount" placeholder="Enter the Amount that you wish to collect">
     </div>
-    <button type="button" class="btn btn-primary btn-lg btn-block" id="addProject">Create your Project!</button>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">UserId</label>
+        <input type="number" class="form-control" id="UserId" placeholder="Enter your ID">
+    </div>
+   
+    <button type="button" class="btn btn-primary btn-lg btn-block" id="addProject">Procceed to Packages Creation</button>
 
-    <div class="alert alert-success " id="success-alert-project" role="alert">
+    <div class="alert alert-success" id="success-alert-project" role="alert">
         Project was created successsfully!
     </div>
     <div class="alert alert-danger" id="danger-alert-project" role="alert">

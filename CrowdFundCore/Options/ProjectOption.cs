@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CrowdFundCore.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace CrowdFundCore.Options
 {
@@ -19,6 +20,8 @@ namespace CrowdFundCore.Options
         public decimal Fundings { get; set; }
         public Category Categories { get; set; }
         public List<Package> FundingPackages { get; set; }
+        public int UserId { get; set; }
+        public IFormFile Picture { get; set; }
 
     }
 }

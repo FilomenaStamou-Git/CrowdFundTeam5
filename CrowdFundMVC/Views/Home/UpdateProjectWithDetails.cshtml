@@ -6,10 +6,12 @@
 }
 <h1> Updating Project with Title <b><i>@Model.project.Title</i></b></h1>
 
-<form method="post">
+<form >
+
+
     <div class="form-group">
         <label for="exampleFormControlInput1">Id</label>
-        <input type="email" class="form-control" id="Title" value="@Model.project.Id" readonly>
+        <input type="email" class="form-control" id="ProjectId" value="@Model.project.Id" readonly>
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Title</label>
@@ -46,7 +48,7 @@
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Fundings</label>
-        <input type="number" class="form-control" id="Fundings" value="@Model.project.Fundings"readonly>
+        <input type="number" class="form-control" id="Fundings" value="@Model.project.Fundings" readonly>
     </div>
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Update Status Post</label>
@@ -56,7 +58,9 @@
         <label for="exampleFormControlInput1">Created on</label>
         <input type="text" class="form-control" value="@Model.project.Created" readonly>
     </div>
-    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="updateProject()">Update</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block" id="updateProject">Update</button>
+
+    <button type="button" class="btn btn-primary btn-lg btn-block" id="updatePackage">To Update your Packages Press Here</button>
 
     <div class="alert alert-success " id="success-alert-project" role="alert">
         Project was updated successsfully!

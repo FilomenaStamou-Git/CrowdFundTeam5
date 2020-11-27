@@ -53,7 +53,7 @@ namespace CrowdFundCore.Migrations
                     Video = table.Column<string>(nullable: true),
                     Fundings = table.Column<decimal>(nullable: false),
                     Categories = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: true)
+                    UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -63,7 +63,7 @@ namespace CrowdFundCore.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,10 +73,10 @@ namespace CrowdFundCore.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(nullable: true),
-                    Reward = table.Column<string>(nullable: true),
+                    Reward = table.Column<decimal>(nullable: false),
                     Photo = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
-                    ProjectId = table.Column<int>(nullable: true)
+                    ProjectId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -86,7 +86,7 @@ namespace CrowdFundCore.Migrations
                         column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

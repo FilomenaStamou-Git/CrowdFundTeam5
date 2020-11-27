@@ -172,6 +172,7 @@ namespace CrowdFundMVC.Controllers
             UserModel userModel = new UserModel { Users = users };
             return View(userModel);
         }
+
         public IActionResult Packages()
         {
             List<PackageOption> packages = packageService.GetAllPackages();

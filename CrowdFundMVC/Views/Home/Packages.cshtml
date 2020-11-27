@@ -12,7 +12,7 @@
         <th>Id</th>
         <th>Description</th>
         <th>Reward</th>
-        <th>Photo</th>
+        <th>Project Id</th>
         <th>Update</th>
         <th>Delete</th>
     </tr>
@@ -24,9 +24,9 @@
             <td> @package.Id</td>
             <td> @package.Description</td>
             <td> @package.Reward   </td>
-            <td> <img src="~/uploadedimages/@package.Photo" height="25" /> </td>
-            <td> <a href="~/home/updatepackagewithdetails/@package.Id"><img src="~/images/update.png" width="25" /></a>Update</td>
-            <td> <a href="~/home/DeletePackageFromView/@package.Id"><img src="~/images/delete.png" width="25" /></a>Delete</td>
+            <td> @package.ProjectId</td>
+            <td> <a href="~/home/updatepackagewithdetails/@package.Id"><img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="25" /></a>Update</td>
+            <td> <a href="~/home/DeletePackageFromView/@package.Id"><img src="https://icons-for-free.com/iconfiles/png/512/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png" width="25" /></a>Delete</td>
         </tr>
 
         }
