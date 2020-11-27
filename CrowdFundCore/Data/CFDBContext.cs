@@ -12,7 +12,6 @@ namespace CrowdFundCore.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Package> Packages { get; set; }
         public DbSet<Project> Projects { get; set; }
-        public DbSet<FundingPackage> FundingPackages { get; set; }
         public DbSet<FundingProject> FundingProjects { get; set; }
 
 
@@ -30,14 +29,6 @@ namespace CrowdFundCore.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder
-                    .Entity<FundingPackage>()
-                    .HasKey(op => new
-                    {
-                        op.FundingProjectId,
-                        op.PackageId
-                    });
 
         }
             public CFDBContext(DbContextOptions<CFDBContext> options)

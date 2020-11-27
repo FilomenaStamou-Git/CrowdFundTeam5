@@ -35,7 +35,6 @@ namespace CrowdFundCore.Services
                 Id = package.Id,
                 Description = package.Description,
                 Reward = package.Reward,
-                Photo = package.Photo,
                 ProjectId = package.ProjectId
             };
         }
@@ -66,7 +65,6 @@ namespace CrowdFundCore.Services
             {
                 Description = package.Description,
                 Reward = package.Reward,
-                Photo = package.Photo
                 
             };
         }
@@ -74,12 +72,11 @@ namespace CrowdFundCore.Services
         public PackageOption GetPackageById(int id)
         {
             Package package = dbContext.Packages.Find(id);
-            return new PackageOption
+                return new PackageOption
             {
                 Id = package.Id,             
                 Description = package.Description,
                 Reward = package.Reward,
-                Photo = package.Photo,
                 ProjectId = package.ProjectId,
             };
         }
@@ -88,7 +85,6 @@ namespace CrowdFundCore.Services
         {
             package.Description = packageOpt.Description;
             package.Reward = packageOpt.Reward;
-            package.Photo = packageOpt.Photo;
             package.Id = packageOpt.Id;
             package.ProjectId = packageOpt.ProjectId;
         }
@@ -102,7 +98,6 @@ namespace CrowdFundCore.Services
                 Id = package.Id,
                 Description = package.Description,
                 Reward = package.Reward,
-                Photo = package.Photo,                
                 ProjectId =package.ProjectId
             }));
 

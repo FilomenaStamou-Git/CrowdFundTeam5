@@ -21,21 +21,49 @@
             <p class="card-text"><b>Description: </b>@Model.project.Description</p>
         </div>
         <div class="card-body" style="padding:15px">
-            <p class="card-text"><b>Project Id:</b> @Model.project.Id</p>
+            <p class="card-text " id="projectId"> <b>Project Id:</b> @Model.project.Id</p>
             <p class="card-text"><b>Category: </b>@Model.project.Categories</p>
             <p class="card-text"><b>Amount:</b>@Model.project.Amount</p>
             <p class="card-text"><b>Fundings: </b>@Model.project.Fundings</p>
             <p class="card-text"><b>Update Status: </b>@Model.project.Update</p>
+
+
+            @{var prog = ((decimal)Model.project.Fundings / (decimal)Model.project.Amount) * 100;
+                var progress = prog.ToString();
+                progress = progress + '%';
+            }
+            <input class="" id="js-ProjectId-fund" type="hidden" value="" />
+
             <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: @Model.project.Fundings%;" aria-valuenow="@Model.project.Fundings" aria-valuemin="0" aria-valuemax="@Model.project.Amount"></div>
+                <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" style="width:@progress;" aria-valuenow="@Model.project.Fundings" aria-valuemin="0" aria-valuemax="@Model.project.Amount"></div>
             </div>
             <p class="card-text">Created On: @Model.project.Created</p>
+
+            <div class="container">
+
+                @{
+                    foreach (var package in Model.packages)
+                    {
+
+                        <div class="col-md-3">
+                            <div class="card" style="padding:20px;height:450px;margin:30px">
+                                <img src="~/img/Packages.jpg" style="height:150px;width:auto" />
+                                <p id="packageid"><b>Description: </b>@package.Id</p>
+                                <p><b>Description: </b>@package.Description</p>
+                                <p><b class=".fundreward">Reward: </b>@package.Reward</p>
+                                <a href="~/home" class="fundProject " style="color:white;background-color:lightseagreen;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center;margin:20px">Fund</a>
+
+                            </div>
+                        </div>
+
+                    }
+                }
+            </div>
 
         </div>
         <div class="row">
             <a href="~/home/Packages/@Model.project.Id" style="color:white;background-color:royalblue;width:150px;height:40px;border-radius:6px;margin:20px;text-align:center;padding:5px;position:center">View Packages</a>
-            <a href="~/home/Projects/@Model.project.Id" style="color:white;background-color:lightseagreen;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center;margin:20px">Fund</a>
-        @*<a href="~/home/Projects" style="color:white;background-color:slategray;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center">Back</a>*@
+            @*<a href="~/home/Projects" style="color:white;background-color:slategray;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center">Back</a>*@
         </div>
 
     </div>

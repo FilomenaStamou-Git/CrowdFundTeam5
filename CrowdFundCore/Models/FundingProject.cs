@@ -6,14 +6,10 @@ namespace CrowdFundCore.Models
 {
     public class FundingProject
     {
-        public int FundingProjectId { get; set; }
-        public decimal? Amount { get; set; }
-        public int UserId { get; set; }
-        public int ProjectId { get; set; }
-        public List<FundingPackage> FundingPackages { get; set; }
-        public FundingProject()
-        {
-            FundingPackages = new List<FundingPackage>();
-        }
+        public int Id { get; set; }
+        public int projectid { get; set; }
+        public int packageid { get; set; }
+        public int userid { get; set; }
+        public decimal reward { get; set; } 
     }
 }

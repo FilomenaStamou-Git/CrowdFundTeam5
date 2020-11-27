@@ -16,9 +16,9 @@ namespace CrowdFundCore
 
             ////--------------CREATE USER--------------------------
             //using var db = new CFDBContext();
-            //for (var i = 0; i < 40; i++)
+            //for (var i = 0; i < 20; i++)
             //{
-                
+
             //    User user = new User
             //    {
             //        FirstName = "Test FirstName " + i,
@@ -36,26 +36,25 @@ namespace CrowdFundCore
 
             //------------------------Add Project------------------
 
+            //using var db = new CFDBContext();
 
-            for (var i = 0; 10 < 1; i++)
-            {
-                using var db = new CFDBContext();
-                Project project = new Project
-                {
-                    Title = "Test Project" + i,
-                    Amount = 25000 + (50 * i),
-                    Fundings = 12000 + (10 * i),
-                    Description = "Desc 10" + i,
-                    Categories = Category.Technology,
-                    Created = DateTime.Now,
-                    UserId = 3 + i,
-                };
-                db.Projects.Add(project);
-                db.SaveChanges();
+            //for (var i = 0; i < 10; i++)
+            //{
+            //    Project project = new Project
+            //    {
+            //        Title = "Test Project" + i,
+            //        Amount = 25000 + (50 * i),
+            //        Fundings = 12000 + (10 * i),
+            //        Description = "Desc 10" + i,
+            //        Categories = Category.Technology,
+            //        Created = DateTime.Now,
+            //        UserId = 2 + i,
+            //    };
+            //    db.Projects.Add(project);
 
-            }
+            //}
+            //db.SaveChanges();
 
-           // Photo ="https://media0.giphy.com/media/xULW8zqkikkOBKH0LS/giphy.gif?cid=ecf05e47y7ywwgkj3i6zqpjxu1f9h48fgafy5e3fx88ozi7l&rid=giphy.gif"
 
 
 
@@ -67,9 +66,9 @@ namespace CrowdFundCore
 
             //    var package = new Package
             //    {
-            //        Description = "Silver Package ",
+            //        Description = "Gold Package ",
             //        Reward = 250,
-            //        ProjectId = 3 + i
+            //        ProjectId = 1 + i
             //    };
 
             //    db.Packages.Add(package);

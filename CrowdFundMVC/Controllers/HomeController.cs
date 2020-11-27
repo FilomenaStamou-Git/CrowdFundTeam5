@@ -159,7 +159,8 @@ namespace CrowdFundMVC.Controllers
         public IActionResult ProjectDetails([FromRoute] int id)
         {
             ProjectwithFileModel projectOptions = projectService.GetProjectById(id);
-            ProjectOptionModel model = new ProjectOptionModel { project = projectOptions };
+            IEnumerable<Package> projectPackages = projectService.GetProjectPackages(id);
+            ProjectOptionModel model = new ProjectOptionModel { project = projectOptions ,packages = projectPackages};
 
             return View(model);
         }
@@ -209,9 +210,14 @@ namespace CrowdFundMVC.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpPut]
+        public IActionResult FundProject([FromRoute] FundingProject funding)
+        {
+            projectService.Funding(funding);
+            return Ok();
+        }
+
     }
-
-
-
 
 }

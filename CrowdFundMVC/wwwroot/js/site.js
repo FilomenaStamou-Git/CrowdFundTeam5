@@ -583,3 +583,43 @@ updateUser = $('.updateUser').on('click', () => {
         //replace the "Choose a file" label
         $(this).next('.custom-file-label').html(fileName);
     })
+
+
+
+
+//--------------------- Fund Project ---------------
+
+
+fundProject = $('.fundProject').on('click', () => {
+
+    actionUrl = '/api/home' + id
+    actiontype = 'PUT'
+    actionDataType = 'json'
+
+    sendData = {
+        'projectid': $('#projectId').val(),
+        'packageid': $('#packageid').val(),
+        'userid': $('#userId',3),                          //$('#js-ProjectId-fund').val(),
+        'reward': $('#fundreward').val()
+    }
+
+    $.ajax({
+        url: actionUrl,
+        dataType: actionDataType,
+        type: actiontype,
+        data: JSON.stringify(sendData),
+        contentType: 'application/json',
+        processData: false,
+
+        success: function (data, textStatus, jQxhr) {
+
+            alert(JSON.stringify(data))
+
+            window.open('/home/dashboard', '_self')
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+
+    });
+});

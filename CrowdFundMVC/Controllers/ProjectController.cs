@@ -67,17 +67,17 @@ namespace CrowdFundMVC.Controllers
                 Amount = projectOptWithFileModel.Amount,
                 Fundings = projectOptWithFileModel.Fundings,
                 UserId = projectOptWithFileModel.UserId
-                
+
             };
 
-            projectOpt.Photo= filename;
+            projectOpt.Photo = filename;
 
             ProjectwithFileModel projectOption = projectService.CreateProject(projectOpt);
             return projectOption;
         }
 
 
-        
+
 
         [HttpPut("{id}")]
         public ProjectwithFileModel UpdateProject(ProjectwithFileModel projectOptWithFileModel, int id)
@@ -108,6 +108,7 @@ namespace CrowdFundMVC.Controllers
                 Video = projectOptWithFileModel.Video,
                 Amount = projectOptWithFileModel.Amount,
                 Fundings = projectOptWithFileModel.Fundings,
+                UserId = projectOptWithFileModel.UserId
             };
 
             projectOpt.Photo = filename;
@@ -127,6 +128,7 @@ namespace CrowdFundMVC.Controllers
         {
             return projectService.GetAllProjects();
         }
+
 
     }
 }

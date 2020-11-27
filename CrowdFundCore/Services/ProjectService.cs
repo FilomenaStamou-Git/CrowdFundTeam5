@@ -129,6 +129,13 @@ namespace CrowdFundCore.Services
             };
         }
 
+        public IEnumerable<Package> GetProjectPackages(int id)
+        {
+            IEnumerable<Package> packages = dbContext.Packages.Where(p => p.ProjectId == id).ToList();
+            return packages;
+        }
+
+
         public ProjectwithFileModel UpdateProject(ProjectwithFileModel projectOpt, int id)
         {
             Project project = dbContext.Projects.Find(id);
@@ -186,5 +193,19 @@ namespace CrowdFundCore.Services
             return projectsOpt;
 
         }
+
+
+        public void Funding (FundingProject funding)
+        {
+            User user = dbContext.Users.Find(funding.userid);
+           // user.Gross = +funding.reward;
+            Project project = dbContext.Projects.Find(funding.projectid);
+            project.Fundings = +funding.reward;
+
+            Package package = dbContext.Packages.Find(funding.packageid);
+        }
+
+
+
     }
 }
