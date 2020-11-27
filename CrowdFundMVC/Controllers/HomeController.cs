@@ -163,6 +163,7 @@ namespace CrowdFundMVC.Controllers
 
             return View(model);
         }
+
         public IActionResult UpdateProject()
         {
             return View();

@@ -33,6 +33,8 @@ $('#login-btn').on('click', function () {
             localStorage.setItem('userId', data.userId);
             window.open("/Home/Projects", "_self")
             $('#logout-btn').show();
+            $('#login-btn').hide();
+       
         },
         error: function () {
             alert('Login denied');
@@ -43,6 +45,8 @@ $('#login-btn').on('click', function () {
 $('#logout-btn').on('click', function () {
     localStorage.removeItem('userId');
     $('#logout-btn').hide();
+    $('#login-btn').show();
+
 });
 
 
@@ -554,7 +558,7 @@ updateUser = $('.updateUser').on('click', () => {
         actionUrl = '/Home/SearchProjectDisplay?text=' + searchText
 
         window.open(actionUrl, '_self');
-    })
+})
 
     searchEnter = $('.handleEnter').on('keypress', function (e) {
 

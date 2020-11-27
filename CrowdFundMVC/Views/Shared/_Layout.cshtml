@@ -20,32 +20,37 @@
 
 <body style="background-color:aliceblue">
 
-  <nav class="navbar navbar-expand-xl navbar-light bg-dark">
-             <a href="~/Home/Index" class="navbar-brand text-light"><i class="fa fa-cube"></i>Fund<b>Astic</b></a>
-             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                 <span class="navbar-toggler-icon"></span>
-             </button>
+    <nav class="navbar navbar-expand-xl navbar-light bg-dark">
+        <a href="~/Home/Index" class="navbar-brand text-light"><i class="fa fa-cube"></i>Fund<b>Astic</b></a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-             <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-                 <div class="navbar-nav">
-                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Users">View Users</a>
-                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Projects">View Projects</a>
-                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="About">About</a>
-                 </div>
-                 <form class="navbar-form form-inline">
-                     <div class="input-group search-box">
-                         <input type="text" class="form-control handleEnter" id="searchText" placeholder="Search a Title">
-                         <i class="material-icons searchProject" style="color:white;padding-top:5px">&#xE8B6;</i>
-                     </div>
-                 </form>
-                 <div class="navbar-nav ml-auto">
-                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="AddUser" style="background-color: #5383d3;border-radius:4px;margin:5px 5px 5px 5px;width:80px;height:40px;text-align: center">Sign Up</a>
-                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Login_Form" style="background-color: rebeccapurple;border-radius:4px;margin:5px 5px 5px 5px;width:80px;height:40px;text-align: center">Login</a>
-                     <a id="logout-btn" class="nav-link text-dark" style="display: none;background-color: rebeccapurple;border-radius:4px;margin:5px 5px 5px 5px;width:80px;height:40px;text-align: center">Logout</a>
-                 </div>
-              </div>
+        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+            <div class="navbar-nav">
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Users">View Users</a>
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Projects">View Projects</a>
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="AddProject">Add Project</a>
+
+
+            </div>
+            <form class="navbar-form form-inline">
+                <div class="input-group search-box">
+                    <input type="text" class="form-control handleEnter" id="searchText" placeholder="Search a Title">
+                    <i class="material-icons searchProject" style="color:white;padding-top:5px">&#xE8B6;</i>
+                </div>
+            </form>
+
+            <div class="navbar-nav ml-auto">
+
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="AddUser" style="background-color: #5383d3;border-radius:4px;margin:5px 5px 5px 5px;width:80px;height:40px;text-align: center">Sign Up</a>
+                <a id="login-btn" class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Login_Form" style="background-color: rebeccapurple;border-radius:4px;margin:5px 5px 5px 5px;width:80px;height:40px;text-align: center;color:white">Login</a>
+                <a id="logout-btn" class="nav-link text-light" style="display: none;background-color: rebeccapurple;border-radius:4px;margin:5px 5px 5px 5px;width:80px;height:40px;text-align:center;color:white">Logout</a>
+            </div>
+        </div>
     </nav>
 
     <div class="container">

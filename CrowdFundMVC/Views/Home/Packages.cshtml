@@ -5,30 +5,72 @@
 *@
 @{
 }
-<h1> Package Management</h1>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<table id="packageTable" border="1" cellpadding="10" cellspacing="0">
-    <tr>
-        <th>Id</th>
-        <th>Description</th>
-        <th>Reward</th>
-        <th>Project Id</th>
-        <th>Update</th>
-        <th>Delete</th>
-    </tr>
+</head>
 
-    @{
-        foreach (var package in Model.Packages)
-        {
+<body>
+
+    <div class="container">
+        <h3 style="text-align:center"> Package Management</h3>
+        <div class="row" style="margin-top: 5%;">
+
+            @{
+                foreach (var package in Model.Packages)
+                {
+
+                    <div class="col-md-3">
+                                    <div class="card" style="padding:20px;height:450px;margin:30px">
+                                        <img src="~/img/Packages.jpg" style="height:150px;width:auto" />
+                                        <p><b>Description: </b>@package.Description</p>
+                                        <p><b>Reward: </b>@package.Reward</p>
+                                        <p><b>PackageId: </b>@package.Id</p>
+                                        <p><b>ProjectId: </b>@package.ProjectId</p>
+                                        <div class="row">
+                                            <a href="~/home/UpdatePackageWithDetails/@package.Id"><button type="button" class="btn btn-primary js-project-details" style="margin:5px">Update</button></a>
+                                            <a href="~/home/DeletePackageFromView/@package.Id"><button type="button" class="btn btn-primary" style="color:white;border:none;background-color:darkred;text-align:center;margin:5px;position:center">Delete</button></a>
+
+                                        </div>
+                                    </div>
+                    </div>
+
+                }
+            }
+        </div>
+
+    </div>
+
+</body>
+
+
+@*<h1> Package Management</h1>
+
+    <table id="packageTable" border="1" cellpadding="10" cellspacing="0">
         <tr>
-            <td> @package.Id</td>
-            <td> @package.Description</td>
-            <td> @package.Reward   </td>
-            <td> @package.ProjectId</td>
-            <td> <a href="~/home/updatepackagewithdetails/@package.Id"><img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="25" /></a>Update</td>
-            <td> <a href="~/home/DeletePackageFromView/@package.Id"><img src="https://icons-for-free.com/iconfiles/png/512/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png" width="25" /></a>Delete</td>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Reward</th>
+            <th>Project Id</th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
 
+        @{
+            foreach (var package in Model.Packages)
+            {
+                <tr>
+                    <td> @package.Id</td>
+                    <td> @package.Description</td>
+                    <td> @package.Reward   </td>
+                    <td> @package.ProjectId</td>
+                    <td> <a href="~/home/updatepackagewithdetails/@package.Id"><img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="25" /></a>Update</td>
+                    <td> <a href="~/home/DeletePackageFromView/@package.Id"><img src="https://icons-for-free.com/iconfiles/png/512/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png" width="25" /></a>Delete</td>
+                </tr>
+
+            }
         }
-    }
-</table>
+    </table>*@

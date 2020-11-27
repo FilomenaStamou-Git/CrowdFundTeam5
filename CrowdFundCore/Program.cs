@@ -14,11 +14,11 @@ namespace CrowdFundCore
         {
             Console.WriteLine("Welcome to the test area of the CrowdFunding website!");
 
-            //--------------CREATE USER--------------------------
-
+            ////--------------CREATE USER--------------------------
+            //using var db = new CFDBContext();
             //for (var i = 0; i < 40; i++)
             //{
-            //    using var db = new CFDBContext();
+                
             //    User user = new User
             //    {
             //        FirstName = "Test FirstName " + i,
@@ -59,7 +59,7 @@ namespace CrowdFundCore
 
 
 
-            /* Add Package */
+            /////* Add Package */
 
             //for (var i = 0; i < 5; i++)
             //{
