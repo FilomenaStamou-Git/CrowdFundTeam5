@@ -80,7 +80,7 @@ namespace CrowdFundMVC.Controllers
         
 
         [HttpPut("{id}")]
-        public ProjectwithFileModel UpdateProject([FromForm] ProjectwithFileModel projectOptWithFileModel, int id)
+        public ProjectwithFileModel UpdateProject(ProjectwithFileModel projectOptWithFileModel, int id)
         {
             if (projectOptWithFileModel == null) return null;
 

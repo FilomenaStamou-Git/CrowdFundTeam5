@@ -32,49 +32,49 @@ namespace CrowdFundCore
             //    db.SaveChanges();
             //}
 
-            //User user1 = db.Users.Find(1);
-            //Console.WriteLine(user1.FirstName);
+
 
             //------------------------Add Project------------------
 
 
-            //for (var i = 0; i < 25; i++)
-            //{
-            //    using var db = new CFDBContext();
-            //    Project project = new Project
-            //    {
-            //        Title = "Test Project" + i,
-            //        Amount = 25000 + (50 * i),
-            //        Fundings = 12000 + (10 * i),
-            //        Description = "Desc 10" + i,
-            //        Categories = Category.Technology,
-            //        Created = DateTime.Now,
-            //        UserId = 3 + i
-            //    };
-            //    db.Projects.Add(project);
-            //    db.SaveChanges();
+            for (var i = 0; 10 < 1; i++)
+            {
+                using var db = new CFDBContext();
+                Project project = new Project
+                {
+                    Title = "Test Project" + i,
+                    Amount = 25000 + (50 * i),
+                    Fundings = 12000 + (10 * i),
+                    Description = "Desc 10" + i,
+                    Categories = Category.Technology,
+                    Created = DateTime.Now,
+                    UserId = 3 + i,
+                };
+                db.Projects.Add(project);
+                db.SaveChanges();
 
-            //}
+            }
 
+           // Photo ="https://media0.giphy.com/media/xULW8zqkikkOBKH0LS/giphy.gif?cid=ecf05e47y7ywwgkj3i6zqpjxu1f9h48fgafy5e3fx88ozi7l&rid=giphy.gif"
 
 
 
             /* Add Package */
 
-            for (var i = 0; i < 5; i++)
-            {
-                using var db = new CFDBContext();
+            //for (var i = 0; i < 5; i++)
+            //{
+            //    using var db = new CFDBContext();
 
-                var package = new Package
-                {
-                    Description = "Silver Package ",
-                    Reward = 250,
-                    ProjectId = 3 + i
-                };
+            //    var package = new Package
+            //    {
+            //        Description = "Silver Package ",
+            //        Reward = 250,
+            //        ProjectId = 3 + i
+            //    };
 
-                db.Packages.Add(package);
-                db.SaveChanges();
-            }
+            //    db.Packages.Add(package);
+            //    db.SaveChanges();
+            //}
 
 
         }
