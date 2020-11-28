@@ -13,6 +13,10 @@
     return;
 }
 <div class="container-fluid" style="margin-top50px; padding: 50px; border-radius: 15px 50px; width:80%;background-color:white">
+    <input class="" id="js-userId-fund" type="hidden" value="@Model.project.UserId" />
+    <input class="" id="js-projectId-fund" type="hidden" value="@Model.project.Id" />
+
+
 
     <div class="card mb-3">
         <img class="card-img-top" src="~/uploadedimages/@Model.project.Photo" alt="Card image cap">
@@ -21,6 +25,7 @@
             <p class="card-text"><b>Description: </b>@Model.project.Description</p>
         </div>
         <div class="card-body" style="padding:15px">
+            <input type="hidden" id="projectid" value="@Model.project.Id" />
             <p class="card-text " id="projectId"> <b>Project Id:</b> @Model.project.Id</p>
             <p class="card-text"><b>Category: </b>@Model.project.Categories</p>
             <p class="card-text"><b>Amount:</b>@Model.project.Amount</p>
@@ -44,15 +49,17 @@
                 @{
                     foreach (var package in Model.packages)
                     {
+                        <input class="" id="js-packageId-fund" type="hidden" value="@package.Id"  />
+                        <input class="" id="js-reward-fund" type="hidden" value="@package.Reward" />
 
                         <div class="col-md-3">
                             <div class="card" style="padding:20px;height:450px;margin:30px">
                                 <img src="~/img/Packages.jpg" style="height:150px;width:auto" />
-                                <p id="packageid"><b>Description: </b>@package.Id</p>
+                                <p><b>Package Id: </b>@package.Id</p>
                                 <p><b>Description: </b>@package.Description</p>
-                                <p><b class=".fundreward">Reward: </b>@package.Reward</p>
-                                <a href="~/home" class="fundProject " style="color:white;background-color:lightseagreen;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center;margin:20px">Fund</a>
-
+                                <p><b>Reward: </b>@package.Reward</p>
+                                @*<a class="fundProject"><button style="color:white;background-color:lightseagreen;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center;margin:20px">Fund</button></a>*@
+                                <button type="button" class="btn btn-primary btn-lg btn-block" id="fundProject" style="width:350px">Fund</button>
                             </div>
                         </div>
 
@@ -62,7 +69,7 @@
 
         </div>
         <div class="row">
-            <a href="~/home/Packages/@Model.project.Id" style="color:white;background-color:royalblue;width:150px;height:40px;border-radius:6px;margin:20px;text-align:center;padding:5px;position:center">View Packages</a>
+            @*<a href="~/home/Packages/@Model.project.Id" style="color:white;background-color:royalblue;width:150px;height:40px;border-radius:6px;margin:20px;text-align:center;padding:5px;position:center">View Packages</a>*@
             @*<a href="~/home/Projects" style="color:white;background-color:slategray;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center">Back</a>*@
         </div>
 

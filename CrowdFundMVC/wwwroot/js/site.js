@@ -193,9 +193,9 @@ updateUser = $('.updateUser').on('click', () => {
             type: 'POST',
 
             success: function (data) {
-
+                debugger;
                 $('#success-alert-project').fadeIn(1000);
-                window.open('/home/addpackage', '_self')
+                window.open('/home/addpackage/' + data.id , '_self')
 
             },
             error: function (jqXhr, textStatus, errorThrown) {
@@ -212,11 +212,12 @@ updateUser = $('.updateUser').on('click', () => {
 
     btn = $('#updateProject').on('click', () => {
         debugger;
-        let actionUrl = '/api/project/'
+
+        let ProjectId = $('#ProjectId').val();
+        let actionUrl = '/api/project/' + ProjectId
         let input = document.getElementById('Picture');
         let files = input.files;
         let formData = new FormData();
-        let actionType = 'PUT'
 
         for (var i = 0; i != files.length; i++) {
             formData.append('Picture', files[i]);
@@ -234,7 +235,7 @@ updateUser = $('.updateUser').on('click', () => {
             data: formData,
             processData: false,
             contentType: false,
-            type: actionType,
+            type: 'PUT',
 
             success: function (data) {
 
@@ -300,7 +301,6 @@ updateUser = $('.updateUser').on('click', () => {
             let description = $('#Description' + i).val();
             let reward = parseInt($('#Reward' + i).val());
 
-
             let data = {
                 Description: description,
                 Reward: reward,
@@ -321,7 +321,6 @@ updateUser = $('.updateUser').on('click', () => {
                 error: function (jqXhr, textStatus, errorThrown) {
                     alert("Error from server:" + errorThrown);
                 }
-
             });
         }
 
@@ -590,17 +589,18 @@ updateUser = $('.updateUser').on('click', () => {
 //--------------------- Fund Project ---------------
 
 
-fundProject = $('.fundProject').on('click', () => {
-
-    actionUrl = '/api/home' + id
+fundProject = $('#fundProject').on('click', () => {
+    debugger;
+    actionUrl = '/home/fundproject'
     actiontype = 'PUT'
     actionDataType = 'json'
 
-    sendData = {
-        'projectid': $('#projectId').val(),
-        'packageid': $('#packageid').val(),
-        'userid': $('#userId',3),                          //$('#js-ProjectId-fund').val(),
-        'reward': $('#fundreward').val()
+    sendData = {        
+            'Projectid': parseInt($('#js-projectId-fund').val()),
+            'Packageid': parseInt($('#js-packageId-fund').val()),
+            'Userid': parseInt($('#js-userId-fund').val()),
+            'Reward': parseFloat($('#js-reward-fund').val()),
+            'Id': 0        
     }
 
     $.ajax({
