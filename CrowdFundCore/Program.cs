@@ -14,55 +14,67 @@ namespace CrowdFundCore
         {
             Console.WriteLine("Welcome to the test area of the CrowdFunding website!");
 
-            //--------------CREATE USER--------------------------
-
-
-            //var userOpt = new UserOption()
-            //{
-            //    FirstName = "Firstname",
-            //    LastName = "Lastname",
-            //    Email = "test@gmail.com",
-            //    Password = "test",
-            //    Dob = DateTime.Today
-
-
-            //};
-
+            ////--------------CREATE USER--------------------------
             //using var db = new CFDBContext();
+            //for (var i = 0; i < 40; i++)
+            //{
+                
             //    User user = new User
+            //    {
+            //        FirstName = "Test FirstName " + i,
+            //        LastName = "Test LastName " + i,
+            //        Email = "test@mail.com",
+            //        Password = "test"
+
+            //    };
+
+            //    db.Users.Add(user);
+            //    db.SaveChanges();
+            //}
+
+            //User user1 = db.Users.Find(1);
+            //Console.WriteLine(user1.FirstName);
+
+            ////------------------------Add Project------------------
+
+
+            //for (var i = 0; i < 25; i++)
             //{
-            //    FirstName = "Danai",
-            //    LastName = "Macs",
-            //    Email = "Jdan@gmail.com",               
-            //};
+                
+            //    Project project = new Project
+            //    {
+            //        Title = "Test Project" + i,
+            //        Amount = 25000 + (50 * i),
+            //        Fundings = 12000 + (10 * i),
+            //        Description = "Desc 10" + i,
+            //        Categories = Category.Technology,
+            //        Created = DateTime.Now,
+            //        UserId = 3 + i
+            //    };
+            //    db.Projects.Add(project);
+            //    db.SaveChanges();
 
-            //db.Users.Add(user);           
-            //db.SaveChanges(); 
-
-            // User user1 = db.Users.Find(1);
-            // Console.WriteLine(user1.FirstName);
-
-            //------------------------Add Project------------------
+            //}
 
 
 
-            //using var db = new CFDBContext();
-            //Project project = new Project
-            //{
-            //    Title = "Drone Delivery",
-            //    Amount = 25000,
-            //    Fundings = 8300,
-            //    Description = "Desc 10",
-            //    Categories = Category.Fashion,
-            //    Created = DateTime.Now,
-            //   // UserId = 2
 
-            //};
+            /////* Add Package */
 
-            // db.Projects.Add(project);
-            // db.SaveChanges();
+            ////for (var i = 0; i < 5; i++)
+            ////{
+            ////    using var db = new CFDBContext();
 
-          //  Console.WriteLine(project.Categories);
+            ////    var package = new Package
+            ////    {
+            ////        Description = "Silver Package ",
+            ////        Reward = 250,
+            ////        ProjectId = 3 + i
+            ////    };
+
+            ////    db.Packages.Add(package);
+            ////    db.SaveChanges();
+            ////}
 
 
         }

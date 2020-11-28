@@ -65,10 +65,12 @@ namespace CrowdFundMVC.Controllers
                 Photo = projectOptWithFileModel.Photo,
                 Video = projectOptWithFileModel.Video,
                 Amount = projectOptWithFileModel.Amount,
-                Fundings = projectOptWithFileModel.Fundings
+                Fundings = projectOptWithFileModel.Fundings,
+                UserId = projectOptWithFileModel.UserId
+                
             };
 
-            projectOpt.Photo = filename;
+            projectOpt.Photo= filename;
 
             ProjectwithFileModel projectOption = projectService.CreateProject(projectOpt);
             return projectOption;
@@ -78,44 +80,40 @@ namespace CrowdFundMVC.Controllers
         
 
         [HttpPut("{id}")]
-        //public ProjectwithFileModel UpdateProject([FromForm]ProjectwithFileModel projectOptWithFileModel,int id)
-        //{
-        //    if (projectOptWithFileModel == null) return null;
-        //    var formFile = projectOptWithFileModel.Picture;
+        public ProjectwithFileModel UpdateProject([FromForm] ProjectwithFileModel projectOptWithFileModel, int id)
+        {
+            if (projectOptWithFileModel == null) return null;
 
-        //    var filename = projectOptWithFileModel.Picture.FileName;
+            var formFile = projectOptWithFileModel.Picture;
+            var filename = projectOptWithFileModel.Picture.FileName;
 
-        //    if (formFile.Length > 0)
-        //    {
+            if (formFile.Length > 0)
+            {
+                var filePath = Path.Combine(hostingEnvironment.WebRootPath, "uploadedimages", filename);
 
-        //        var filePath = Path.Combine(hostingEnvironment.WebRootPath, "uploadedimages", filename);
+                using (var stream = System.IO.File.Create(filePath))
+                {
+                    formFile.CopyTo(stream);
+                }
+            }
 
+            ProjectwithFileModel projectOpt = new ProjectwithFileModel
+            {
+                Id = projectOptWithFileModel.Id,
+                Title = projectOptWithFileModel.Title,
+                Description = projectOptWithFileModel.Description,
+                Categories = projectOptWithFileModel.Categories,
+                Update = projectOptWithFileModel.Update,
+                Photo = projectOptWithFileModel.Photo,
+                Video = projectOptWithFileModel.Video,
+                Amount = projectOptWithFileModel.Amount,
+                Fundings = projectOptWithFileModel.Fundings,
+            };
 
-        //        using (var stream = System.IO.File.Create(filePath))
-        //        {
-        //            formFile.CopyTo(stream);
-        //        }
-        //    }
+            projectOpt.Photo = filename;
 
-        //    ProjectwithFileModel projectOpt = new ProjectwithFileModel
-        //    {
-        //        Id = projectOptWithFileModel.Id,
-        //        Title = projectOptWithFileModel.Title,
-        //        Description = projectOptWithFileModel.Description,
-        //        Categories = projectOptWithFileModel.Categories,
-        //        Update = projectOptWithFileModel.Update,
-        //        Photo = projectOptWithFileModel.Photo,
-        //        Video = projectOptWithFileModel.Video,
-        //        Amount = projectOptWithFileModel.Amount,
-        //        Fundings = projectOptWithFileModel.Fundings
-        //    };
-
-        //    projectOpt.Photo = filename;
-
-           // ProjectWithFileModel projectOption = projectService.UpdateProject(projectOpt);
-         //   return projectOpt;
-
-        //}
+            return projectService.UpdateProject(projectOpt, id);
+        }
 
 
         [HttpDelete("{id}")]

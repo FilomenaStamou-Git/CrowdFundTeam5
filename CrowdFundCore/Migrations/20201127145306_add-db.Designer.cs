@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CrowdFundCore.Migrations
 {
     [DbContext(typeof(CFDBContext))]
-    [Migration("20201126180411_giannis-database")]
-    partial class giannisdatabase
+    [Migration("20201127145306_add-db")]
+    partial class adddb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,47 +20,6 @@ namespace CrowdFundCore.Migrations
                 .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("CrowdFundCore.Models.FundingPackage", b =>
-                {
-                    b.Property<int>("FundingProjectId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PackageId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("FundingProjectId", "PackageId");
-
-                    b.HasIndex("PackageId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("FundingPackages");
-                });
-
-            modelBuilder.Entity("CrowdFundCore.Models.FundingProject", b =>
-                {
-                    b.Property<int>("FundingProjectId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal?>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("FundingProjectId");
-
-                    b.ToTable("FundingProjects");
-                });
 
             modelBuilder.Entity("CrowdFundCore.Models.Package", b =>
                 {
@@ -78,11 +37,11 @@ namespace CrowdFundCore.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProjectId")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Reward")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("Reward")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -122,7 +81,7 @@ namespace CrowdFundCore.Migrations
                     b.Property<string>("Update")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.Property<string>("Video")
@@ -159,37 +118,22 @@ namespace CrowdFundCore.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("CrowdFundCore.Models.FundingPackage", b =>
-                {
-                    b.HasOne("CrowdFundCore.Models.FundingProject", "FundingProject")
-                        .WithMany("FundingPackages")
-                        .HasForeignKey("FundingProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CrowdFundCore.Models.Package", "Package")
-                        .WithMany()
-                        .HasForeignKey("PackageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CrowdFundCore.Models.User", null)
-                        .WithMany("Fundings")
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("CrowdFundCore.Models.Package", b =>
                 {
                     b.HasOne("CrowdFundCore.Models.Project", "Project")
                         .WithMany("Packages")
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CrowdFundCore.Models.Project", b =>
                 {
                     b.HasOne("CrowdFundCore.Models.User", "User")
                         .WithMany("Projects")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

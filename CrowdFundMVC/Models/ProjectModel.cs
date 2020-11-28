@@ -27,7 +27,8 @@ namespace CrowdFundMVC.Models
         public string Video { get; set; }
         public decimal Amount { get; set; }
         public decimal Fundings { get; set; }
-        public IFormFile Picture { get; set; }       
+        public IFormFile Picture { get; set; }      
+        public int UserId { get; set; }
     }
 
 }

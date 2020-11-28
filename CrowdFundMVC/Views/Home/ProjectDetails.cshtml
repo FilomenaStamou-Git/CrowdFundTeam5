@@ -12,26 +12,31 @@
     </div>
     return;
 }
+<div class="container-fluid" style="margin-top50px; padding: 50px; border-radius: 15px 50px; width:80%;background-color:white">
 
-<h1 class="text-center"><b><i>@Model.project.Title</i></b></h1>
-
-
-
-<div class="card mb-3">
-    <img class="card-img-top" src="~/uploadedimages/@Model.project.Photo" alt="Card image cap">
-    <div class="card-body">
-        <p class="card-text">@Model.project.Description</p>
-    </div>
-    <div class="card-body">
-        <p class="card-text">Project Id: @Model.project.Id</p>
-        <p class="card-text">Category: @Model.project.Categories</p>
-        <p class="card-text">Amount: @Model.project.Amount</p>
-        <p class="card-text">Fundings: @Model.project.Fundings</p>
-        <p class="card-text">Update Status: @Model.project.Update</p>
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: @Model.project.Fundings%;" aria-valuenow="@Model.project.Fundings" aria-valuemin="0" aria-valuemax="@Model.project.Amount"></div>
+    <div class="card mb-3">
+        <img class="card-img-top" src="~/uploadedimages/@Model.project.Photo" alt="Card image cap">
+        <div class="card-body" style="padding:15px">
+            <h4 class="text-center"><b><i>@Model.project.Title</i></b></h4>
+            <p class="card-text"><b>Description: </b>@Model.project.Description</p>
         </div>
-        <p class="card-text">Created On: @Model.project.Created</p>
+        <div class="card-body" style="padding:15px">
+            <p class="card-text"><b>Project Id:</b> @Model.project.Id</p>
+            <p class="card-text"><b>Category: </b>@Model.project.Categories</p>
+            <p class="card-text"><b>Amount:</b>@Model.project.Amount</p>
+            <p class="card-text"><b>Fundings: </b>@Model.project.Fundings</p>
+            <p class="card-text"><b>Update Status: </b>@Model.project.Update</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: @Model.project.Fundings%;" aria-valuenow="@Model.project.Fundings" aria-valuemin="0" aria-valuemax="@Model.project.Amount"></div>
+            </div>
+            <p class="card-text">Created On: @Model.project.Created</p>
+
+        </div>
+        <div class="row">
+            <a href="~/home/Packages/@Model.project.Id" style="color:white;background-color:royalblue;width:150px;height:40px;border-radius:6px;margin:20px;text-align:center;padding:5px;position:center">View Packages</a>
+            <a href="~/home/Projects/@Model.project.Id" style="color:white;background-color:lightseagreen;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center;margin:20px">Fund</a>
+        @*<a href="~/home/Projects" style="color:white;background-color:slategray;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center">Back</a>*@
+        </div>
 
     </div>
 </div>

@@ -21,75 +21,35 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color:aliceblue">
-    <input class="js-projectId" type="hidden" value="@Model.projectId" />
-    <div class="row" style="justify-content: center;">
+    <div class="container-fluid" style="margin:100px 200px 100px 200px; padding: 50px; border-radius: 15px 50px; width:60%;background-color:white">
         <form>
-            @for (int i = 0; i <= 2; i++)
-            {
-                <div>
-                    <div class="form-group">
-                        <div style=" text-align: center; margin: 1rem; font-size: 20px;">Package @i</div>
-                        <label for="exampleInputDescription1">@i</label>
-                        <label for="exampleInputDescription1">Package Description:</label>
-                        <input type="text" class="form-control description_@i" id="description_@i" aria-describedby="emailHelp">
+            <input class="" id="js-ProjectId-package" type="hidden" value="" />
 
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputReward1">Reward:</label>
-                        <input type="text" class="form-control rewardpack_@i" id="rewardPack_@i">
-                        <small id="emailHelp" class="form-text text-muted">Add the package price here.</small>
-                    </div>
+            <div class="form-group">
+                <h6>Add your Packages</h6>
+                <input type="number" class="form-control " id="js-ProjectId-Package" placeholder="Enter your Project Id">
+                <label for="exampleFormControlInput1"><b>First</b></label>
+                <input type="text" class="form-control" id="Description1" placeholder="Enter your first Package">
+                <label for="exampleFormControlInput1"><b>Reward</b></label>
+                <input type="number" class="form-control" id="Reward1" placeholder="Enter Reward for Package 1">
+                <label for="exampleFormControlInput1"><b>Second</b></label>
+                <input type="text" class="form-control" id="Description2" placeholder="Enter your second Package">
+                <label for="exampleFormControlInput1"><b>Reward</b></label>
+                <input type="number" class="form-control" id="Reward2" placeholder="Enter Reward for Package 2">
+                <label for="exampleFormControlInput1"><b>Third</b></label>
+                <input type="text" class="form-control" id="Description3" placeholder="Enter your third Package">
+                <label for="exampleFormControlInput1"><b>Reward</b></label>
+                <input type="number" class="form-control" id="Reward3" placeholder="Enter Reward for Package 3">
+                <button type="button" class="btn btn-primary btn-lg btn-block js-submit-package-create">Add your Packages</button>
 
-                </div>
-       
-    }
-            </form>
+            </div>
+            <div class="alert alert-success " id="success-alert-project" role="alert">
+                Packages were created successsfully!
+            </div>
+            <div class="alert alert-danger" id="danger-alert-project" role="alert">
+                Packages could not be created.Try again.
             </div>
 
-
-            @*<form>
-                    <div class="container-fluid" style="margin:100px 200px 100px 200px; padding: 50px; border-radius: 15px 50px; width:60%;background-color:white">
-                        <table align="center">
-                            <tr align="center">
-                                <td>
-                                    Amount
-                                </td>
-                                <td> <input type="number" id="Amount" placeholder="Amount" /></td>
-                            </tr>
-
-                            <tr align="center">
-                                <td>
-                                    Description
-                                </td>
-                                <td>
-                                    <input type="text" id="Description" placeholder="Description" />
-                                </td>
-                            </tr>
-
-                            <tr align="center">
-                                <td>
-                                    Reward
-                                </td>
-                                <td>
-                                    <input type="text" id="Reward" placeholder="Reward" />
-
-                                </td>
-                            </tr>
-                            <tr align="center">
-                                <td>
-                                    Photo
-                                </td>
-                                <td>
-                                    <input type="file" id="Picture" placeholder="Insert Photo" />
-                                </td>
-                            </tr>
-                            <tr align="center">
-                                <td>
-                                    <input type="button" value="Submit data" onclick="addPackage()" />
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </form>*@
-        </body>
-</html>
+        </form>
+        </div>
+</body>

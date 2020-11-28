@@ -13,7 +13,7 @@
         {
 
             <div class="col-md-3">
-                <div class="card">
+                <div class="card" style="padding:20px;height:500px">
 
                     <img src="/img/avatarf.png" alt="Avatar" style="width:200px;position:center">
 
@@ -21,9 +21,10 @@
                     <p><b>LastName: </b>@user.LastName</p>
                     <p><b>Email: </b>@user.Email</p>
                     <p><b>UserId: </b>@user.Id</p>
-                    <a href="~/home/updateuserwithdetails/@user.Id" style="color:white;background-color:royalblue;width:150px;height:40px;border-radius:6px;margin-bottom:20px;text-align:center;padding:5px;position:center">Edit User</a>
-                    <a href="~/home/DeleteUserFromView/@user.Id" style="color:white;background-color:darkred;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center">Delete User</a>
-
+                    <div class="row>">
+                    <a href="~/home/updateuserwithdetails/@user.Id" style="color:white;background-color:royalblue;width:150px;height:40px;border-radius:6px;margin:10px;text-align:center;padding:5px;position:center">Edit User</a>
+                    <a href="~/home/DeleteUserFromView/@user.Id" style="color:white;background-color:darkred;width:150px;height:40px;border-radius:6px;text-align:center;margin:10px;padding:5px;position:center">Delete User</a>
+                    </div>
                 </div>
             </div>
 
