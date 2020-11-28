@@ -14,6 +14,8 @@ namespace CrowdFundMVC.Models
     public class ProjectOptionModel
     {
         public ProjectwithFileModel project { get; set; }
+
+        public IEnumerable<Package> packages { get; set; }
     }
 
     public class ProjectWithFileModel
