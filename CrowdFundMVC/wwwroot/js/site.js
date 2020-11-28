@@ -3,7 +3,6 @@
 
 // Write your JavaScript code.
 
-debugger;
 function getUserId() {
     return localStorage.getItem('userId');
 }
@@ -51,7 +50,7 @@ $('#logout-btn').on('click', function () {
 
 
 // ---------------------------USER------------------------------
-
+debugger;
 addUser = $('.addUser').on('click', () => {
     actionUrl = '/api/user'
     actiontype = 'POST'
@@ -296,7 +295,6 @@ updateUser = $('.updateUser').on('click', () => {
         let ProjectId = parseInt($('#js-ProjectId-Package').val());
 
 
-        debugger;
         for (var i = 1; i <= 3; i++) {
             let description = $('#Description' + i).val();
             let reward = parseInt($('#Reward' + i).val());
@@ -401,42 +399,6 @@ updateUser = $('.updateUser').on('click', () => {
     //            });
     //        }
     //    })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
