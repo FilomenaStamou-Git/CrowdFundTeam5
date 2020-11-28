@@ -64,9 +64,13 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
-        public IActionResult AddPackage()
+        [HttpGet]
+        public IActionResult AddPackage([FromRoute] int id)
         {
-            return View();
+            ProjectwithFileModel projectOptions = projectService.GetProjectById(id);
+            ProjectOptionModel model = new ProjectOptionModel { project = projectOptions };
+
+            return View(model);
         }
 
         public IActionResult UpdateUser()
@@ -212,8 +216,8 @@ namespace CrowdFundMVC.Controllers
         }
 
         [HttpPut]
-        public IActionResult FundProject([FromRoute] FundingProject funding)
-        {
+        public IActionResult FundProject([FromBody] FundingProject funding)
+        {      
             projectService.Funding(funding);
             return Ok();
         }
