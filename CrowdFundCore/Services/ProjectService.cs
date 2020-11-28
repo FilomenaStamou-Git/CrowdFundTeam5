@@ -81,7 +81,8 @@ namespace CrowdFundCore.Services
                 Amount = project.Amount,
                 Fundings = project.Fundings,
                 Photo = project.Photo,
-                Video = project.Video
+                Video = project.Video,
+                UserId = project.UserId
             }));
 
             return projectsOpt;
@@ -105,7 +106,8 @@ namespace CrowdFundCore.Services
                 Amount = project.Amount,
                 Fundings = project.Fundings,
                 Photo = project.Photo,
-                Video = project.Video
+                Video = project.Video,
+                UserId = project.UserId
             })) ;
 
             return projectsOpt;
@@ -125,7 +127,8 @@ namespace CrowdFundCore.Services
                 Fundings = project.Fundings,
                 Amount = project.Amount,
                 Photo = project.Photo,
-                Video = project.Video
+                Video = project.Video,
+                UserId = project.UserId
             };
         }
 
@@ -151,7 +154,8 @@ namespace CrowdFundCore.Services
                 Created = DateTime.UtcNow,
                 Amount = project.Amount,
                 Photo = project.Photo,
-                Video = project.Video
+                Video = project.Video,
+                UserId = project.UserId
             };
 
         }
@@ -168,6 +172,7 @@ namespace CrowdFundCore.Services
             project.Amount = projectOpt.Amount;
             project.Photo = projectOpt.Photo;
             project.Video = projectOpt.Video;
+            project.UserId = projectOpt.UserId;
         }
 
         public List<ProjectwithFileModel> GetTopProjects()
@@ -188,7 +193,8 @@ namespace CrowdFundCore.Services
                 Amount = project.Amount,
                 Fundings = project.Fundings,
                 Photo = project.Photo,
-                Video = project.Video
+                Video = project.Video,
+                UserId = project.UserId
             }));
             return projectsOpt;
 
@@ -197,16 +203,17 @@ namespace CrowdFundCore.Services
 
         public void Funding (FundingProject funding)
         {
-            User user = dbContext.Users.Find(funding.userid);
-           // user.Gross = +funding.reward;
-            Project project = dbContext.Projects.Find(funding.projectid);
-            project.Fundings = +funding.reward;
+            User user = dbContext.Users.Find(funding.Userid);
+            user.Gross =+ funding.Reward;
+            Project project = dbContext.Projects.Find(funding.Projectid);
+            project.Fundings =+ funding.Reward;
+            Package package = dbContext.Packages.Find(funding.Packageid);
+            package.Count++;
 
-            Package package = dbContext.Packages.Find(funding.packageid);
             dbContext.Add(funding);
+
             dbContext.SaveChanges();
         }
-
 
 
     }
