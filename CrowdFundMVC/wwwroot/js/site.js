@@ -3,13 +3,15 @@
 
 // Write your JavaScript code.
 
-debugger;
 function getUserId() {
     return localStorage.getItem('userId');
 }
 
 if (getUserId()) {
     $('#logout-btn').show();
+    $('#login-btn').hide();
+
+
 }
 
 
@@ -30,11 +32,12 @@ $('#login-btn').on('click', function () {
         type: 'POST',
         data: JSON.stringify(loginOptions),
         success: function (data) {
-            localStorage.setItem('userId', data.userId);
+            localStorage.setItem('userId', data.getUserId);
             window.open("/Home/Projects", "_self")
+            //$('#login-btn').hide();
             $('#logout-btn').show();
-            $('#login-btn').hide();
-       
+           
+
         },
         error: function () {
             alert('Login denied');
