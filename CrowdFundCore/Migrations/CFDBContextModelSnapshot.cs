@@ -19,6 +19,30 @@ namespace CrowdFundCore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("CrowdFundCore.Models.FundingProject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("packageid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("projectid")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("reward")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("userid")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FundingProjects");
+                });
+
             modelBuilder.Entity("CrowdFundCore.Models.Package", b =>
                 {
                     b.Property<int>("Id")
@@ -26,14 +50,14 @@ namespace CrowdFundCore.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
-
-                    b.Property<string>("Photo")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
@@ -104,6 +128,9 @@ namespace CrowdFundCore.Migrations
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Gross")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
