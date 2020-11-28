@@ -3,19 +3,22 @@
 
 // Write your JavaScript code.
 
-debugger;
 function getUserId() {
     return localStorage.getItem('userId');
 }
 
 if (getUserId()) {
     $('#logout-btn').show();
+    $('#login-btn').hide();
+
+
 }
 
 
 // Events
-
+debugger;
 $('#login-btn').on('click', function () {
+
     var Email = $('#userEmail').val();
     var Password = $('#userPassword').val();
 
@@ -31,10 +34,11 @@ $('#login-btn').on('click', function () {
         data: JSON.stringify(loginOptions),
         success: function (data) {
             localStorage.setItem('userId', data.Userid);
-            window.open("/Home/Projects", "_self")
+            window.open('/Home/Dashboard', "_self")
+            //$('#login-btn').hide();
             $('#logout-btn').show();
-            $('#login-btn').hide();
-       
+           
+
         },
         error: function () {
             alert('Login denied');
@@ -556,7 +560,7 @@ fundProject = $('#fundProject').on('click', () => {
         url: actionUrl,
         dataType: actionDataType,
         type: actiontype,
-        data: JSON.stringify(sendData),
+        data: sendData,
         contentType: 'application/json',
         processData: false,
 
