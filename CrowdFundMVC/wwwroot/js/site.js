@@ -30,7 +30,7 @@ $('#login-btn').on('click', function () {
         type: 'POST',
         data: JSON.stringify(loginOptions),
         success: function (data) {
-            localStorage.setItem('userId', data.userId);
+            localStorage.setItem('userId', data.Userid);
             window.open("/Home/Projects", "_self")
             $('#logout-btn').show();
             $('#login-btn').hide();
@@ -290,7 +290,7 @@ updateUser = $('.updateUser').on('click', () => {
 
     //------------------------------- PACKAGE ----------------------------------------
 
-    /* Create Packages */
+                                /* Create Packages */
 
     btn = $('.js-submit-package-create').on('click', () => {
         let ProjectId = parseInt($('#js-ProjectId-Package').val());
@@ -315,18 +315,23 @@ updateUser = $('.updateUser').on('click', () => {
 
 
                 success: function (data) {
-                    window.open("/home/dashboard", "_self")
+                    $('#success-alert-project').fadeIn(1000);
+                    setTimeout(function () {
+                        window.open("/home/dashboard", "_self");
+                    }, 5000);
+                   // window.open("/home/dashboard", "_self")
 
                 },
                 error: function (jqXhr, textStatus, errorThrown) {
-                    alert("Error from server:" + errorThrown);
+                    $('#danger-alert-project').fadeIn(2000);
+                    console.log("Error from server:" + errorThrown);
                 }
             });
         }
 
     });
 
-    //--------------------------Update Pacakges--------------------//
+    //--------------------------Update Packages--------------------//
 
     Updatepackage = $('.updatePackage').on('click', () => {
         id = $('#Id').val()
@@ -362,84 +367,6 @@ updateUser = $('.updateUser').on('click', () => {
         });
 
     })
-
-
-    //btn = $('.js-submit-package-create').on('click', () => {
-    //    debugger;
-    //    var actionUrl = '/api/package/'
-
-    //    var formData = new FormData();
-
-    //    for (var i = 1; i <= 3; i++) {
-
-
-    //            formData.append('Description', $('#Description' + 1).val());
-    //            formData.append('Reward', $('#Reward' + 1).val());
-    //            formData.append('Categories', $('#Categories' + 1).val());
-    //            formData.append('Amount', $('#Amount' + 1).val());
-    //            formData.append('ProjectId', $('#js-ProjectId-package').val());
-
-
-    //            $.ajax({
-    //                url: actionUrl,
-    //                data: JSON.stringify(formData),
-    //                processData: false,
-    //                contentType: 'application/json',
-    //                type: 'POST',
-
-    //                success: function (data) {
-
-    //                    $('#success-alert-project');
-    //                    window.open('/home/packages', '_self')
-
-    //                },
-    //                error: function (jqXhr, textStatus, errorThrown) {
-    //                    console.log('Error from server:' + errorThrown);
-    //                    $('#danger-alert-project').fadeIn(2000);
-    //                }
-
-    //            });
-    //        }
-    //    })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     function updatePackage() {
@@ -549,9 +476,8 @@ updateUser = $('.updateUser').on('click', () => {
 
 
 
-
+debugger;
     searchBtn = $('.searchProject').on('click', () => {
-
 
         searchText = $('#searchText').val()
         actionUrl = '/Home/SearchProjectDisplay?text=' + searchText
@@ -571,7 +497,31 @@ updateUser = $('.updateUser').on('click', () => {
             window.open(actionUrl, '_self');
         }
     }
-    );
+);
+
+// --------------- Search In filters  ------------------------
+
+searchBtnFilter = $('.searchProjectFilter').on('click', () => {
+
+    searchTextFilter = $('#searchTextFilter').val()
+    actionUrl = '/Home/SearchProjectDisplay?text=' + searchTextFilter
+
+    window.open(actionUrl, '_self');
+})
+
+searchEnterFilter = $('.handleEnterFilter').on('keypress', function (e) {
+
+    if (e.keyCode == 13) {
+        // Cancel the default action on keypress event
+        e.preventDefault();
+
+        searchTextFilter = $('#searchTextFilter').val()
+        actionUrl = '/Home/SearchProjectDisplay?text=' + searchTextFilter
+
+        window.open(actionUrl, '_self');
+    }
+}
+);
 
 
     /*Show Picture Name when adding it */
@@ -599,8 +549,7 @@ fundProject = $('#fundProject').on('click', () => {
             'Projectid': parseInt($('#js-projectId-fund').val()),
             'Packageid': parseInt($('#js-packageId-fund').val()),
             'Userid': parseInt($('#js-userId-fund').val()),
-            'Reward': parseFloat($('#js-reward-fund').val()),
-            'Id': 0        
+            'Reward': parseFloat($('#js-reward-fund').val())
     }
 
     $.ajax({
@@ -612,10 +561,8 @@ fundProject = $('#fundProject').on('click', () => {
         processData: false,
 
         success: function (data, textStatus, jQxhr) {
-
-            alert(JSON.stringify(data))
-
-            window.open('/home/dashboard', '_self')
+            alert("Your funding was approved!Thank you!")
+           window.open('/home/projects', '_self')
         },
         error: function (jqXhr, textStatus, errorThrown) {
             alert(errorThrown);

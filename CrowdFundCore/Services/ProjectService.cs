@@ -92,7 +92,7 @@ namespace CrowdFundCore.Services
         {
 
             List<Project> projects = dbContext.Projects
-                .Where(p => p.Title.Contains(searchCriteria) || Enum.IsDefined(typeof(Category),searchCriteria))
+                .Where(p => p.Title.Contains(searchCriteria)) // || Enum.IsDefined(typeof(Category),searchCriteria))
                 .ToList();
 
            List <ProjectwithFileModel> projectsOpt = new List<ProjectwithFileModel>();
@@ -123,7 +123,7 @@ namespace CrowdFundCore.Services
                 Description = project.Description,
                 Categories = project.Categories,
                 Update = project.Update,
-                Created = DateTime.UtcNow,
+                Created = project.Created,
                 Fundings = project.Fundings,
                 Amount = project.Amount,
                 Photo = project.Photo,
@@ -167,7 +167,7 @@ namespace CrowdFundCore.Services
             project.Description = projectOpt.Description;
             project.Categories = projectOpt.Categories;
             project.Update = projectOpt.Update;
-            project.Created = DateTime.UtcNow;
+            project.Created = projectOpt.Created;
             project.Fundings = projectOpt.Fundings;
             project.Amount = projectOpt.Amount;
             project.Photo = projectOpt.Photo;

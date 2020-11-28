@@ -19,13 +19,15 @@
 </style>
 <body>
 
+
+
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
-        <div class="carousel-inner"> 
+        <div class="carousel-inner">
             <div class="carousel-item active">
                 <img class="d-block w-100" src="~/img/img1.jpg" alt="First slide">
             </div>
@@ -45,35 +47,69 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-  
-    <div class="container">
-        <div class="row" style="margin-top: 5%;">
-            @{
-                foreach (var project in Model.Projects)
-                {
 
-                    <div class="col-md-3">
-                        <div class="card" style="padding:20px;height:550px;">
+    <div class="container pt-4 project-container">
+        @*  Search Filtering*@
+        <div class="row project-row">
 
-                            <img src="~/uploadedimages/@project.Photo" style="height:150px;width:auto" />
-                            <p><b>Title: </b>@project.Title</p>
-                            <p><b>Description: </b>@project.Description</p>
-                            <p><b>Category: </b>@project.Categories</p>
-                            <p><b>Fundings: </b>@project.Fundings</p>
-                            <p><b>UserId: </b>@project.UserId</p>
-                            <p><b>ProjectId: </b>@project.Id</p>
-                            <div class="row">
-                                <a href="~/home/projectdetails/@project.Id"><button type="button" class="btn btn-primary js-project-details" style="margin:5px">Details</button></a>
-                                <a href="~/home/DeleteProjectFromView/@project.Id"><button type="button" class="btn btn-primary" style="color:white;border:none;background-color:darkred;text-align:center;margin:5px;position:center">Delete Project</button></a>
+            <form class="form shadow bg-white rounded p-3 search-projects-form">
+                <div class="form-group mx-sm-6 mb-1 d-inline-flex search-projects-icon">
+                    <i style="font-size:1.5em;" class="fa fa-sliders" aria-hidden="true"></i>
+                    <h2 style="font-size:1.2em; font-weight:600; margin-left:1em;">Search Filters</h2>
+                </div>
+                <div class="">
+                    <label style="font-weight:500;">Title</label>
+                    <input type="text" class="form-control handleEnterFilter" id="searchTextFilter" placeholder="Search a Title">
+                </div>
+                <div class="form-group mx-sm-3 mb-1 search-projects-cat-input">
 
-                            </div>
-                        </div>
-                    </div>
+                    <label for="exampleFormControlSelect1" style="font-weight:500;">Category</label>
+                    <select class="form-control" id="searchControlSelectCategory">
+                        <option> </option>
+                        @foreach (var c in Enum.GetValues(typeof(CrowdFundCore.Models.Category)))
+                        {
+                            var y = (int)c;
+                            <option value="@y">@c</option>
+                        }
+                    </select>
+                </div>
+                <div class="searchProjectFilter" style="text-align:center;">
+                    <button type="button" class="btn btn-outline-success mr-sm-1 " style="justify-content:center;">Search</button>
+                </div>
 
-                }
-            }
+
+
+            </form>
+
         </div>
 
-    </div>
+        <div class="container">
+            <div class="row" style="margin-top: 5%;">
+                @{
+                    foreach (var project in Model.Projects)
+                    {
+
+                        <div class="col-md-3">
+                            <div class="card" style="padding:20px;height:550px;">
+
+                                <img src="~/uploadedimages/@project.Photo" style="height:150px;width:auto" />
+                                <p><b>Title: </b>@project.Title</p>
+                                <p><b>Description: </b>@project.Description</p>
+                                <p><b>Category: </b>@project.Categories</p>
+                                <p><b>Fundings: </b>@project.Fundings</p>
+                                <p><b>UserId: </b>@project.UserId</p>
+                                <div class="row">
+                                    <a href="~/home/projectdetails/@project.Id"><button type="button" class="btn btn-primary js-project-details" style="margin:5px">Details</button></a>
+                                    <a href="~/home/DeleteProjectFromView/@project.Id"><button type="button" class="btn btn-primary" style="color:white;border:none;background-color:darkred;text-align:center;margin:5px;position:center">Delete Project</button></a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                }
+            </div>
+
+        </div>
 
 </body>
