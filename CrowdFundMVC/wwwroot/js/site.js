@@ -594,23 +594,25 @@ updateUser = $('.updateUser').on('click', () => {
 
 
 fundProject = $('.fundProject').on('click', () => {
-
-    actionUrl = '/api/home' + id
+    debugger;
+    actionUrl = '/home/fundproject' + id
     actiontype = 'PUT'
     actionDataType = 'json'
 
     sendData = {
-        'projectid': $('#projectId').val(),
-        'packageid': $('#packageid').val(),
-        'userid': $('#userId',3),                          //$('#js-ProjectId-fund').val(),
-        'reward': $('#fundreward').val()
+        'funding': {
+            'projectid': parseInt($('#projectId').val()),
+            'packageid': parseInt($('#packageid').val()),
+            'userid': parseInt($('#userId', 3)),                          //$('#js-ProjectId-fund').val(),
+            'reward': parseFloat($('#fundreward').val())
+        }
     }
 
     $.ajax({
         url: actionUrl,
         dataType: actionDataType,
         type: actiontype,
-        data: JSON.stringify(sendData),
+        data: sendData,
         contentType: 'application/json',
         processData: false,
 

@@ -203,6 +203,8 @@ namespace CrowdFundCore.Services
             project.Fundings = +funding.reward;
 
             Package package = dbContext.Packages.Find(funding.packageid);
+            dbContext.Add(funding);
+            dbContext.SaveChanges();
         }
 
 
