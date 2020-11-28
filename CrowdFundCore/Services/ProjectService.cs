@@ -200,6 +200,35 @@ namespace CrowdFundCore.Services
 
         }
 
+        public List<ProjectwithFileModel> GetMyProjects(int id)
+        {
+
+            List<Project> projects = dbContext
+                .Projects
+                .Where(p => p.UserId == id)
+                .ToList();
+        
+
+            List<ProjectwithFileModel> projectsOpt = new List<ProjectwithFileModel>();
+            projects.ForEach(project => projectsOpt.Add(new ProjectwithFileModel
+            {
+                Id = project.Id,
+                Title = project.Title,
+                Description = project.Description,
+                Categories = project.Categories,
+                Update = project.Update,
+                Amount = project.Amount,
+                Fundings = project.Fundings,
+                Photo = project.Photo,
+                Video = project.Video,
+                UserId = project.UserId
+            }));
+
+            return projectsOpt;
+        }
+
+    
+
 
         public void Funding (FundingProject funding)
         {

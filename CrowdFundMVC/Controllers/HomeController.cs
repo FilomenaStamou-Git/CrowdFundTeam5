@@ -139,9 +139,16 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
-        public IActionResult TopProjectsDisplay()
+        public IActionResult TopProjects()
         {
             List<ProjectwithFileModel> projects = projectService.GetTopProjects();
+            ProjectModel projectModel = new ProjectModel { Projects = projects };
+            return View("Projects", projectModel);
+        }
+
+        public IActionResult MyProjects(int id)
+        {
+            List<ProjectwithFileModel> projects = projectService.GetMyProjects(id);
             ProjectModel projectModel = new ProjectModel { Projects = projects };
             return View("Projects", projectModel);
         }

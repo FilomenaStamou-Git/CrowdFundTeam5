@@ -379,14 +379,7 @@ updateUser = $('.updateUser').on('click', () => {
         actionUrl = '/api/package/' + id
         actiontype = 'PUT'
         actionDataType = 'json'
-        var input = document.getElementById('Picture');
-        var files = input.files;
-        var formData = new FormData();
-
-        for (var i = 0; i != files.length; i++) {
-            formData.append('Picture', files[i]);
-        }
-
+     
         formData.append('amount', $('#Amount').val());
         formData.append('description', $('#Description').val());
         formData.append('reward', $('#Reward').val());
@@ -395,7 +388,7 @@ updateUser = $('.updateUser').on('click', () => {
             url: actionUrl,
             data: formData,
             processData: false,
-            contentType: false,
+            contentType: 'application/json',
             type: 'PUT',
 
             success: function (data) {
@@ -406,7 +399,9 @@ updateUser = $('.updateUser').on('click', () => {
             }
 
         });
-    }
+}
+
+                    /* Delete Package */
 
     function deletePackage() {
 
@@ -434,11 +429,14 @@ updateUser = $('.updateUser').on('click', () => {
 
         });
 
-    }
+}
+
+
 
     function findToUpdatePackage() {
-        ProjectId = $('#ProjectId').val()
-        actionUrl = '/Home/UpdatePackageWithDetails/' + id
+        //ProjectId = $('#ProjectId').val()
+        ProjectId =parseInt($('#projectId-updatepackage').val())
+        actionUrl = '/Home/UpdatePackagesofProject/' + ProjectId
 
         window.open(actionUrl, '_self');
 
@@ -472,6 +470,8 @@ updateUser = $('.updateUser').on('click', () => {
 
     }
 
+
+
     ProjectDetails = $('.js-project-details').on('click', () => {
         id = $('.js-ProjectId').val()
         actionUrl = '/Home/ProjectDetails/' + id
@@ -479,8 +479,8 @@ updateUser = $('.updateUser').on('click', () => {
     })
 
 
+                /* Search In Navbar */
 
-debugger;
     searchBtn = $('.searchProject').on('click', () => {
 
         searchText = $('#searchText').val()
@@ -502,6 +502,7 @@ debugger;
         }
     }
 );
+
 
 // --------------- Search In filters  ------------------------
 
@@ -526,6 +527,8 @@ searchEnterFilter = $('.handleEnterFilter').on('keypress', function (e) {
     }
 }
 );
+//--------------------------------------------------------------------
+
 
 
     /*Show Picture Name when adding it */
