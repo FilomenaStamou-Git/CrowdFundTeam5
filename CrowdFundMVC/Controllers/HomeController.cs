@@ -31,29 +31,46 @@ namespace CrowdFundMVC.Controllers
         [HttpPost]
         public IActionResult Login([FromBody] LoginOptions options)
         {
-            if (options.Email == "danaykap13@gmail.com")
+ 
+
+            if (options.Email == "fundastic@gmail.com")
             {
                 return Ok(new
                 {
-                    userId = "123"
+                    userId = "40"
                 });
             }
 
             return Forbid();
         }
 
+        public IActionResult Login_Form(int id)
+        {
+
+            return View();
+        }
 
         //-----------------------------------------------------------------------------------
-        public IActionResult Login_Form()
-        {
-            return View();
-        }
 
+        
+        //----------------------------------INDEX-------------------------------------------------
         public IActionResult Index()
         {
-            return View();
+            List<ProjectwithFileModel> projects = projectService.GetAllProjects();
+            ProjectModel projectModel = new ProjectModel { Projects = projects };
+            return View(projectModel);
+        }
+        //-----------------------------------------------------------------------------------
+
+        //--------------------------------DASHBOARD-------------------------------------------
+        public IActionResult Dashboard()
+        {
+            List<ProjectwithFileModel> projects = projectService.GetTopProjects();
+            ProjectModel projectModel = new ProjectModel { Projects = projects };
+            return View(projectModel);
         }
 
+        //-----------------------------------------------------------------------------------
         public IActionResult About()
         {
             return View();
@@ -139,9 +156,16 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
-        public IActionResult TopProjectsDisplay()
+        public IActionResult TopProjects()
         {
             List<ProjectwithFileModel> projects = projectService.GetTopProjects();
+            ProjectModel projectModel = new ProjectModel { Projects = projects };
+            return View("Projects", projectModel);
+        }
+
+        public IActionResult MyProjects(int id)
+        {
+            List<ProjectwithFileModel> projects = projectService.GetMyProjects(id);
             ProjectModel projectModel = new ProjectModel { Projects = projects };
             return View("Projects", projectModel);
         }
@@ -178,10 +202,6 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
-        public IActionResult Dashboard()
-        {
-            return View();
-        }
 
         public IActionResult Privacy()
         {

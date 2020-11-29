@@ -17,7 +17,7 @@ namespace CrowdFundCore.Services
             this.dbContext = dbContext;
         }
 
-
+        
         public List<UserOption> GetAllUsers()
         {
             List<User> users = dbContext.Users.ToList();
@@ -35,7 +35,15 @@ namespace CrowdFundCore.Services
 
         public UserOption CreateUser(UserOption userOption)
         {
-            User user = new User
+            if (string.IsNullOrWhiteSpace(userOption.FirstName) ||
+             string.IsNullOrWhiteSpace(userOption.LastName) ||
+             string.IsNullOrWhiteSpace(userOption.Password)) return null;
+
+            if (string.IsNullOrWhiteSpace(userOption.Email) ||
+             !userOption.Email.Contains("@")) return null;
+            
+
+                User user = new User
             {
                 FirstName = userOption.FirstName,
                 LastName = userOption.LastName,
@@ -97,6 +105,24 @@ namespace CrowdFundCore.Services
             user.Email = userOpt.Email;
             user.Password = userOpt.Password;
         }
+
+
+        //bool SearchUser(string usermail)
+        //{            
+        //    var user1 = dbContext
+        //        .Users
+        //        .Where(u => u.Email == usermail)
+        //        .SingleOrDefault();
+
+        //    if (user.Email != usermail) return false;
+        //    else {user.Id == dbContext.Users}
+        //    return true;
+
+        //}
+
+
+
+
 
     }
 }

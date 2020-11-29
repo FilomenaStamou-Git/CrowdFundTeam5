@@ -9,12 +9,16 @@ function getUserId() {
 
 if (getUserId()) {
     $('#logout-btn').show();
+    $('#login-btn').hide();
 }
 
+if (getUserId()) {
+    $('#logout-btn').show();
+    $('#login-btn1').hide();
+}
 
-// Events
-
-$('#login-btn').on('click', function () {
+$('#login-btn1').on('click', function () {
+    debugger;
     var Email = $('#userEmail').val();
     var Password = $('#userPassword').val();
 
@@ -30,10 +34,11 @@ $('#login-btn').on('click', function () {
         data: JSON.stringify(loginOptions),
         success: function (data) {
             localStorage.setItem('userId', data.userId);
-            window.open("/Home/Projects", "_self")
+            window.open('/Home/MyProjects/' + localStorage.getItem('userId'), "_self")
             $('#logout-btn').show();
-            $('#login-btn').hide();
-       
+            $('#login-btn1').hide();
+
+
         },
         error: function () {
             alert('Login denied');
@@ -44,18 +49,27 @@ $('#login-btn').on('click', function () {
 $('#logout-btn').on('click', function () {
     localStorage.removeItem('userId');
     $('#logout-btn').hide();
-    $('#login-btn').show();
+    $('#login-btn1').show();
 
 });
 
 
-// ---------------------------USER------------------------------
-debugger;
+
+
+let successAlert = $('#success-alert-project').hide();
+let dangerAlert = $('#danger-alert-project').hide();
+
+
+
+
+
+                 /* Add User*/
+
 addUser = $('.addUser').on('click', () => {
-    actionUrl = '/api/user'
+    actionUrl = '/api/user/'
     actiontype = 'POST'
     actionDataType = 'json'
-
+    debugger
     sendData = {
         'firstName': $('#FirstName').val(),
         'lastName': $('#LastName').val(),
@@ -72,9 +86,8 @@ addUser = $('.addUser').on('click', () => {
         processData: false,
 
         success: function (data, textStatus, jQxhr) {
-
             alert(JSON.stringify(data))
-            window.open('/Home/Dashboard', '_self')
+            window.open('/Home/Dashboard/', '_self')
         },
         error: function (jqXhr, textStatus, errorThrown) {
             alert(errorThrown);
@@ -83,8 +96,13 @@ addUser = $('.addUser').on('click', () => {
     });
 })
 
-updateUser = $('.updateUser').on('click', () => {
 
+
+
+                /* Update User */
+
+updateUser = $('.updateUser').on('click', () => {
+    debugger;
     id = $('#Id').val()
 
     actionUrl = '/api/user/' + id
@@ -107,13 +125,15 @@ updateUser = $('.updateUser').on('click', () => {
         processData: false,
 
         success: function (data, textStatus, jQxhr) {
-
-            alert(JSON.stringify(data))
-
-            window.open('/home/users', '_self')
-        },
+            $('#success-alert-project').fadeIn(500);
+            setTimeout(function () {
+                window.open("/home/dashboard", "_self");
+            }, 3000);
+        },   
         error: function (jqXhr, textStatus, errorThrown) {
-            alert(errorThrown);
+
+            console.log('Error from server:' + errorThrown);
+            $('#danger-alert-project').fadeIn(1000);
         }
 
     });
@@ -162,8 +182,7 @@ updateUser = $('.updateUser').on('click', () => {
 
 
 
-    let successAlert = $('#success-alert-project').hide();
-    let dangerAlert = $('#danger-alert-project').hide();
+    
 
     btn = $('#addProject').on('click', () => {
         debugger;
@@ -209,74 +228,36 @@ updateUser = $('.updateUser').on('click', () => {
 
 
 
-    btn = $('#updateProject').on('click', () => {
-        debugger;
-
-        let ProjectId = $('#ProjectId').val();
-        let actionUrl = '/api/project/' + ProjectId
-        let input = document.getElementById('Picture');
-        let files = input.files;
-        let formData = new FormData();
-
-        for (var i = 0; i != files.length; i++) {
-            formData.append('Picture', files[i]);
-        }
-
-        formData.append('Title', $('#Title').val());
-        formData.append('Description', $('#Description').val());
-        formData.append('Categories', $('#Categories').val());
-        formData.append('Amount', $('#Amount').val());
-        formData.append('UserId', $('#UserId').val());
-
-
-        $.ajax({
-            url: actionUrl,
-            data: formData,
-            processData: false,
-            contentType: false,
-            type: 'PUT',
-
-            success: function (data) {
-
-                $('#success-alert-project').fadeIn(1000);
-
-            },
-            error: function (jqXhr, textStatus, errorThrown) {
-                console.log('Error from server:' + errorThrown);
-                $('#danger-alert-project').fadeIn(2000);
-            }
-
-        });
-
-    })
-
-    //function updateProject() {
+    //btn = $('#updateProject').on('click', () => {
     //    debugger;
-    //    id = $('#ProjectId').val()
 
-    //    actionUrl = '/api/project/' + id
-    //    actiontype = 'PUT'
-    //    actionDataType = 'json'
+    //    let ProjectId = $('#ProjectId').val();
+    //    let actionUrl = '/api/project/' + ProjectId
+    //    let input = document.getElementById('Picture');
+    //    let files = input.files;
+    //    let formData = new FormData();
 
-    //    sendData = {
-    //        'Title': $('#Title').val(),
-    //        'Description': $('#Description').val(),
-    //        'Categories': $('#Categories').val(),
-    //        'Update': $('#Update').val(),
-    //        'Amount': $('Amount').val(),
-    //        'Photo': $('Photo').val(),
+    //    for (var i = 0; i != files.length; i++) {
+    //        formData.append('Picture', files[i]);
     //    }
+
+    //    formData.append('Title', $('#Title').val());
+    //    formData.append('Description', $('#Description').val());
+    //    formData.append('Categories', $('#Categories').val());
+    //    formData.append('Amount', $('#Amount').val());
+    //    formData.append('UserId', $('#UserId').val());
+
 
     //    $.ajax({
     //        url: actionUrl,
-    //        data: sendData,
+    //        data: formData,
     //        processData: false,
     //        contentType: false,
-    //        type: actiontype,
+    //        type: 'PUT',
 
     //        success: function (data) {
 
-    //            window.open('/home/projects', '_self');
+    //            $('#success-alert-project').fadeIn(1000);
 
     //        },
     //        error: function (jqXhr, textStatus, errorThrown) {
@@ -285,16 +266,55 @@ updateUser = $('.updateUser').on('click', () => {
     //        }
 
     //    });
-    //}
+
+    //})
+
+btn = $('#updateProject').on('click', () => {
+    debugger;
+    id = $('#ProjectId').val()
+
+    actionUrl = '/api/project/' + id
+    actiontype = 'PUT'
+    actionDataType = 'json'
+
+    sendData = {
+        'Title': $('#Title').val(),
+        'Description': $('#Description').val(),
+        'Categories': $('#Categories').val(),
+        'Update': $('#Update').val(),
+        'Amount': $('#Amount').val(),
+       // 'Photo': $('#Photo').val(),
+    }
+
+    $.ajax({
+        url: actionUrl,
+        data: JSON.stringify(sendData),
+        processData: false,
+        contentType: 'application/json',
+        type: actiontype,
+
+        success: function (data) {
+
+            window.open('/home/projects', '_self');
+
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log('Error from server:' + errorThrown);
+            $('#danger-alert-project').fadeIn(2000);
+        }
+
+    });
+});
 
     //------------------------------- PACKAGE ----------------------------------------
 
-    /* Create Packages */
+                                /* Add Packages */
 
     btn = $('.js-submit-package-create').on('click', () => {
         let ProjectId = parseInt($('#js-ProjectId-Package').val());
 
 
+        debugger;
         for (var i = 1; i <= 3; i++) {
             let description = $('#Description' + i).val();
             let reward = parseInt($('#Reward' + i).val());
@@ -313,21 +333,26 @@ updateUser = $('.updateUser').on('click', () => {
 
 
                 success: function (data) {
-                    window.open("/home/dashboard", "_self")
+                    $('#success-alert-project').fadeIn(1000);
+                    setTimeout(function () {
+                        window.open("/home/dashboard", "_self");
+                    }, 5000);
 
                 },
                 error: function (jqXhr, textStatus, errorThrown) {
-                    alert("Error from server:" + errorThrown);
+                    $('#danger-alert-project').fadeIn(2000);
+                    console.log("Error from server:" + errorThrown);
                 }
             });
         }
 
     });
 
-    //--------------------------Update Pacakges--------------------//
-
-    Updatepackage = $('.updatePackage').on('click', () => {
-        id = $('#Id').val()
+    //------------------------Update Package--------------------//
+    
+Updatepackage = $('#js-update-Package').on('click', () => {
+        debugger;
+       let id = $('#Id').val()
 
         actionUrl = '/api/package/' + id
         actiontype = 'PUT'
@@ -335,15 +360,14 @@ updateUser = $('.updateUser').on('click', () => {
 
         sendData = {
             'Description': $('#Description').val(),
-            'Reward': $('#Reward').val(),
-            'ProjectId': $('#ProjectId').val(),
+            'Reward': parseFloat($('#Reward').val()),
         }
 
         $.ajax({
             url: actionUrl,
             dataType: actionDataType,
             type: actiontype,
-            data: JSON.stringify(sendData),
+            data: (JSON.stringify(sendData)),
             contentType: 'application/json',
             processData: false,
 
@@ -361,83 +385,45 @@ updateUser = $('.updateUser').on('click', () => {
 
     })
 
+function findToUpdatePackage() {
 
-    //btn = $('.js-submit-package-create').on('click', () => {
-    //    debugger;
-    //    var actionUrl = '/api/package/'
+    id = $('#Id').val()
+    actionUrl = '/Home/UpdatePackage/' + id
 
-    //    var formData = new FormData();
+    window.open(actionUrl, '_self');
 
-    //    for (var i = 1; i <= 3; i++) {
-
-
-    //            formData.append('Description', $('#Description' + 1).val());
-    //            formData.append('Reward', $('#Reward' + 1).val());
-    //            formData.append('Categories', $('#Categories' + 1).val());
-    //            formData.append('Amount', $('#Amount' + 1).val());
-    //            formData.append('ProjectId', $('#js-ProjectId-package').val());
+}
 
 
-    //            $.ajax({
-    //                url: actionUrl,
-    //                data: JSON.stringify(formData),
-    //                processData: false,
-    //                contentType: 'application/json',
-    //                type: 'POST',
+    //function updatePackage() {
+    //    id = $('#Id').val()
 
-    //                success: function (data) {
+    //    actionUrl = '/api/package/' + id
+    //    actiontype = 'PUT'
+    //    actionDataType = 'json'
+     
+    //    formData.append('amount', $('#Amount').val());
+    //    formData.append('description', $('#Description').val());
+    //    formData.append('reward', $('#Reward').val());
 
-    //                    $('#success-alert-project');
-    //                    window.open('/home/packages', '_self')
+    //    $.ajax({
+    //        url: actionUrl,
+    //        data: formData,
+    //        processData: false,
+    //        contentType: 'application/json',
+    //        type: 'PUT',
 
-    //                },
-    //                error: function (jqXhr, textStatus, errorThrown) {
-    //                    console.log('Error from server:' + errorThrown);
-    //                    $('#danger-alert-project').fadeIn(2000);
-    //                }
-
-    //            });
+    //        success: function (data) {
+    //            window.open('/home/packages', '_self')
+    //        },
+    //        error: function (jqXhr, textStatus, errorThrown) {
+    //            alert('Error from server:' + errorThrown);
     //        }
-    //    })
 
+    //    });
+    //}
 
-
-
-
-    function updatePackage() {
-        id = $('#Id').val()
-
-        actionUrl = '/api/package/' + id
-        actiontype = 'PUT'
-        actionDataType = 'json'
-        var input = document.getElementById('Picture');
-        var files = input.files;
-        var formData = new FormData();
-
-        for (var i = 0; i != files.length; i++) {
-            formData.append('Picture', files[i]);
-        }
-
-        formData.append('amount', $('#Amount').val());
-        formData.append('description', $('#Description').val());
-        formData.append('reward', $('#Reward').val());
-
-        $.ajax({
-            url: actionUrl,
-            data: formData,
-            processData: false,
-            contentType: false,
-            type: 'PUT',
-
-            success: function (data) {
-                window.open('/home/packages', '_self')
-            },
-            error: function (jqXhr, textStatus, errorThrown) {
-                alert('Error from server:' + errorThrown);
-            }
-
-        });
-    }
+                    /* Delete Package */
 
     function deletePackage() {
 
@@ -465,34 +451,37 @@ updateUser = $('.updateUser').on('click', () => {
 
         });
 
-    }
+}
 
-    function findToUpdatePackage() {
-        ProjectId = $('#ProjectId').val()
-        actionUrl = '/Home/UpdatePackageWithDetails/' + id
 
-        window.open(actionUrl, '_self');
 
-        $.ajax({
-            url: actionUrl,
-            dataType: actionDataType,
-            type: actiontype,
-            data: JSON.stringify(sendData),
-            contentType: 'application/json',
-            processData: false,
+    //function findToUpdatePackage() {
+    //    //ProjectId = $('#ProjectId').val()
+    //    ProjectId =parseInt($('#projectId-updatepackage').val())
+    //    actionUrl = '/Home/UpdatePackagesofProject/' + ProjectId
 
-            success: function (data, textStatus, jQxhr) {
+    //    window.open(actionUrl, '_self');
 
-                alert(JSON.stringify(data))
+    //    $.ajax({
+    //        url: actionUrl,
+    //        dataType: actionDataType,
+    //        type: actiontype,
+    //        data: JSON.stringify(sendData),
+    //        contentType: 'application/json',
+    //        processData: false,
 
-                window.open('/home/projects', '_self')
-            },
-            error: function (jqXhr, textStatus, errorThrown) {
-                alert(errorThrown);
-            }
+    //        success: function (data, textStatus, jQxhr) {
 
-        });
-    }
+    //            alert(JSON.stringify(data))
+
+    //            window.open('/home/projects', '_self')
+    //        },
+    //        error: function (jqXhr, textStatus, errorThrown) {
+    //            alert(errorThrown);
+    //        }
+
+    //    });
+    //}
 
     function findToUpdateProject() {
 
@@ -503,6 +492,8 @@ updateUser = $('.updateUser').on('click', () => {
 
     }
 
+
+
     ProjectDetails = $('.js-project-details').on('click', () => {
         id = $('.js-ProjectId').val()
         actionUrl = '/Home/ProjectDetails/' + id
@@ -510,10 +501,9 @@ updateUser = $('.updateUser').on('click', () => {
     })
 
 
-
+                /* Search In Navbar */
 
     searchBtn = $('.searchProject').on('click', () => {
-
 
         searchText = $('#searchText').val()
         actionUrl = '/Home/SearchProjectDisplay?text=' + searchText
@@ -533,7 +523,53 @@ updateUser = $('.updateUser').on('click', () => {
             window.open(actionUrl, '_self');
         }
     }
-    );
+);
+
+
+// --------------- Search In filters  ------------------------
+
+searchBtnFilter = $('.searchProjectFilter').on('click', () => {
+
+    searchTextFilter = $('#searchTextFilter').val()
+    actionUrl = '/Home/SearchProjectDisplay?text=' + searchTextFilter
+
+    window.open(actionUrl, '_self');
+})
+
+searchEnterFilter = $('.handleEnterFilter').on('keypress', function (e) {
+
+    if (e.keyCode == 13) {
+        // Cancel the default action on keypress event
+        e.preventDefault();
+
+        searchTextFilter = $('#searchTextFilter').val()
+        actionUrl = '/Home/SearchProjectDisplay?text=' + searchTextFilter
+
+        window.open(actionUrl, '_self');
+    }
+}
+);
+//--------------------------------------------------------------------
+
+
+
+
+let btn5 = $('#searchControlSelectCategory').on('keypress', (e) => {
+    let title = $('#inputSearchTitle');
+    let description = $('#inputSearchDescription');
+    let category = parseInt($('#searchControlSelectCategory').val());
+
+    if (e.keyCode == 13) {
+        window.location.assign('SearchProjectDisplay?text=' + category);
+    }
+})
+
+
+
+
+
+
+
 
 
     /*Show Picture Name when adding it */
@@ -548,7 +584,7 @@ updateUser = $('.updateUser').on('click', () => {
 
 
 
-//--------------------- Fund Project ---------------
+    //--------------------- Fund Project ---------------
 
 
 fundProject = $('#fundProject').on('click', () => {
@@ -556,33 +592,33 @@ fundProject = $('#fundProject').on('click', () => {
     actionUrl = '/home/fundproject'
     actiontype = 'PUT'
     actionDataType = 'json'
+    fundUserId = parseInt(localStorage.getItem('userId'))
+    ProjectFundId = parseInt($('#js-projectId-fund').val())
 
-    sendData = {        
-            'Projectid': parseInt($('#js-projectId-fund').val()),
-            'Packageid': parseInt($('#js-packageId-fund').val()),
-            'Userid': parseInt($('#js-userId-fund').val()),
-            'Reward': parseFloat($('#js-reward-fund').val()),
-            'Id': 0        
+    sendData = {
+        'Projectid': ProjectFundId,  //parseInt($('#js-projectId-fund').val()),
+        'Packageid': parseInt($('#js-packageId-fund').val()),
+        'Userid': fundUserId, //parseInt($('#js-userId-fund').val()),
+        'Reward': parseFloat($('#js-reward-fund').val())
     }
 
     $.ajax({
         url: actionUrl,
         dataType: actionDataType,
         type: actiontype,
-        data: JSON.stringify(sendData),
+        data: (JSON.stringify(sendData)),
         contentType: 'application/json',
         processData: false,
 
         success: function (data, textStatus, jQxhr) {
 
-            alert(JSON.stringify(data))
-
-            window.open('/home/dashboard', '_self')
+            window.open('/home/projects/', '_self');
         },
         error: function (jqXhr, textStatus, errorThrown) {
-            alert(errorThrown);
+            $('#success-alert-project').fadeIn(500);
+            setTimeout(function () {
+                window.open('/home/projectdetails/' + ProjectFundId, '_self');
+            }, 3000);
         }
-
     });
-});
-
+})

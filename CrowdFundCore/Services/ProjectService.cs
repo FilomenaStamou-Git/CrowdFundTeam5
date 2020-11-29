@@ -22,6 +22,9 @@ namespace CrowdFundCore.Services
         
         public ProjectwithFileModel CreateProject(ProjectwithFileModel projectOption)
         {
+            if (string.IsNullOrWhiteSpace(projectOption.Title) ||
+              string.IsNullOrWhiteSpace(projectOption.Description)) return null;
+
 
             Project project = new Project
             {
@@ -92,7 +95,7 @@ namespace CrowdFundCore.Services
         {
 
             List<Project> projects = dbContext.Projects
-                .Where(p => p.Title.Contains(searchCriteria) || Enum.IsDefined(typeof(Category),searchCriteria))
+                .Where(p => p.Title.Contains(searchCriteria)) // || Enum.IsDefined(typeof(Category),searchCriteria))
                 .ToList();
 
            List <ProjectwithFileModel> projectsOpt = new List<ProjectwithFileModel>();
@@ -123,7 +126,7 @@ namespace CrowdFundCore.Services
                 Description = project.Description,
                 Categories = project.Categories,
                 Update = project.Update,
-                Created = DateTime.UtcNow,
+                Created = project.Created,
                 Fundings = project.Fundings,
                 Amount = project.Amount,
                 Photo = project.Photo,
@@ -167,7 +170,7 @@ namespace CrowdFundCore.Services
             project.Description = projectOpt.Description;
             project.Categories = projectOpt.Categories;
             project.Update = projectOpt.Update;
-            project.Created = DateTime.UtcNow;
+            project.Created = projectOpt.Created;
             project.Fundings = projectOpt.Fundings;
             project.Amount = projectOpt.Amount;
             project.Photo = projectOpt.Photo;
@@ -200,21 +203,81 @@ namespace CrowdFundCore.Services
 
         }
 
+        public List<ProjectwithFileModel> GetMyProjects(int id)
+        {
+
+            List<Project> projects = dbContext
+                .Projects
+                .Where(p => p.UserId == id)
+                .ToList();
+        
+
+            List<ProjectwithFileModel> projectsOpt = new List<ProjectwithFileModel>();
+            projects.ForEach(project => projectsOpt.Add(new ProjectwithFileModel
+            {
+                Id = project.Id,
+                Title = project.Title,
+                Description = project.Description,
+                Categories = project.Categories,
+                Update = project.Update,
+                Amount = project.Amount,
+                Fundings = project.Fundings,
+                Photo = project.Photo,
+                Video = project.Video,
+                UserId = project.UserId
+            }));
+
+            return projectsOpt;
+        }
+
+    
+
 
         public void Funding (FundingProject funding)
         {
             User user = dbContext.Users.Find(funding.Userid);
-            user.Gross =+ funding.Reward;
+            user.Gross += funding.Reward;
             Project project = dbContext.Projects.Find(funding.Projectid);
-            project.Fundings =+ funding.Reward;
+            project.Fundings += funding.Reward;
             Package package = dbContext.Packages.Find(funding.Packageid);
             package.Count++;
 
             dbContext.Add(funding);
-
             dbContext.SaveChanges();
         }
 
 
+
+
+        //SELECT distinct[dbo].[FundingProjects].ProjectId FROM[dbo].[FundingProjects]
+        //where[dbo].[FundingProjects].UserId = 2
+
+        //public List<FundingProject> MyFundings(int id)
+        //{
+
+        //    List<Project> projects = dbContext
+        //        .Projects
+        //        .Where(p => p.UserId == id)
+        //        .ToList();
+
+        //    return NotImplementedException
+        //}
+
+
+
+        public IQueryable<Project> SearchByCategory(
+            ProjectwithFileModel options)
+        {
+            var q = dbContext
+                .Set<Project>()
+                .AsQueryable();            
+            return q;
+        }
+
+
+
+
     }
+
+
 }

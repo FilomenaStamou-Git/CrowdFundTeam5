@@ -21,30 +21,30 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container-fluid" style="margin:100px 200px 100px 200px; padding: 50px; border-radius: 15px 50px; width:60%;background-color:white">
-        <form>
+    <div class="container-fluid" style="margin:auto; padding: 50px; border-radius: 15px 50px; width:60%;background-color:white">
+        <form name='form-login'>
             <div class="form-group row">
-                <label for="FirstName" class="col-sm-2 col-form-label"><b>FirstName</b></label>
+                <label for="FirstName" class="col-sm-2 col-form-label"><b>FirstName* </b></label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="FirstName" placeholder="FirstName">
+                    <input type="text" class="form-control" id="FirstName" placeholder="FirstName" required="required">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="LastName" class="col-sm-2 col-form-label"><b>LastName</b></label>
+                <label for="LastName" class="col-sm-2 col-form-label"><b>LastName*</b></label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="LastName" placeholder="LastName">
+                    <input type="text" class="form-control" id="LastName" placeholder="LastName" required="required">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="Email" class="col-sm-2 col-form-label"><b>Email</b></label>
+                <label for="Email" class="col-sm-2 col-form-label"><b>Email*</b></label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="Email" placeholder="Email">
+                    <input type="email" class="form-control" id="Email" placeholder="Email" required="required">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="Password" class="col-sm-2 col-form-label"><b>Password</b></label>
+                <label for="Password" class="col-sm-2 col-form-label"><b>Password*</b></label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="Password" placeholder="Password">
+                    <input type="password" class="form-control" id="Password" placeholder="Password" required="required">
                 </div>
             </div>
             <div class="form-group row">
@@ -54,7 +54,10 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-10 offset-sm-2">
-                    <input type="button"style="width:120px;height:40px" value="Sign Up" class="addUser" />
+                    @*<button type="button" class="btn btn-outline-primary" onclick="AddUser">Sign Up</button>*@
+                    @*<input type="button" style="width:120px;height:40px;background-color:steelblue;color:white;border:none" value="Sign Up" class="addUser" />*@
+                    <input type="submit" style="width:120px;height:40px" value="Sign Up" class="addUser" />
+
                 </div>
             </div>
         </form>
