@@ -93,8 +93,8 @@ $('#login-btn1').on('click', function () {
         success: function (data) {
             localStorage.setItem('userId', data.userId);
             window.open('/Home/MyProjects/' + localStorage.getItem('userId'), "_self")
-            //$('#login-btn').hide();
             $('#logout-btn').show();
+            $('#login-btn1').hide();
 
 
         },
@@ -108,7 +108,6 @@ $('#logout-btn').on('click', function () {
     localStorage.removeItem('userId');
     $('#logout-btn').hide();
     $('#login-btn1').show();
-
 });
 
 
