@@ -17,11 +17,39 @@
 </head>
 </html>
 
+@*<header class="header fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <small class="font-weight-bold mb-0 text-uppercase">Smoothscroll</small>
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link scroll-link" href="#one">Section 1 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scroll-link" href="#two">Section 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scroll-link" href="#three">Section 3</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scroll-link" href="#four">Section 4</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>*@
 
 <body style="background-color:aliceblue">
-
     <nav class="navbar navbar-expand-xl navbar-light bg-dark">
-        <a href="~/Home/Index" class="navbar-brand text-light"><i class="fa fa-cube"></i>Fund<b>Astic</b></a>
+        <a href="~/Home/Index" class="navbar-brand text-light"><img src="~/img/logo.png" alt="FUNDastic" width="210" height="70"></a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,13 +81,13 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="footer-distributed">
+    <!--<footer class="footer-distributed">
 
         <div class="footer-left">
 
@@ -103,17 +131,94 @@
                 FundAstic is a crowd funding platform for the web, where one, could share their wildest idea and others could contribute financially to see it happening.
             </p>
 
-            <div class="footer-icons">
-                <!--<a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>-->
-                <a href="https://github.com/ioanchri/CrowdFundTeam5"><i class="fa fa-github"></i></a>
+            <div class="footer-icons">-->
+    <!--<a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    <a href="#"><i class="fa fa-linkedin"></i></a>-->
+    <!--<a href="https://github.com/ioanchri/CrowdFundTeam5"><i class="fa fa-github"></i></a>
 
             </div>
 
         </div>
 
+    </footer>-->
+
+
+    <footer class="site-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-3">
+                    <h6>About Us</h6>
+                    <p class="text-justify"><i>FUNDAstic</i> is a crowd funding platform for the web, where one, could share their wildest idea and others could contribute financially to see it happening. Either you are a project creator or an angel investor, this is the ideal platform for your needs! Sign up now to explore it!</p>
+                </div>
+
+                <div class="col-xs-12 col-md-3">
+                    <h6>Project Categories</h6>
+                    <ul class="footer-links">
+                        <li>Technology</li>
+                        <li>Food</li>
+                        <li>Education</li>
+                        <li>Music</li>
+                        <li>Fashion</li>
+                        <li>Photography</li>
+                        <li>Travel</li>
+                        <li>Health</li>
+                        <li>WebSeries</li>
+                        <li>Transportation</li>
+
+                    </ul>
+                </div>
+
+                <div class="col-xs-12 col-md-3">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="/Home/Index">Home</a></li>
+                        <li><a href="/Home/Privacy">Privacy</a></li>
+                        <li><a href="/Home/About">About</a></li>
+                        <li><a href="/Home/Users">View Users</a></li>
+                        <li><a href="/Home/Projects">View Projects</a></li>
+                        <li><a href="/Home/AddUser">Sign Up</a></li>
+                        <li><a href="/Home/Login_Form">Login</a></li>
+
+                    </ul>
+                </div>
+
+                <div class="col-sm-12 col-md-3">
+                    <h6>Contact Us</h6>
+                    <div>
+                        <p><i class="fa fa-envelope"></i><a href="mailto:support@company.com"> Email: contact@fundastic.com</a></p>
+                    </div>
+
+                    <div>
+                        <p><i class="fa fa-phone"></i> Support: +30 555 1234560</p>
+                    </div>
+
+                    <div>
+                        <p><i class="fa fa-github"></i><a href="https://github.com/ioanchri/CrowdFundTeam5"> GitHub</a></p>
+                    </div>
+
+                    <div margin-left:auto; margin-right:0;>
+                        <a href="~/Home/Index" class="navbar-brand text-light"><img src="~/img/logo.png" alt="FUNDastic" width="210" height="70"></a>
+                    </div>
+
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">
+                        Copyright &copy; 2020 All Rights Reserved by
+                        <a href="/Home/Privacy">FUNDastic</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
+
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

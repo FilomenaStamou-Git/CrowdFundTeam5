@@ -15,22 +15,22 @@ namespace CrowdFundCore
             Console.WriteLine("Welcome to the test area of the CrowdFunding website!");
 
             ////--------------CREATE USER--------------------------
-            using var db = new CFDBContext();
-            for (var i = 0; i < 20; i++)
-            {
+            //using var db = new CFDBContext();
+            //for (var i = 0; i < 20; i++)
+            //{
 
-                User user = new User
-                {
-                    firstname = "test firstname " + i,
-                    lastname = "test lastname " + i,
-                    email = "test@mail.com",
-                    Password = "test"
+            //    User user = new User
+            //    {
+            //        FirstName = "test firstname " + i,
+            //        LastName = "test lastname " + i,
+            //        Email = "test@mail.com",
+            //        Password = "test"
 
-                };
+            //    };
 
-                db.Users.Add(user);
-                db.SaveChanges();
-            }
+            //    db.Users.Add(user);
+            //    db.SaveChanges();
+            //}
 
 
 

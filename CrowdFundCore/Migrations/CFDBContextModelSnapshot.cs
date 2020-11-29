@@ -19,6 +19,30 @@ namespace CrowdFundCore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("CrowdFundCore.Models.FundingProject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Packageid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Projectid")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Reward")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Userid")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FundingProjects");
+                });
+
             modelBuilder.Entity("CrowdFundCore.Models.Package", b =>
                 {
                     b.Property<int>("Id")

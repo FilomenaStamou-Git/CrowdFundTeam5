@@ -12,8 +12,7 @@ namespace CrowdFundCore.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Package> Packages { get; set; }
         public DbSet<Project> Projects { get; set; }
-        //public DbSet<FundingPackage> FundingPackages { get; set; }
-        //public DbSet<FundingProject> FundingProjects { get; set; }
+        public DbSet<FundingProject> FundingProjects { get; set; }
 
         public readonly static string connectionString =
         "Server=tcp:katha-filomena.database.windows.net,1433;Initial Catalog=CrowdFundTeam5;Persist Security Info=False;User ID=katha;Password=2212962014AthFilo;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";

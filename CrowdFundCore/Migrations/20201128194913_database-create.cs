@@ -8,6 +8,22 @@ namespace CrowdFundCore.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "FundingProjects",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Projectid = table.Column<int>(nullable: false),
+                    Packageid = table.Column<int>(nullable: false),
+                    Userid = table.Column<int>(nullable: false),
+                    Reward = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FundingProjects", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -88,6 +104,9 @@ namespace CrowdFundCore.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "FundingProjects");
+
             migrationBuilder.DropTable(
                 name: "Packages");
 
