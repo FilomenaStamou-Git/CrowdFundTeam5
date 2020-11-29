@@ -139,7 +139,7 @@ addUser = $('.addUser').on('click', () => {
 
         success: function (data, textStatus, jQxhr) {
             alert(JSON.stringify(data))
-            window.open('/Home/Dashboard', '_self')
+            window.open('/Home/Dashboard/', '_self')
         },
         error: function (jqXhr, textStatus, errorThrown) {
             alert(errorThrown);
