@@ -44,19 +44,33 @@ namespace CrowdFundMVC.Controllers
             return Forbid();
         }
 
-
-        //-----------------------------------------------------------------------------------
         public IActionResult Login_Form(int id)
         {
 
             return View();
         }
 
+        //-----------------------------------------------------------------------------------
+
+        
+        //----------------------------------INDEX-------------------------------------------------
         public IActionResult Index()
         {
-            return View();
+            List<ProjectwithFileModel> projects = projectService.GetAllProjects();
+            ProjectModel projectModel = new ProjectModel { Projects = projects };
+            return View(projectModel);
+        }
+        //-----------------------------------------------------------------------------------
+
+        //--------------------------------DASHBOARD-------------------------------------------
+        public IActionResult Dashboard()
+        {
+            List<ProjectwithFileModel> projects = projectService.GetTopProjects();
+            ProjectModel projectModel = new ProjectModel { Projects = projects };
+            return View(projectModel);
         }
 
+        //-----------------------------------------------------------------------------------
         public IActionResult About()
         {
             return View();
@@ -188,12 +202,6 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
-        public IActionResult Dashboard()
-        {
-            List<ProjectwithFileModel> projects = projectService.GetTopProjects();
-            ProjectModel projectModel = new ProjectModel { Projects = projects };
-            return View(projectModel);
-        }
 
         public IActionResult Privacy()
         {

@@ -22,6 +22,9 @@ namespace CrowdFundCore.Services
         
         public ProjectwithFileModel CreateProject(ProjectwithFileModel projectOption)
         {
+            if (string.IsNullOrWhiteSpace(projectOption.Title) ||
+              string.IsNullOrWhiteSpace(projectOption.Description)) return null;
+
 
             Project project = new Project
             {
@@ -233,17 +236,48 @@ namespace CrowdFundCore.Services
         public void Funding (FundingProject funding)
         {
             User user = dbContext.Users.Find(funding.Userid);
-            user.Gross =+ funding.Reward;
+            user.Gross += funding.Reward;
             Project project = dbContext.Projects.Find(funding.Projectid);
-            project.Fundings =+ funding.Reward;
+            project.Fundings += funding.Reward;
             Package package = dbContext.Packages.Find(funding.Packageid);
             package.Count++;
 
             dbContext.Add(funding);
-
             dbContext.SaveChanges();
         }
 
 
+
+
+        //SELECT distinct[dbo].[FundingProjects].ProjectId FROM[dbo].[FundingProjects]
+        //where[dbo].[FundingProjects].UserId = 2
+
+        //public List<FundingProject> MyFundings(int id)
+        //{
+
+        //    List<Project> projects = dbContext
+        //        .Projects
+        //        .Where(p => p.UserId == id)
+        //        .ToList();
+
+        //    return NotImplementedException
+        //}
+
+
+
+        public IQueryable<Project> SearchByCategory(
+            ProjectwithFileModel options)
+        {
+            var q = dbContext
+                .Set<Project>()
+                .AsQueryable();            
+            return q;
+        }
+
+
+
+
     }
+
+
 }

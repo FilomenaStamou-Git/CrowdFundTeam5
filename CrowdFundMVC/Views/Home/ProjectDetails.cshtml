@@ -76,8 +76,6 @@
                                 <p><b>Description: </b>@package.Description</p>
                                 <p><b>Reward: </b>@package.Reward</p>
                                 <button type="button" , id="fundProject" class="btn btn-outline-info">Fund</button>
-                                <a data-toggle="modal" href="#exampleModal" class="btn btn-outline-info">Funding</a>
-                                @*<button type="button" class="btn btn-primary btn-lg btn-block" id="fundProject" style="width:350px">Fund</button>*@
                             </div>
                         </div>
 
@@ -86,45 +84,8 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    @*<a href="~/home/Packages/@Model.project.Id" style="color:white;background-color:royalblue;width:150px;height:40px;border-radius:6px;margin:20px;text-align:center;padding:5px;position:center">View Packages</a>*@
-    @*<a href="~/home/Projects" style="color:white;background-color:slategray;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center">Back</a>*@
-</div>
 
-
-
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="container">
-                        <h5 class="modal-title" id="exampleModalLabel">Funding</h5>
-
-                        <div class="row">
-                            @*<input class="" id="js-userId-fund" type="hidden" value="" />*@
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">User Id</label>
-                                <input type="number" class="form-control" id="UserId-funding" placeholder="Enter your ID">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" id="fundProject" data-dismiss="modal">Fund</button>
-                    </div>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                </div>
-            </div>
-        </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
+</div>
