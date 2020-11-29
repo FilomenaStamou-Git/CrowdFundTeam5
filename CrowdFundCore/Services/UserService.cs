@@ -80,14 +80,14 @@ namespace CrowdFundCore.Services
 
         public UserOption GetUserById(int id)
         {
-            User user= dbContext.Users.Find(id);
+            User user = dbContext.Users.Find(id);
             return new UserOption
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
                 Password = user.Password,
-                Id = user.Id 
+                Id = user.Id
             };
         }
         private static void userOptToUser(UserOption userOpt, User user)
@@ -97,6 +97,8 @@ namespace CrowdFundCore.Services
             user.Email = userOpt.Email;
             user.Password = userOpt.Password;
         }
+
+       
 
     }
 }

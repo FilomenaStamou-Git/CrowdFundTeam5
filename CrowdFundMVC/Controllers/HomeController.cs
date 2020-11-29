@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using CrowdFundCore.Models;
 using CrowdFundCore.Options;
 using CrowdFundCore.Services;
@@ -10,6 +7,7 @@ using CrowdFundCoreServices;
 using CrowdFundMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using LoginOptions = CrowdFundMVC.Models.LoginOptions;
 
 namespace CrowdFundMVC.Controllers
 {
@@ -19,6 +17,7 @@ namespace CrowdFundMVC.Controllers
         private readonly IUserService userService;
         private readonly IProjectService projectService;
         private readonly IPackageService packageService;
+        private object dbContext;
 
         public HomeController(ILogger<HomeController> logger, IUserService _userService, IProjectService _projectService, IPackageService _packageService)
         {
@@ -31,8 +30,12 @@ namespace CrowdFundMVC.Controllers
         [HttpPost]
         public IActionResult Login([FromBody] LoginOptions options)
         {
-            if (options.Email == "danaykap13@gmail.com")
-            {
+            //   User users = dbContext.Users.UserModel.Users.Where(user => user.Email == options.Email);
+
+            // if (users != null)
+            if (options.Email == "dimitris")
+            
+                {
                 return Ok(new
                 {
                     userId = "1234"

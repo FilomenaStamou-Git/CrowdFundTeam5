@@ -89,7 +89,7 @@ addUser = $('.addUser').on('click', () => {
 })
 
 updateUser = $('.updateUser').on('click', () => {
-
+    debugger;
     id = $('#Id').val()
 
     actionUrl = '/api/user/' + id
@@ -214,7 +214,7 @@ updateUser = $('.updateUser').on('click', () => {
 
 
 
-    btn = $('#updateProject').on('click', () => {
+     $('#updateProject').on('click', () => {
         debugger;
 
         let ProjectId = $('#ProjectId').val();
@@ -337,43 +337,125 @@ updateUser = $('.updateUser').on('click', () => {
 
     //--------------------------Update Packages--------------------//
 
-    Updatepackage = $('.updatePackage').on('click', () => {
-        id = $('#Id').val()
+Updatepackage = $('#js-update-Package').on('click', () => {
+    debugger;
+    let id = $('#Id').val()
 
-        actionUrl = '/api/package/' + id
-        actiontype = 'PUT'
-        actionDataType = 'json'
+    actionUrl = '/api/package/' + id
+    actiontype = 'PUT'
+    actionDataType = 'json'
 
-        sendData = {
-            'Description': $('#Description').val(),
-            'Reward': $('#Reward').val(),
-            'ProjectId': $('#ProjectId').val(),
+    sendData = {
+        'Description': $('#Description').val(),
+        'Reward': parseFloat($('#Reward').val()),
+    }
+
+    $.ajax({
+        url: actionUrl,
+        dataType: actionDataType,
+        type: actiontype,
+        data: (JSON.stringify(sendData)),
+        contentType: 'application/json',
+        processData: false,
+
+        success: function (data, textStatus, jQxhr) {
+
+            alert(JSON.stringify(data))
+
+            window.open('/home/users', '_self')
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            alert(errorThrown);
         }
 
-        $.ajax({
-            url: actionUrl,
-            dataType: actionDataType,
-            type: actiontype,
-            data: JSON.stringify(sendData),
-            contentType: 'application/json',
-            processData: false,
+    });
 
-            success: function (data, textStatus, jQxhr) {
-
-                alert(JSON.stringify(data))
-
-                window.open('/home/users', '_self')
-            },
-            error: function (jqXhr, textStatus, errorThrown) {
-                alert(errorThrown);
-            }
-
-        });
-
-    })
+})
 
 
+<<<<<<< Updated upstream
     function updatePackage() {
+=======
+    //btn = $('.js-submit-package-create').on('click', () => {
+    //    debugger;
+    //    var actionUrl = '/api/package/'
+
+    //    var formData = new FormData();
+
+    //    for (var i = 1; i <= 3; i++) {
+
+
+    //            formData.append('Description', $('#Description' + 1).val());
+    //            formData.append('Reward', $('#Reward' + 1).val());
+    //            formData.append('Categories', $('#Categories' + 1).val());
+    //            formData.append('Amount', $('#Amount' + 1).val());
+    //            formData.append('ProjectId', $('#js-ProjectId-package').val());
+
+
+    //            $.ajax({
+    //                url: actionUrl,
+    //                data: JSON.stringify(formData),
+    //                processData: false,
+    //                contentType: 'application/json',
+    //                type: 'POST',
+
+    //                success: function (data) {
+
+    //                    $('#success-alert-project');
+    //                    window.open('/home/packages', '_self')
+
+    //                },
+    //                error: function (jqXhr, textStatus, errorThrown) {
+    //                    console.log('Error from server:' + errorThrown);
+    //                    $('#danger-alert-project').fadeIn(2000);
+    //                }
+
+    //            });
+    //        }
+    //    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   /* function updatePackage() {
+>>>>>>> Stashed changes
         id = $('#Id').val()
 
         actionUrl = '/api/package/' + id
@@ -399,9 +481,13 @@ updateUser = $('.updateUser').on('click', () => {
             }
 
         });
+<<<<<<< Updated upstream
 }
 
                     /* Delete Package */
+=======
+    }*/
+>>>>>>> Stashed changes
 
     function deletePackage() {
 
@@ -556,14 +642,19 @@ fundProject = $('#fundProject').on('click', () => {
             'Projectid': parseInt($('#js-projectId-fund').val()),
             'Packageid': parseInt($('#js-packageId-fund').val()),
             'Userid': parseInt($('#js-userId-fund').val()),
+<<<<<<< Updated upstream
             'Reward': parseFloat($('#js-reward-fund').val())
+=======
+            'Reward': parseFloat($('#js-reward-fund').val()),
+                  
+>>>>>>> Stashed changes
     }
 
     $.ajax({
         url: actionUrl,
         dataType: actionDataType,
         type: actiontype,
-        data: sendData,
+        data: (JSON.stringify(sendData)),
         contentType: 'application/json',
         processData: false,
 

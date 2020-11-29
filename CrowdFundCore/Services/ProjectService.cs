@@ -203,6 +203,7 @@ namespace CrowdFundCore.Services
         public List<ProjectwithFileModel> GetMyProjects(int id)
         {
 
+<<<<<<< Updated upstream
             List<Project> projects = dbContext
                 .Projects
                 .Where(p => p.UserId == id)
@@ -245,5 +246,45 @@ namespace CrowdFundCore.Services
         }
 
 
+=======
+            dbContext.Add(funding);
+
+            dbContext.SaveChanges();
+        }
+
+
+
+
+      /*   public List<ProjectwithFileModel>  MyFundings (int id)
+         {
+            int[] temp = dbContext
+                 .Set<FundingProject>()
+                 .Where(p => p.Userid == id )
+                 .Select(u => u.Projectid)
+                 .ToList();
+
+             var myFundings = dbContext.Projects.Where(p => p.Id = temp);
+             List<ProjectwithFileModel> projectsOpt = new List<ProjectwithFileModel>();
+             myFundings.ForEach(project => projectsOpt.Add(new ProjectwithFileModel
+             {
+                 Id = project.Id,
+                 Title = project.Title,
+                 Description = project.Description,
+                 Categories = project.Categories,
+                 Update = project.Update,
+                 Amount = project.Amount,
+                 Fundings = project.Fundings,
+                 Photo = project.Photo,
+                 Video = project.Video,
+                 UserId = project.UserId
+             }));
+             return projectsOpt;
+
+
+
+
+
+         } */
+>>>>>>> Stashed changes
     }
 }
