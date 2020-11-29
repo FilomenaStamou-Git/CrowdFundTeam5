@@ -21,74 +21,110 @@
     <div class="card mb-3" style="padding:15px">
         <div class="row">
             <p class="card-text" style="padding:15px">
-                <b>Category: </b>@Model.project.Categories</p>
+                <b>Category: </b>@Model.project.Categories
+            </p>
         </div>
-            <img class="card-img-top" src="~/uploadedimages/@Model.project.Photo" alt="Card image cap">
-            <div class="card-body" style="padding:15px">
-                <div class="row">
-                    <h4 class="text-center"><b><i>@Model.project.Title</i></b></h4>
-                </div>
-                <br />
-                <p class="card-text"><b>Description: </b>@Model.project.Description</p>
+        <img class="card-img-top" src="~/uploadedimages/@Model.project.Photo" alt="Card image cap">
+        <div class="card-body" style="padding:15px">
+            <div class="row">
+                <h4 class="text-center"><b><i>@Model.project.Title</i></b></h4>
+            </div>
+            <br />
+            <p class="card-text"><b>Description: </b>@Model.project.Description</p>
+        </div>
+
+        <div class="card-body" style="padding:15px;margin-right:10px">
+            <div class="row">
+                <input type="hidden" id="projectid" value="@Model.project.Id" />
+                @*<p class="card-text " id="projectId"> <b>Project Id:</b> @Model.project.Id</p>*@
+                <p class="card-text" style="margin:0px 15px"><b>Amount:</b>@Model.project.Amount</p>
+                <p class="card-text" style="margin:0px 15px"><b>Fundings: </b>@Model.project.Fundings</p>
+            </div>
+            <br />
+            <div>
+                <p class="card-text"><b>Financial Progress: </b>@Model.project.Update</p>
             </div>
 
-            <div class="card-body" style="padding:15px;margin-right:10px">
-                <div class="row">
-                    <input type="hidden" id="projectid" value="@Model.project.Id" />
-                    @*<p class="card-text " id="projectId"> <b>Project Id:</b> @Model.project.Id</p>*@
-                    <p class="card-text" style="margin:0px 15px"><b>Amount:</b>@Model.project.Amount</p>
-                    <p class="card-text" style="margin:0px 15px"><b>Fundings: </b>@Model.project.Fundings</p>
-                </div>
-                <br />
-                <div>
-                    <p class="card-text"><b>Financial Progress: </b>@Model.project.Update</p>
-                </div>
+            @{var prog = ((decimal)Model.project.Fundings / (decimal)Model.project.Amount) * 100;
+                var progress = prog.ToString();
+                progress = progress + '%';
+            }
+            <input class="" id="js-ProjectId-fund" type="hidden" value="" />
 
-                @{var prog = ((decimal)Model.project.Fundings / (decimal)Model.project.Amount) * 100;
-                    var progress = prog.ToString();
-                    progress = progress + '%';
-                }
-                <input class="" id="js-ProjectId-fund" type="hidden" value="" />
-
-                <div class="progress">
-                    <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" style="width:@progress;" aria-valuenow="@Model.project.Fundings" aria-valuemin="0" aria-valuemax="@Model.project.Amount"></div>
-                </div>
-                <p class="card-text">Created On: @Model.project.Created</p>
-                <a href="~/home/DeleteProjectFromView/@Model.project.Id"><img src="~/img/delete.png" style="width:25px;margin: 0px 10px;float:right" /></a>
-                <a href="~/home/updateProjectwithdetails/@Model.project.Id"><img src="~/img/update.png" style="width:25px;margin: 0px 5px;float:right" /></a>
+            <div class="progress">
+                <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" style="width:@progress;" aria-valuenow="@Model.project.Fundings" aria-valuemin="0" aria-valuemax="@Model.project.Amount"></div>
             </div>
+            <p class="card-text">Created On: @Model.project.Created</p>
+            <a href="~/home/DeleteProjectFromView/@Model.project.Id"><img src="~/img/delete.png" style="width:25px;margin: 0px 10px;float:right" /></a>
+            <a href="~/home/updateProjectwithdetails/@Model.project.Id"><img src="~/img/update.png" style="width:25px;margin: 0px 5px;float:right" /></a>
+        </div>
 
 
-                    <div class="container-fluid">
-                        <div class="row">
-                            @{
-                                foreach (var package in Model.packages)
-                                {
-                                    <input class="" id="js-packageId-fund" type="hidden" value="@package.Id" />
-                                    <input class="" id="js-reward-fund" type="hidden" value="@package.Reward" />
+        <div class="container-fluid">
+            <div class="row">
+                @{
+                    foreach (var package in Model.packages)
+                    {
+                        <input class="" id="js-packageId-fund" type="hidden" value="@package.Id" />
+                        <input class="" id="js-reward-fund" type="hidden" value="@package.Reward" />
 
-                                    <div class="col-md-4">
-                                        <div class="card" style="padding:20px;height:450px;margin:30px">
-                                            <img src="~/img/Packages.jpg" style="height:150px;width:auto" />
-                                            <p><b>Package Id: </b>@package.Id</p>
-                                            <p><b>Picked: @package.Count times</b></p>
-                                            <p><b>Description: </b>@package.Description</p>
-                                            <p><b>Reward: </b>@package.Reward</p>
-                                            <button type="button" , id="fundProject" class="btn btn-outline-info">Fund</button>
-                                            @*<button type="button" class="btn btn-primary btn-lg btn-block" id="fundProject" style="width:350px">Fund</button>*@
-                                        </div>
-                                    </div>
-
-                                }
-                            }
+                        <div class="col-md-4">
+                            <div class="card" style="padding:20px;height:450px;margin:30px">
+                                <img src="~/img/Packages.jpg" style="height:150px;width:auto" />
+                                <p><b>Package Id: </b>@package.Id</p>
+                                <p><b>Picked: @package.Count times</b></p>
+                                <p><b>Description: </b>@package.Description</p>
+                                <p><b>Reward: </b>@package.Reward</p>
+                                <button type="button" , id="fundProject" class="btn btn-outline-info">Fund</button>
+                                <a data-toggle="modal" href="#exampleModal" class="btn btn-outline-info">Funding</a>
+                                @*<button type="button" class="btn btn-primary btn-lg btn-block" id="fundProject" style="width:350px">Fund</button>*@
+                            </div>
                         </div>
-                    </div>
-                </div>
-        </div>
-        <div class="row">
-            @*<a href="~/home/Packages/@Model.project.Id" style="color:white;background-color:royalblue;width:150px;height:40px;border-radius:6px;margin:20px;text-align:center;padding:5px;position:center">View Packages</a>*@
-            @*<a href="~/home/Projects" style="color:white;background-color:slategray;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center">Back</a>*@
-        </div>
 
+                    }
+                }
+            </div>
+        </div>
     </div>
 </div>
+<div class="row">
+    @*<a href="~/home/Packages/@Model.project.Id" style="color:white;background-color:royalblue;width:150px;height:40px;border-radius:6px;margin:20px;text-align:center;padding:5px;position:center">View Packages</a>*@
+    @*<a href="~/home/Projects" style="color:white;background-color:slategray;width:150px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center">Back</a>*@
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="container">
+                        <h5 class="modal-title" id="exampleModalLabel">Funding</h5>
+
+                        <div class="row">
+                            @*<input class="" id="js-userId-fund" type="hidden" value="" />*@
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">User Id</label>
+                                <input type="number" class="form-control" id="UserId-funding" placeholder="Enter your ID">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" id="fundProject" data-dismiss="modal">Fund</button>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                </div>
+            </div>
+        </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
