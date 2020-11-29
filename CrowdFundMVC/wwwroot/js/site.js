@@ -585,3 +585,4 @@ fundProject = $('#fundProject').on('click', () => {
 
     });
 });
+
