@@ -3,22 +3,80 @@
 
 // Write your JavaScript code.
 
+
+//function store() {
+//    var firstName = document.getElementById('FirstName');
+//    var lastName = document.getElementById('LastName');
+//    var email = document.getElementById('Email');
+//    var pw = document.getElementById('Password');
+    //var lowerCaseLetters = /[a-z]/g;
+    //var upperCaseLetters = /[A-Z]/g;
+    //var numbers = /[0-9]/g;
+
+    //if (name.value.length == 0) {
+    //    alert('Please fill in email');
+
+    //} else if (pw.value.length == 0) {
+    //    alert('Please fill in password');
+
+    //} else if (name.value.length == 0 && pw.value.length == 0) {
+    //    alert('Please fill in email and password');
+
+    //} else if (pw.value.length > 8) {
+    //    alert('Max of 8');
+
+    //} else if (!pw.value.match(numbers)) {
+    //    alert('please add 1 number');
+
+    //} else if (!pw.value.match(upperCaseLetters)) {
+    //    alert('please add 1 uppercase letter');
+
+    //} else if (!pw.value.match(lowerCaseLetters)) {
+    //    alert('please add 1 lovercase letter');
+
+    //} else {
+    //debugger;
+    //localStorage.setItem('firstName', firstName.value);
+    //localStorage.setItem('lastName', lastName.value);
+    //localStorage.setItem('email', email.value);
+    //localStorage.setItem('pw', pw.value);
+    //    alert('Your account has been created');
+    //}
+
+
+//// Events
+
+
+//function check() {
+//    var storedName = localStorage.getItem('email');
+//    var storedPw = localStorage.getItem('password');
+
+//    var userName = document.getElementById('userName');
+//    var userPw = document.getElementById('userPw');
+//    var userRemember = document.getElementById("rememberMe");
+//    debugger;
+//    if (userName.value == storedName && userPw.value == storedPw) {
+//        alert('You are logged in.');
+//    } else {
+//        alert('Error on login');
+//    }
+//}
+
+//--------------------------LOGIN ----------------------------------------
 function getUserId() {
     return localStorage.getItem('userId');
 }
 
 if (getUserId()) {
     $('#logout-btn').show();
-    $('#login-btn').hide();
+    $('#login-btn1').hide();
 
 
 }
 
 
-// Events
-debugger;
-$('#login-btn').on('click', function () {
-
+$('#login-btn1').on('click', function () {
+    debugger;
     var Email = $('#userEmail').val();
     var Password = $('#userPassword').val();
 
@@ -33,11 +91,11 @@ $('#login-btn').on('click', function () {
         type: 'POST',
         data: JSON.stringify(loginOptions),
         success: function (data) {
-            localStorage.setItem('userId', data.Userid);
-            window.open('/Home/Dashboard', "_self")
+            localStorage.setItem('userId', data.userId);
+            window.open('/Home/MyProjects/' + localStorage.getItem('userId'), "_self")
             //$('#login-btn').hide();
             $('#logout-btn').show();
-           
+
 
         },
         error: function () {
@@ -49,7 +107,7 @@ $('#login-btn').on('click', function () {
 $('#logout-btn').on('click', function () {
     localStorage.removeItem('userId');
     $('#logout-btn').hide();
-    $('#login-btn').show();
+    $('#login-btn1').show();
 
 });
 
@@ -57,17 +115,20 @@ $('#logout-btn').on('click', function () {
 // ---------------------------USER------------------------------
 
 addUser = $('.addUser').on('click', () => {
-    actionUrl = '/api/user'
+    actionUrl = '/api/user/'
     actiontype = 'POST'
     actionDataType = 'json'
-
+    debugger
     sendData = {
         'firstName': $('#FirstName').val(),
         'lastName': $('#LastName').val(),
         'email': $('#Email').val(),
         'password': $('#Password').val()
     }
-
+    //localStorage.setItem('firstName', sendData.firstName);
+    //localStorage.setItem('lastName', sendData.lastName);
+    //localStorage.setItem('email', sendData.email);
+    //localStorage.setItem('password', sendData.password);
     $.ajax({
         url: actionUrl,
         dataType: actionDataType,
@@ -77,7 +138,6 @@ addUser = $('.addUser').on('click', () => {
         processData: false,
 
         success: function (data, textStatus, jQxhr) {
-
             alert(JSON.stringify(data))
             window.open('/Home/Dashboard', '_self')
         },

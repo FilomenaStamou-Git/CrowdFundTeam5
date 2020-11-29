@@ -14,5 +14,6 @@ namespace CrowdFundCore.Services
         bool DeleteUser(int id);
         List<UserOption> GetAllUsers();
         UserOption GetUserById(int id);
+
     }
 }

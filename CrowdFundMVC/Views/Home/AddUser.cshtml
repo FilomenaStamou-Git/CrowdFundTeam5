@@ -22,7 +22,7 @@
 </head>
 <body>
     <div class="container-fluid" style="margin:auto; padding: 50px; border-radius: 15px 50px; width:60%;background-color:white">
-        <form>
+        <form name='form-login'>
             <div class="form-group row">
                 <label for="FirstName" class="col-sm-2 col-form-label"><b>FirstName</b></label>
                 <div class="col-sm-10">
@@ -55,8 +55,9 @@
             <div class="form-group row">
                 <div class="col-sm-10 offset-sm-2">
                     @*<button type="button" class="btn btn-outline-primary" onclick="AddUser">Sign Up</button>*@
-                    <input type="button" style="width:120px;height:40px;background-color:steelblue;color:white;border:none" value="Sign Up" class="addUser" />
-                    
+                    @*<input type="button" style="width:120px;height:40px;background-color:steelblue;color:white;border:none" value="Sign Up" class="addUser" />*@
+                    <input id="rgstr_btn" type="submit" value="Register" class="addUser">
+
                 </div>
             </div>
         </form>
