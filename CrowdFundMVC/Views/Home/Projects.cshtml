@@ -19,19 +19,17 @@
         width: 100%;
         object-fit: cover;
     }*/
-    .top-content .carousel-item {
-        height: 100vh;
-        min-height: 400px;
-    }
+.top-content .carousel-item {
+    height: 100vh;
+    min-height: 400px;
+}
 
-        .top-content .carousel-item img {
-            height: 100%;
-            object-fit: cover;
-        }
+.top-content .carousel-item img {
+    height: 100%;
+    object-fit: cover;
+}
 </style>
 <body>
-
-
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -41,8 +39,8 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
 
         </ol>
-        <div class="carousel-inner" role="listbox">
-            <div class="carousel-item slider-fullscreen-image">
+        <div class="carousel-inner">
+            <div class="carousel-item">
                 <img class="d-block vw-50" src="~/img/slide1.jpg" alt="First slide">
             </div>
             <div class="carousel-item active">
@@ -69,18 +67,19 @@
              <div class="container-fluid" style="margin:15px">
                  <form class="form shadow bg-white rounded p-3 search-projects-form">
                      <div class="row">
+                         
                          <div class="col-xl-3">
                              <div class="form-group mx-sm-6 mb-1 d-inline-flex search-projects-icon">
                                  <i style="font-size:1.5em;" class="fa fa-sliders" aria-hidden="true"></i>
                              </div>
                          </div>
+                         
                          <div class="col-xl-3">
                              <div class="row">
                                  <label style="font-weight:500;">Title</label>
                                  <input type="text" class="form-control handleEnterFilter" id="searchTextFilter" placeholder="Search a Title">
                              </div>
                          </div>
-
 
                          <div class="col-xl-3">
                              <div class="row">
@@ -97,17 +96,20 @@
                                  </div>
                              </div>
                          </div>
+                        
                          <div class="col-xl-3">
                              <br />
                              <div class="searchProjectFilter" style="text-align:center;">
                                  <button type="button" class="btn btn-outline-info">Search</button>
                              </div>
                          </div>
+
                      </div>
                         
                  </form>
             </div>
-            <div class="container-fluid" style="border-radius:15px">
+            
+    <div class="container-fluid" style="border-radius:15px">
             <div class="row" style="margin-top: 5%;">
                 @{
                     foreach (var project in Model.Projects)

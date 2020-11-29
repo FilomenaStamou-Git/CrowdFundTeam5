@@ -269,8 +269,9 @@ updateUser = $('.updateUser').on('click', () => {
 
     //})
 
-btn = $('#updateProject').on('click', () => {
-    debugger;
+debugger;
+
+updateProject = $('.updateProject').on('click', () => {
     id = $('#ProjectId').val()
 
     actionUrl = '/api/project/' + id
@@ -288,23 +289,29 @@ btn = $('#updateProject').on('click', () => {
 
     $.ajax({
         url: actionUrl,
-        data: JSON.stringify(sendData),
-        processData: false,
-        contentType: 'application/json',
+        dataType: actionDataType,
         type: actiontype,
+        data: JSON.stringify(sendData),
+        contentType: 'application/json',
+        processData: false,
 
-        success: function (data) {
-
+        success: function (data, textStatus, jQXhr) {
             window.open('/home/projects', '_self');
-
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log('Error from server:' + errorThrown);
-            $('#danger-alert-project').fadeIn(2000);
-        }
-
+            $('#danger-alert-project').fadeIn(1000);
+        }​​
     });
 });
+
+
+function findToUpdateProject() {
+    id = $('#ProjectId').val()
+    actionUrl = '/Home/UpdateProject/' + id
+    window.open(actionUrl, '_self');
+}
+
 
     //------------------------------- PACKAGE ----------------------------------------
 

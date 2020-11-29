@@ -17,7 +17,7 @@
 </html>
 <body>
     <div class="container-fluid" style="margin:100px 200px 100px 200px; padding: 50px; border-radius: 15px 50px; width:60%;background-color:white">
-        <h2 style="text-align:center"> Update your Project: <b><i>@Model.project.Title</i></b></h2>
+        <h2 style="text-align:center"> Update Project: <b><i>@Model.project.Title</i></b></h2>
 
         <form method="post">
 
@@ -73,8 +73,9 @@
                 <label for="exampleFormControlInput1">Created on</label>
                 <input type="text" class="form-control" value="@Model.project.Created" readonly>
             </div>
-            <button type="button" class="btn btn-primary btn-lg btn-block" id="updateProject">Update</button>
-
+            
+            <button type="button" class="btn btn-outline-info btn-block updateProject" style="width:200px">Update</button>
+            
             <a href="~/home/updatepackage/"><button type="button" class="btn btn-outline-info btn-block bg-primary">Update packages</button></a>
 
             <div class="alert alert-success " id="success-alert-project" role="alert">

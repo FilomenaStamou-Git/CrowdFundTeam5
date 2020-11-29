@@ -77,7 +77,11 @@ namespace CrowdFundMVC.Controllers
         }
 
 
-
+        //[HttpPut("{​​id}​​")]
+        //public ProjectwithFileModel UpdateProject(ProjectwithFileModel projectOpt, int id)
+        //{​​
+        //    return projectService.UpdateProject(projectOpt, id);
+        //}​​
 
         [HttpPut("{id}")]
         public ProjectwithFileModel UpdateProject([FromBody] ProjectwithFileModel projectOptWithFileModel, int id)
@@ -113,11 +117,11 @@ namespace CrowdFundMVC.Controllers
 
             //projectOpt.Photo = filename;
 
-            return projectService.UpdateProject(projectOpt, id);
-        }
+                return projectService.UpdateProject(projectOpt, id);
+            }
 
 
-        [HttpDelete("{id}")]
+            [HttpDelete("{id}")]
         public bool DeleteProject(int id)
         {
             return projectService.DeleteProject(id);

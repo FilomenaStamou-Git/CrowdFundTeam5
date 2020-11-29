@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CrowdFundCore.Migrations
 {
-    public partial class databasecreate : Migration
+    public partial class createdatabaseagain : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -76,7 +76,6 @@ namespace CrowdFundCore.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(nullable: true),
                     Reward = table.Column<decimal>(nullable: false),
-                    IsActive = table.Column<bool>(nullable: false),
                     ProjectId = table.Column<int>(nullable: false),
                     Count = table.Column<int>(nullable: false)
                 },
