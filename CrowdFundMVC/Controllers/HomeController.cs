@@ -27,7 +27,7 @@ namespace CrowdFundMVC.Controllers
             projectService = _projectService;
             packageService = _packageService;
         }
-//---------------LOGIN--------------------------------------------------------------
+        //-------------------------------LOGIN----------------------------------------------
         [HttpPost]
         public IActionResult Login([FromBody] LoginOptions options)
         {
@@ -52,6 +52,7 @@ namespace CrowdFundMVC.Controllers
 
         //-----------------------------------------------------------------------------------
 
+
         
         //----------------------------------INDEX-------------------------------------------------
         public IActionResult Index()
@@ -62,32 +63,50 @@ namespace CrowdFundMVC.Controllers
         }
         //-----------------------------------------------------------------------------------
 
+
+
         //--------------------------------DASHBOARD-------------------------------------------
         public IActionResult Dashboard()
-        {
-            List<ProjectwithFileModel> projects = projectService.GetTopProjects();
-            ProjectModel projectModel = new ProjectModel { Projects = projects };
-            return View(projectModel);
-        }
-
-        //-----------------------------------------------------------------------------------
-        public IActionResult About()
         {
             return View();
         }
 
+
+        //-----------------------------------------------------------------------------------
+
+
+        //--------------------------------ABOUT-------------------------------------------
+        public IActionResult About()
+        {
+            return View();
+        }
+        //-----------------------------------------------------------------------------------
+
+
+
+
+        //-------------------------------------PRIVACY------------------------------------------
+
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        //----------------------------------------------------------------------------------------
+
+
+        //--------------------------------USER VIEWS-------------------------------------------
         public IActionResult AddUser()
         {
             return View();
         }
 
-        [HttpGet]
-        public IActionResult AddPackage([FromRoute] int id)
+        public IActionResult Users()
         {
-            ProjectwithFileModel projectOptions = projectService.GetProjectById(id);
-            ProjectOptionModel model = new ProjectOptionModel { project = projectOptions };
-
-            return View(model);
+            List<UserOption> users = userService.GetAllUsers();
+            UserModel userModel = new UserModel { Users = users };
+            return View(userModel);
         }
 
         public IActionResult UpdateUser()
@@ -95,23 +114,11 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
-        public IActionResult UpdatePackage()
-        {
-            return View();
-        }
 
         public IActionResult UpdateUserWithDetails([FromRoute] int id)
         {
             UserOption userOptions = userService.GetUserById(id);
             UserOptionModel model = new UserOptionModel { user = userOptions };
-
-            return View(model);
-        }
-
-        public IActionResult UpdatePackageWithDetails([FromRoute] int id)
-        {
-            PackageOption packageOptions = packageService.GetPackageById(id);
-            PackageOptionModel model = new PackageOptionModel { package = packageOptions };
 
             return View(model);
         }
@@ -123,25 +130,27 @@ namespace CrowdFundMVC.Controllers
             return Redirect("/Home/Users");
         }
 
-        public IActionResult DeletePackageFromView([FromRoute] int id)
-        {
-            packageService.DeletePackage(id);
-
-            return Redirect("/Home/Packages");
-        }
-
         public IActionResult DeleteUser()
         {
             return View();
         }
+        //-----------------------------------------------------------------------------------
 
-        public IActionResult DeletePackage()
+
+
+
+        //--------------------------------PROJECT VIEWS-------------------------------------------
+        public IActionResult AddProject()
+        {
+            return View();
+        }
+
+        public IActionResult Projects()
         {
             List<ProjectwithFileModel> projects = projectService.GetAllProjects();
             ProjectModel projectModel = new ProjectModel { Projects = projects };
             return View(projectModel);
         }
-
 
 
         public IActionResult SearchProjectDisplay([FromQuery] string text)
@@ -151,10 +160,6 @@ namespace CrowdFundMVC.Controllers
             return View("Projects", projectModel);
         }
 
-        public IActionResult AddProject()
-        {
-            return View();
-        }
 
         public IActionResult TopProjects()
         {
@@ -188,7 +193,7 @@ namespace CrowdFundMVC.Controllers
         {
             ProjectwithFileModel projectOptions = projectService.GetProjectById(id);
             IEnumerable<Package> projectPackages = projectService.GetProjectPackages(id);
-            ProjectOptionModel model = new ProjectOptionModel { project = projectOptions ,packages = projectPackages};
+            ProjectOptionModel model = new ProjectOptionModel { project = projectOptions, packages = projectPackages };
 
             return View(model);
         }
@@ -202,18 +207,24 @@ namespace CrowdFundMVC.Controllers
             return View();
         }
 
+        //----------------------------------------------------------------------------------------
 
-        public IActionResult Privacy()
+
+
+
+        //---------------------------------PACKAGES VIEWS-------------------------------------------
+
+
+
+        [HttpGet]
+        public IActionResult AddPackage([FromRoute] int id)
         {
-            return View();
+            ProjectwithFileModel projectOptions = projectService.GetProjectById(id);
+            ProjectOptionModel model = new ProjectOptionModel { project = projectOptions };
+
+            return View(model);
         }
 
-        public IActionResult Users()
-        {
-            List<UserOption> users = userService.GetAllUsers();
-            UserModel userModel = new UserModel { Users = users };
-            return View(userModel);
-        }
 
         public IActionResult Packages()
         {
@@ -222,12 +233,55 @@ namespace CrowdFundMVC.Controllers
             return View(packageModel);
         }
 
-        public IActionResult Projects()
+
+        public IActionResult UpdatePackage()
+        {
+            return View();
+        }
+
+
+
+        public IActionResult UpdatePackageWithDetails([FromRoute] int id)
+        {
+            PackageOption packageOptions = packageService.GetPackageById(id);
+            PackageOptionModel model = new PackageOptionModel { package = packageOptions };
+
+            return View(model);
+        }
+
+
+        public IActionResult DeletePackageFromView([FromRoute] int id)
+        {
+            packageService.DeletePackage(id);
+
+            return Redirect("/Home/Packages");
+        }
+
+
+
+        public IActionResult DeletePackage()
         {
             List<ProjectwithFileModel> projects = projectService.GetAllProjects();
             ProjectModel projectModel = new ProjectModel { Projects = projects };
             return View(projectModel);
         }
+
+        //----------------------------------------------------------------------------------------
+
+
+
+        //---------------------------------------FUNDING-------------------------------------------
+
+        [HttpPut]
+        public IActionResult FundProject([FromBody] FundingProject funding)
+        {
+            projectService.Funding(funding);
+            return Ok();
+        }
+        //----------------------------------------------------------------------------------------
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -235,12 +289,6 @@ namespace CrowdFundMVC.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        [HttpPut]
-        public IActionResult FundProject([FromBody] FundingProject funding)
-        {      
-            projectService.Funding(funding);
-            return Ok();
-        }
 
     }
 
