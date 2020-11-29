@@ -35,7 +35,37 @@ namespace CrowdFundMVC.Controllers
             {
                 return Ok(new
                 {
-                    userId = "1234"
+                    userId = "10"
+                });
+            }
+
+            if (options.Email == "fundastic@gmail.com")
+            {
+                return Ok(new
+                {
+                    userId = "40"
+                });
+            }
+            if (options.Email == "giannis@gmail.com")
+            {
+                return Ok(new
+                {
+                    userId = "20"
+                });
+            }
+
+            if (options.Email == "filomena@gmail.com")
+            {
+                return Ok(new
+                {
+                    userId = "80"
+                });
+            }
+            if (options.Email == "stavros@gmail.com")
+            {
+                return Ok(new
+                {
+                    userId = "90"
                 });
             }
 
@@ -44,7 +74,7 @@ namespace CrowdFundMVC.Controllers
 
 
         //-----------------------------------------------------------------------------------
-        public IActionResult Login_Form()
+        public IActionResult Login_Form(int id)
         {
             return View();
         }

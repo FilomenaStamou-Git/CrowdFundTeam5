@@ -17,13 +17,14 @@ namespace CrowdFundCore.Services
 
         public PackageOption CreatePackage(PackageOption packageOption)
         {
+            if (string.IsNullOrWhiteSpace(packageOption.Description) ||
+                packageOption.Reward.Equals(null))  return null;
 
             Package package = new Package
             {
                 Id =packageOption.Id,
                 Description = packageOption.Description,
                 Reward = packageOption.Reward,
-                IsActive = true,
                 ProjectId = packageOption.ProjectId              
             };
 
@@ -50,13 +51,7 @@ namespace CrowdFundCore.Services
 
         public PackageOption UpdatePackage(PackageOption packageOpt, int id)
         {
-            //var project = dbContext
-            //    .Set<Project>()
-            //    .Where(p => p.Id == packageOpt.ProjectId)               // .Include(p => p.Package)
-            //    .SingleOrDefault();
-            //project.Packages.Add(package);
-            //dbContext.Update(project);
-
+            
             Package package = dbContext.Packages.Find(id);         
             packageOptToPackage(packageOpt, package);
             dbContext.SaveChanges();
@@ -64,8 +59,7 @@ namespace CrowdFundCore.Services
             return new PackageOption
             {
                 Description = package.Description,
-                Reward = package.Reward,
-                
+                Reward = package.Reward              
             };
         }
 

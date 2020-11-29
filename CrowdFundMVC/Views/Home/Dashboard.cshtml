@@ -31,28 +31,29 @@
             <div class="col-xl-12">
                 <div class="bg-white shadow rounded overflow-hidden">
                     <div class="px-4 pt-0 pb-4 cover">
-                           <input id="Id" type="hidden" value="UserId" />
-                                <div class="media align-items-end profile-head">
-                                    <div class="profile mr-3"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" alt="UserPhoto" width="130" class="rounded mb-2 img-thumbnail"><a asp-controller="Home" asp-action="UpdateUserWithDetails" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a></div>
-                                    <div class="media-body mb-5 text-white">
-                                        <h4 class="mt-0 mb-0">Email</h4>
-                                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i> UserId</p>
-                                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i> FirstName LastName</p>
-                                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i> EMail</p>
-                                        <div class="p-4 rounded shadow-sm bg-light">
-                                            <a class="font-italic mb-0" style="color:black" asp-area="" asp-controller="Home" asp-action="About">About     ·</a>
-                                            <a class="font-italic mb-0" style="color:black" asp-area="" asp-controller="Home" asp-action="Index">Home     ·</a>
-                                            <a class="font-italic mb-0" style="color:black" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy     ·</a>
-                                            <a class="font-italic mb-0" style="color:black" href="~/home/updateuserwithdetails">Edit Profile     ·</a>
-                                            <a class="font-italic mb-0" style="color:black" asp-area="" asp-controller="Home" asp-action="Projects">View Projects     ·</a>
-                                            <a class="font-italic mb-0" style="color:black" href="~/home/DeleteUserFromView/">Delete Account     ·</a>
-                                            <a class="font-italic mb-0" style="color:black" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
-                                        </div>
-                                    </div>
+                        <input id="Id" type="hidden" value="UserId" />
+                        <div class="media align-items-end profile-head">
+                            <div class="profile mr-3"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" alt="UserPhoto" width="130" class="rounded mb-2 img-thumbnail"><a asp-controller="Home" asp-action="UpdateUserWithDetails" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a></div>
+                            <div class="media-body mb-5 text-white">
+                                <h4 class="mt-0 mb-0">Email</h4>
+                                <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i> UserId</p>
+                                <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i> FirstName LastName</p>
+                                <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i> EMail</p>
+                                <div class="p-4 rounded shadow-sm bg-light">
+                                    <a class="font-italic mb-0" style="color:black" asp-area="" asp-controller="Home" asp-action="About">About     ·</a>
+                                    <a class="font-italic mb-0" style="color:black" asp-area="" asp-controller="Home" asp-action="Index">Home     ·</a>
+                                    <a class="font-italic mb-0" style="color:black" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy     ·</a>
+                                    <a class="font-italic mb-0" style="color:black" href="~/home/updateuserwithdetails">Edit Profile     ·</a>
+                                    <a class="font-italic mb-0" style="color:black" asp-area="" asp-controller="Home" asp-action="Projects">View Projects     ·</a>
+                                    <a class="font-italic mb-0" style="color:black" href="~/home/DeleteUserFromView/">Delete Account     ·</a>
+                                    <a class="font-italic mb-0" style="color:black" href="~/home/Myprojects/3">My Projects·</a>
+                                    <a class="font-italic mb-0" style="color:black" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
                                 </div>
+                            </div>
+                        </div>
 
 
-                            }
+                        }
                         }
                     </div>
                 </div>
@@ -158,6 +159,7 @@
 
 
     <!-- Modal -->
+
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -179,6 +181,12 @@
             </div>
         </div>
     </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
