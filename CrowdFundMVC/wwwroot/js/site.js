@@ -3,6 +3,66 @@
 
 // Write your JavaScript code.
 
+
+//function store() {
+//    var firstName = document.getElementById('FirstName');
+//    var lastName = document.getElementById('LastName');
+//    var email = document.getElementById('Email');
+//    var pw = document.getElementById('Password');
+    //var lowerCaseLetters = /[a-z]/g;
+    //var upperCaseLetters = /[A-Z]/g;
+    //var numbers = /[0-9]/g;
+
+    //if (name.value.length == 0) {
+    //    alert('Please fill in email');
+
+    //} else if (pw.value.length == 0) {
+    //    alert('Please fill in password');
+
+    //} else if (name.value.length == 0 && pw.value.length == 0) {
+    //    alert('Please fill in email and password');
+
+    //} else if (pw.value.length > 8) {
+    //    alert('Max of 8');
+
+    //} else if (!pw.value.match(numbers)) {
+    //    alert('please add 1 number');
+
+    //} else if (!pw.value.match(upperCaseLetters)) {
+    //    alert('please add 1 uppercase letter');
+
+    //} else if (!pw.value.match(lowerCaseLetters)) {
+    //    alert('please add 1 lovercase letter');
+
+    //} else {
+    //debugger;
+    //localStorage.setItem('firstName', firstName.value);
+    //localStorage.setItem('lastName', lastName.value);
+    //localStorage.setItem('email', email.value);
+    //localStorage.setItem('pw', pw.value);
+    //    alert('Your account has been created');
+    //}
+
+
+//// Events
+
+
+//function check() {
+//    var storedName = localStorage.getItem('email');
+//    var storedPw = localStorage.getItem('password');
+
+//    var userName = document.getElementById('userName');
+//    var userPw = document.getElementById('userPw');
+//    var userRemember = document.getElementById("rememberMe");
+//    debugger;
+//    if (userName.value == storedName && userPw.value == storedPw) {
+//        alert('You are logged in.');
+//    } else {
+//        alert('Error on login');
+//    }
+//}
+
+//--------------------------LOGIN ----------------------------------------
 function getUserId() {
     return localStorage.getItem('userId');
 }
@@ -64,6 +124,7 @@ if (getUserId()) {
 
 $('#login-btn1').on('click', function () {
     debugger;
+
     var Email = $('#userEmail').val();
     var Password = $('#userPassword').val();
 
@@ -121,7 +182,10 @@ addUser = $('.addUser').on('click', () => {
         'email': $('#Email').val(),
         'password': $('#Password').val()
     }
-
+    //localStorage.setItem('firstName', sendData.firstName);
+    //localStorage.setItem('lastName', sendData.lastName);
+    //localStorage.setItem('email', sendData.email);
+    //localStorage.setItem('password', sendData.password);
     $.ajax({
         url: actionUrl,
         dataType: actionDataType,

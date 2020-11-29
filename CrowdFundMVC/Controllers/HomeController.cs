@@ -31,13 +31,7 @@ namespace CrowdFundMVC.Controllers
         [HttpPost]
         public IActionResult Login([FromBody] LoginOptions options)
         {
-            if (options.Email == "danaykap13@gmail.com")
-            {
-                return Ok(new
-                {
-                    userId = "10"
-                });
-            }
+ 
 
             if (options.Email == "fundastic@gmail.com")
             {
@@ -46,36 +40,16 @@ namespace CrowdFundMVC.Controllers
                     userId = "40"
                 });
             }
-            if (options.Email == "giannis@gmail.com")
-            {
-                return Ok(new
-                {
-                    userId = "20"
-                });
-            }
-
-            if (options.Email == "filomena@gmail.com")
-            {
-                return Ok(new
-                {
-                    userId = "80"
-                });
-            }
-            if (options.Email == "stavros@gmail.com")
-            {
-                return Ok(new
-                {
-                    userId = "90"
-                });
-            }
 
             return Forbid();
         }
 
 
+
         //-----------------------------------------------------------------------------------
         public IActionResult Login_Form(int id)
         {
+
             return View();
         }
 
@@ -217,7 +191,9 @@ namespace CrowdFundMVC.Controllers
 
         public IActionResult Dashboard()
         {
-            return View();
+            List<ProjectwithFileModel> projects = projectService.GetTopProjects();
+            ProjectModel projectModel = new ProjectModel { Projects = projects };
+            return View(projectModel);
         }
 
         public IActionResult Privacy()

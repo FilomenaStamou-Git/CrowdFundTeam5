@@ -5,19 +5,13 @@
 @{
 }
 <head>
+    <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </head>
-<style>
-    .carousel-item {
-        height: 400px;
-        width:100%;
-        border-radius:0;
-    }
-</style>
 <body>
 
 
@@ -49,63 +43,73 @@
         </a>
     </div>
 
-    <div class="container pt-4 project-container">
         @*  Search Filtering*@
-        <div class="row project-row">
-
-            <form class="form shadow bg-white rounded p-3 search-projects-form">
-                <div class="form-group mx-sm-6 mb-1 d-inline-flex search-projects-icon">
-                    <i style="font-size:1.5em;" class="fa fa-sliders" aria-hidden="true"></i>
-                    <h2 style="font-size:1.2em; font-weight:600; margin-left:1em;">Search Filters</h2>
-                </div>
-                <div class="">
-                    <label style="font-weight:500;">Title</label>
-                    <input type="text" class="form-control handleEnterFilter" id="searchTextFilter" placeholder="Search a Title">
-                </div>
-                <div class="form-group mx-sm-3 mb-1 search-projects-cat-input">
-
-                    <label for="exampleFormControlSelect1" style="font-weight:500;">Category</label>
-                    <select class="form-control" id="searchControlSelectCategory">
-                        <option> </option>
-                        @foreach (var c in Enum.GetValues(typeof(CrowdFundCore.Models.Category)))
-                        {
-                            var y = (int)c;
-                            <option value="@y">@c</option>
-                        }
-                    </select>
-                </div>
-                <div class="searchProjectFilter" style="text-align:center;">
-                    <button type="button" class="btn btn-outline-success mr-sm-1 " style="justify-content:center;">Search</button>
-                </div>
+             <div class="container-fluid" style="margin:15px">
+                 <form class="form shadow bg-white rounded p-3 search-projects-form">
+                     <div class="row">
+                         <div class="col-xl-3">
+                             <div class="form-group mx-sm-6 mb-1 d-inline-flex search-projects-icon">
+                                 <i style="font-size:1.5em;" class="fa fa-sliders" aria-hidden="true"></i>
+                             </div>
+                         </div>
+                         <div class="col-xl-3">
+                             <div class="row">
+                                 <label style="font-weight:500;">Title</label>
+                                 <input type="text" class="form-control handleEnterFilter" id="searchTextFilter" placeholder="Search a Title">
+                             </div>
+                         </div>
 
 
-
-            </form>
-
-        </div>
-
-        <div class="container">
+                         <div class="col-xl-3">
+                             <div class="row">
+                                 <div class="form-group mx-sm-3 mb-1 search-projects-cat-input">
+                                     <label for="exampleFormControlSelect1" style="font-weight:500;">Category</label>
+                                     <select class="form-control" id="searchControlSelectCategory">
+                                         <option> </option>
+                                         @foreach (var c in Enum.GetValues(typeof(CrowdFundCore.Models.Category)))
+                                         {
+                                             var y = (int)c;
+                                             <option value="@y">@c</option>
+                                         }
+                                     </select>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-xl-3">
+                             <br />
+                             <div class="searchProjectFilter" style="text-align:center;">
+                                 <button type="button" class="btn btn-outline-info">Search</button>
+                             </div>
+                         </div>
+                     </div>
+                        
+                 </form>
+            </div>
+            <div class="container-fluid" style="border-radius:15px">
             <div class="row" style="margin-top: 5%;">
                 @{
                     foreach (var project in Model.Projects)
                     {
 
-                        <div class="col-md-3">
-                            <div class="card" style="padding:20px;height:550px;">
+                        <div class="col-md-4">
+                            <div class="card" style="padding:20px;height:400px;">
 
                                 <img src="~/uploadedimages/@project.Photo" style="height:150px;width:auto" />
-                                <p><b>Title: </b>@project.Title</p>
-                                <p><b>Description: </b>@project.Description</p>
-                                <p><b>Category: </b>@project.Categories</p>
-                                <p><b>Fundings: </b>@project.Fundings</p>
-                                <p><b>UserId: </b>@project.UserId</p>
+                                <p><b>@project.Title</b></p>
                                 <div class="row">
-                                    <a href="~/home/projectdetails/@project.Id"><button type="button" class="btn btn-primary js-project-details" style="margin:5px">Details</button></a>
-                                    <a href="~/home/DeleteProjectFromView/@project.Id"><button type="button" class="btn btn-primary" style="color:white;border:none;background-color:darkred;text-align:center;margin:5px;position:center">Delete Project</button></a>
+                                    <div class="col">
+                                        <p><b>Category: </b>@project.Categories</p>
+                                        <p><b>Fundings: </b>@project.Fundings</p>
+                                    </div>
+                                    <div class="col" style="margin:0px 20px">
+                                        <br />
+                                        <br />
 
+                                            <a href="~/home/projectdetails/@project.Id"><button type="button" class="btn btn-outline-info">Details</button></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                         </div>
 
                     }
                 }

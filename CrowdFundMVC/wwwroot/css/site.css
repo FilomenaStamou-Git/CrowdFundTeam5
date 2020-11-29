@@ -72,6 +72,8 @@ body {
 .pb-3{
     width:100%;
 }
-i/*mg {
-    border-radius: 50%;
-}*/
+.carousel-item {
+    height: 400px;
+    width: 100%;
+    border-radius: 0;
+}
