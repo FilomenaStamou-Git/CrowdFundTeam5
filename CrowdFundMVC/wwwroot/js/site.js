@@ -15,12 +15,11 @@ function getUserId() {
 
 if (getUserId()) {
     $('#logout-btn').show();
+    $('#updateProjectbtn').show();
+    $('#deleteProjectbtn').show();
     $('#login-btn').hide();
-}
+    $('#SignupBtn').hide();
 
-if (getUserId()) {
-    $('#logout-btn').show();
-    $('#login-btn1').hide();
 }
 
 $('#login-btn1').on('click', function () {
@@ -41,11 +40,11 @@ $('#login-btn1').on('click', function () {
         data: JSON.stringify(loginOptions),
         success: function (data) {
             localStorage.setItem('userId', data.userId);
-            window.open('/Home/MyProjects/' + localStorage.getItem('userId'), "_self")
+            window.open('/Home/dashboard/',"_self") //+ localStorage.getItem('userId')
             $('#logout-btn').show();
-            $('#login-btn1').hide();
-
-
+            $('#updateProjectbtn').show();
+            $('#deleteProjectbtn').show();
+            $('#SignupBtn').hide();
         },
         error: function () {
             alert('Login denied');
@@ -56,14 +55,28 @@ $('#login-btn1').on('click', function () {
 $('#logout-btn').on('click', function () {
     localStorage.removeItem('userId');
     $('#logout-btn').hide();
-    $('#login-btn1').show();
+    $('#updateProjectbtn').hide();
+    $('#deleteProjectbtn').hide();
+    $('#SignupBtn').show();
+    $('#login-btn').show();
+
 
 });
 
+/* View my projects */
 
+$('#js-myprojects').on('click', () => {
+    debugger;
+    actionUrl = '/Home/myprojects/' + localStorage.getItem('userId')
+    window.open(actionUrl, '_self');
+})
+/* View my fundings */
 
-
-
+$('#js-myfunds').on('click', () => {
+    debugger;
+    actionUrl = '/Home/myfunds/' + localStorage.getItem('userId')
+    window.open(actionUrl, '_self');
+})
 
 
 
@@ -91,16 +104,18 @@ addUser = $('.addUser').on('click', () => {
         processData: false,
 
         success: function (data, textStatus, jQxhr) {
-            alert(JSON.stringify(data))
-            window.open('/Home/Dashboard/', '_self')
+            $('#success-alert-project').fadeIn(800);
+            setTimeout(function () {
+                window.open("/home/dashboard", "_self");
+            }, 4000);
         },
         error: function (jqXhr, textStatus, errorThrown) {
-            alert(errorThrown);
+            $('#danger-alert-project').fadeIn(800);
+            console.log(errorThrown);
         }
 
     });
 });
-
 
 
                     /* Update User */
@@ -182,21 +197,15 @@ function findToUpdateUser() {
 
 
 
-    // --------------------PROJECT----------------------------
+// --------------------PROJECT----------------------------//
 
-
-
-    
-
-let successAlert = $('#success-alert-project').hide();
-let dangerAlert = $('#danger-alert-project').hide();
 
 btn = $('#addProject').on('click', () => {
     debugger;
-    var actionUrl = '/api/project/'
-    var input = document.getElementById('Picture');
-    var files = input.files;
-    var formData = new FormData();
+    let actionUrl = '/api/project/'
+    let input = document.getElementById('Picture');
+    let files = input.files;
+    let formData = new FormData();
 
 
     for (var i = 0; i != files.length; i++) {
@@ -238,7 +247,35 @@ btn = $('#addProject').on('click', () => {
 
 
 
-updateProject = $('.updateProject').on('click', () => {
+//    formData.append('Title', $('#Title').val());
+//    formData.append('Description', $('#Description').val());
+//    formData.append('Categories', $('#Categories').val());
+//    formData.append('Amount', $('#Amount').val());
+//    formData.append('UserId', $('#UserId').val());
+
+
+//    $.ajax({
+//        url: actionUrl,
+//        data: formData,
+//        processData: false,
+//        contentType: false,
+//        type: 'PUT',
+
+//        success: function (data) {
+
+//            $('#success-alert-project').fadeIn(1000);
+
+//        },
+//        error: function (jqXhr, textStatus, errorThrown) {
+//            console.log('Error from server:' + errorThrown);
+//            $('#danger-alert-project').fadeIn(2000);
+//        }
+
+//    });
+
+//})
+
+btnUpdate= $('#updateProject').on('click', () => {
     debugger;
     id = $('#ProjectId').val()
 
@@ -251,43 +288,31 @@ updateProject = $('.updateProject').on('click', () => {
         'Description': $('#Description').val(),
         'Categories': $('#Categories').val(),
         'Update': $('#Update').val(),
-        'Amount': parseFloat($('#Amount').val()),
-       // 'Photo': $('#Photo').val(),
+        'Amount': $('#Amount').val(),
+        // 'Photo': $('#Photo').val(),
     }
 
     $.ajax({
         url: actionUrl,
-        dataType: actionDataType,
-        type: actiontype,
-        data: (JSON.stringify(sendData)),
-        contentType: 'application/json',
+        data: JSON.stringify(sendData),
         processData: false,
-        success: function (data, textStatus, jQxhr) {
-            $('#success-alert-project').fadeIn(500);
-            setTimeout(function () {
-                window.open("/home/dashboard", "_self");
-            }, 3000);
+        contentType: 'application/json',
+        type: actiontype,
+
+        success: function (data) {
+
+            window.open('/home/projects', '_self');
+
         },
         error: function (jqXhr, textStatus, errorThrown) {
-
             console.log('Error from server:' + errorThrown);
-            $('#danger-alert-project').fadeIn(1000);
+            $('#danger-alert-project').fadeIn(2000);
         }
 
     });
 });
 
-
-function findToUpdateProject() {
-
-    id = $('#ProjectId').val()
-    actionUrl = '/Home/UpdateProject/' + id
-
-    window.open(actionUrl, '_self');
-
-}
-
-    //------------------------------- PACKAGE ----------------------------------------
+//------------------------------- PACKAGE ----------------------------------------//
 
                         /* Add Packages */
 
@@ -406,43 +431,10 @@ function deletePackage() {
 
 }
 
-//var successAlert = $('#success-alert-project').hide();
-//var dangerAlert = $('#danger-alert-project').hide();
+var successAlert = $('#success-alert-project').hide();
+var dangerAlert = $('#danger-alert-project').hide();
 
 
-    ProjectDetails = $('.js-project-details').on('click', () => {
-        id = $('.js-ProjectId').val()
-        actionUrl = '/Home/ProjectDetails/' + id
-        window.open(actionUrl, '_self');
-    })
-
-//function findToUpdatePackage() {
-//    //ProjectId = $('#ProjectId').val()
-//    ProjectId =parseInt($('#projectId-updatepackage').val())
-//    actionUrl = '/Home/UpdatePackagesofProject/' + ProjectId
-
-//    window.open(actionUrl, '_self');
-
-//    $.ajax({
-//        url: actionUrl,
-//        dataType: actionDataType,
-//        type: actiontype,
-//        data: JSON.stringify(sendData),
-//        contentType: 'application/json',
-//        processData: false,
-
-//        success: function (data, textStatus, jQxhr) {
-
-//            alert(JSON.stringify(data))
-
-//            window.open('/home/projects', '_self')
-//        },
-//        error: function (jqXhr, textStatus, errorThrown) {
-//            alert(errorThrown);
-//        }
-
-//    });
-//}
 
 function findToUpdateProject() {
 
@@ -455,11 +447,10 @@ function findToUpdateProject() {
 
 
 
-ProjectDetails = $('.js-project-details').on('click', () => {
-    id = $('.js-ProjectId').val()
-    actionUrl = '/Home/ProjectDetails/' + id
-    window.open(actionUrl, '_self');
-})
+
+
+
+
 
 
                 /* Search In Navbar */

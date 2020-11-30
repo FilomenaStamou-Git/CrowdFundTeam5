@@ -178,7 +178,7 @@ namespace CrowdFundCore.Services
         public List<ProjectwithFileModel> GetTopProjects()
         {
             List<Project> projects = dbContext.Projects
-                .Take(5)
+                .Take(6)
                 .OrderByDescending(p =>p.Fundings)
                 .ThenBy(p=>p.Title)                
                 .ToList();
