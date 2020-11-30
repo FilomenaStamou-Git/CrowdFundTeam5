@@ -3,22 +3,16 @@
 *@
 @{
 }
-<h1> Update Package</h1>
 
-<form>
-    <table align="center">
 
-        <tr align="center">
-            <td>
-                Package Id
-            </td>
-            <td> <input type="text" id="Id" /></td>
-        </tr>
+<div class="container-fluid" style="margin:100px 200px 100px 200px; padding: 50px; border-radius: 15px 50px; width:60%;background-color:white">
+    <h3 style="text-align:center;padding-top:20px"> Update Your Package </h3>
+    <form method="post">
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Type your Package Id</label>
+            <input type="text" class="form-control " id="Id">
+            <button type="button" class="btn btn-outline-info btn-block" id="findtoupdatePackage" style="width:200px">Update</button>
 
-        <tr align="center">
-            <td>
-                <input type="button" class="btn btn-outline-info" value="Submit data" class="updatePackage" onclick="findToUpdatePackage()" />
-            </td>
-        </tr>
-    </table>
-</form>
+        </div>
+    </form>
+</div>

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using CrowdFundCore.Models;
+﻿using System.Collections.Generic;
 using CrowdFundCore.Options;
 
 namespace CrowdFundCoreServices

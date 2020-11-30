@@ -79,8 +79,6 @@ namespace CrowdFundCore.Services
         {
             package.Description = packageOpt.Description;
             package.Reward = packageOpt.Reward;
-            package.Id = packageOpt.Id;
-            package.ProjectId = packageOpt.ProjectId;
         }
 
         public List<PackageOption> GetAllPackages()

@@ -60,25 +60,23 @@
         </div>
 
             <div class="container-fluid">
-                <div class="row">
+                <div id="packages" class="row">
                     @{
                         foreach (var package in Model.packages)
-                        {
-                            <input class="" id="js-packageId-fund" type="hidden" value="@package.Id" />
-                            <input class="" id="js-reward-fund" type="hidden" value="@package.Reward" />
-
+                        {                          
                             <div class="col-md-4">
-                                <div class="card" style="padding:20px;height:450px;margin:30px">
-                                    <img src="~/img/Packages.jpg" style="height:150px;width:auto" />
-                                    <p><b>Package Id: </b>@package.Id</p>
-                                    <p><b>Picked: @package.Count times</b></p>
-                                    <p><b>Description: </b>@package.Description</p>
-                                    <p><b>Reward: </b>@package.Reward</p>
-                                    <button type="button" , id="fundProject" style="color:white;background-color:lightseagreen;width:100px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center;margin:5px">Fund</button>
-                                </div>
+                                                    <div class="card" style="padding:20px;height:450px;margin:30px">
+                                                        <img src="~/img/Packages.jpg" style="height:150px;width:auto" />
+                                                        <p><b>Package Id: </b>@package.Id</p>
+                                                        <p><b>Picked: @package.Count times</b></p>
+                                                        <p><b>Description: </b>@package.Description</p>
+                                                        <p><b>Reward: </b>@package.Reward</p>
+                                                        <input class="" id="js-packageId-fund" type="hidden" value="@package.Id" />
+                                                        <input class="" id="js-reward-fund" type="hidden" value="@package.Reward" />
+                                                        <button type="button" , id="fundProject-@package.Id" style="color:white;background-color:lightseagreen;width:100px;height:40px;border-radius:6px;text-align:center;padding:5px;position:center;margin:5px">Fund</button>
+                                                    </div>
                             </div>
                         }
-
                     }
                 </div>
             </div>
