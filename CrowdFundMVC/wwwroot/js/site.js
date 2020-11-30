@@ -15,7 +15,11 @@ function getUserId() {
 
 if (getUserId()) {
     $('#logout-btn').show();
-    $('#login-btn1').hide();
+    $('#updateProjectbtn').show();
+    $('#deleteProjectbtn').show();
+    $('#login-btn').hide();
+    $('#SignupBtn').hide();
+
 }
 
 
@@ -39,8 +43,9 @@ $('#login-btn1').on('click', function () {
             localStorage.setItem('userId', data.userId);
             window.open('/Home/MyProjects/' + localStorage.getItem('userId'), "_self")
             $('#logout-btn').show();
-
-
+            $('#updateProjectbtn').show();
+            $('#deleteProjectbtn').show();
+            $('#SignupBtn').hide();
         },
         error: function () {
             alert('Login denied');
@@ -51,7 +56,11 @@ $('#login-btn1').on('click', function () {
 $('#logout-btn').on('click', function () {
     localStorage.removeItem('userId');
     $('#logout-btn').hide();
-    $('#login-btn1').show();
+    $('#updateProjectbtn').hide();
+    $('#deleteProjectbtn').hide();
+    $('#SignupBtn').show();
+    $('#login-btn').show();
+
 
 });
 
@@ -86,11 +95,14 @@ addUser = $('.addUser').on('click', () => {
         processData: false,
 
         success: function (data, textStatus, jQxhr) {
-            alert(JSON.stringify(data))
-            window.open('/Home/Dashboard', '_self')
+            $('#success-alert-project').fadeIn(800);
+            setTimeout(function () {
+                window.open("/home/dashboard", "_self");
+            }, 4000);
         },
         error: function (jqXhr, textStatus, errorThrown) {
-            alert(errorThrown);
+            $('#danger-alert-project').fadeIn(800);
+            console.log(errorThrown);
         }
 
     });
@@ -265,7 +277,7 @@ btn = $('#addProject').on('click', () => {
 
 //})
 
-btn = $('#updateProject').on('click', () => {
+btnUpdate= $('#updateProject').on('click', () => {
     debugger;
     id = $('#ProjectId').val()
 
@@ -465,11 +477,24 @@ function findToUpdateProject() {
 
 
 
-ProjectDetails = $('.js-project-details').on('click', () => {
-    id = $('.js-ProjectId').val()
-    actionUrl = '/Home/ProjectDetails/' + id
+
+
+
+            /* View my projects */
+
+$('#js-myprojects').on('click', () => {
+    debugger;
+    actionUrl = '/Home/myprojects/' + localStorage.getItem('userId')
     window.open(actionUrl, '_self');
 })
+            /* View my fundings */
+
+$('#js-myfunds').on('click', () => {
+    debugger;
+    actionUrl = '/Home/myfunds/' + localStorage.getItem('userId')
+    window.open(actionUrl, '_self');
+})
+
 
 
                 /* Search In Navbar */

@@ -55,8 +55,8 @@
                 <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" style="width:@progress;" aria-valuenow="@Model.project.Fundings" aria-valuemin="0" aria-valuemax="@Model.project.Amount"></div>
             </div>
             <p class="card-text">Created On: @Model.project.Created</p>
-            <a href="~/home/DeleteProjectFromView/@Model.project.Id"><img src="~/img/delete.png" style="width:25px;margin: 0px 10px;float:right" /></a>
-            <a href="~/home/updateProjectwithdetails/@Model.project.Id"><img src="~/img/update.png" style="width:25px;margin: 0px 5px;float:right" /></a>
+            <a href="~/home/DeleteProjectFromView/@Model.project.Id"><img src="~/img/delete.png" id="updateProjectbtn" style="width:25px;margin: 0px 10px;float:right" /></a>
+            <a href="~/home/updateProjectwithdetails/@Model.project.Id"><img src="~/img/update.png" id="deleteProjectbtn" style="width:25px;margin: 0px 5px;float:right" /></a>
         </div>
 
             <div class="container-fluid">

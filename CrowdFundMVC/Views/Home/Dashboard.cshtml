@@ -32,10 +32,11 @@
                         <input id="Id" type="hidden" value="UserId" />
                         <div class="media align-items-end profile-head">
                             <div class="profile mr-3"><img src="~/img/avatarf.png" alt="UserPhoto" width="130" class="rounded mb-2 img-thumbnail"></div>
-                                <div class="p-4 rounded shadow-lg bg-light">
-                                    <a class="font-italic mb-0" style="color:black" href="~/home/Users">Edit Profile     ·</a>
-                                    <a href="~/home/myprojects/"class="font-italic mb-0" style="color:black">My Projects     ·</a>
-                                    <a class="font-italic mb-0" style="color:black" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
+                            <div class="p-4 rounded shadow-lg bg-light">
+                                <a class="font-italic mb-0" style="color:black" href="~/home/Users">Edit Profile     ·</a>
+                                <a class="font-italic mb-0" style="color:black"><button type="button" class="btn btn-outline-info" id="js-myprojects">My Projects</button>     ·</a>
+                                <a class="font-italic mb-0" style="color:black"><button type="button" class="btn btn-outline-info" id="js-myfunds">My Fundings</button>     ·</a>
+                                <a class="font-italic mb-0" style="color:black" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
                             </div>
                         </div>
                     </div>
