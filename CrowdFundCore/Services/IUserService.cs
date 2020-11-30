@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CrowdFundCore.Models;
+﻿using System.Collections.Generic;
 using CrowdFundCore.Options;
 
 namespace CrowdFundCore.Services
@@ -14,6 +10,5 @@ namespace CrowdFundCore.Services
         bool DeleteUser(int id);
         List<UserOption> GetAllUsers();
         UserOption GetUserById(int id);
-
     }
 }

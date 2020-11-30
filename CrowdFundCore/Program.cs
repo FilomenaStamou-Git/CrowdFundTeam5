@@ -16,7 +16,7 @@ namespace CrowdFundCore
 
             ////--------------CREATE USER--------------------------
             //using var db = new CFDBContext();
-            //for (var i = 0; i < 20; i++)
+            //for (var i = 0; i < 10; i++)
             //{
 
             //    User user = new User
@@ -38,17 +38,37 @@ namespace CrowdFundCore
 
             //using var db = new CFDBContext();
 
-            //for (var i = 0; i < 10; i++)
+            //for (var i = 0; i < 3; i++)
             //{
             //    Project project = new Project
             //    {
             //        Title = "Test Project" + i,
-            //        Amount = 25000 + (50 * i),
-            //        Fundings = 12000 + (10 * i),
-            //        Description = "Desc 10" + i,
-            //        Categories = Category.Technology,
+            //        Amount = 25000 + (100 * i),
+            //        Fundings = 12000 + (50 * i),
+            //        Description = "Desc " + i,
+            //        Categories = Category.Photography,
             //        Created = DateTime.Now,
-            //        UserId = 2 + i,
+            //        UserId = 1 + i,
+            //    };
+            //    db.Projects.Add(project);
+
+            //}
+            //db.SaveChanges();
+
+
+            //using var db = new CFDBContext();
+
+            //for (var i = 0; i < 3; i++)
+            //{
+            //    Project project = new Project
+            //    {
+            //        Title = "Test Project" + i,
+            //        Amount = 25000 + (100 * i),
+            //        Fundings = 12000 + (50 * i),
+            //        Description = "Desc " + i,
+            //        Categories = Category.Music,
+            //        Created = DateTime.Now,
+            //        UserId = 1 + i,
             //    };
             //    db.Projects.Add(project);
 
@@ -58,16 +78,47 @@ namespace CrowdFundCore
 
 
 
+
             /////* Add Package */
 
-            //for (var i = 0; i < 5; i++)
+            //for (var i = 0; i < 3; i++)
             //{
             //    using var db = new CFDBContext();
 
             //    var package = new Package
             //    {
             //        Description = "Gold Package ",
-            //        Reward = 250,
+            //        Reward = 300,
+            //        ProjectId = 1 + i
+            //    };
+
+            //    db.Packages.Add(package);
+            //    db.SaveChanges();
+            //}
+
+            //for (var i = 0; i < 3; i++)
+            //{
+            //    using var db = new CFDBContext();
+
+            //    var package = new Package
+            //    {
+            //        Description = "Platinum Package ",
+            //        Reward = 600,
+            //        ProjectId = 1 + i
+            //    };
+
+            //    db.Packages.Add(package);
+            //    db.SaveChanges();
+            //}
+
+            //for (var i = 0; i < 3; i++)
+            //{
+            //    using var db = new CFDBContext();
+
+            //    var package = new Package
+            //    {
+            //        Description = "Diamong Package ",
+            //        Reward = 800,
             //        ProjectId = 1 + i
             //    };
 

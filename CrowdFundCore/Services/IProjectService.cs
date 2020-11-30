@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CrowdFundCore.Models;
 using CrowdFundCore.Options;
 
@@ -19,5 +16,7 @@ namespace CrowdFundCore.Services
         ProjectwithFileModel GetProjectById(int id);
         IEnumerable<Package> GetProjectPackages(int id);
         void Funding(FundingProject funding);
+        List<ProjectwithFileModel> SearchByCategory(int categoryId);
+        List<Project> MyFundings(int id);      
     }
 }

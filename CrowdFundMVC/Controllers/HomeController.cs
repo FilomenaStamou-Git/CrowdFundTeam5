@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using CrowdFundCore.Models;
 using CrowdFundCore.Options;
 using CrowdFundCore.Services;
@@ -27,261 +25,374 @@ namespace CrowdFundMVC.Controllers
             projectService = _projectService;
             packageService = _packageService;
         }
-        //-------------------------------LOGIN----------------------------------------------
+        //---------------LOGIN--------------------------------------------------------------
         [HttpPost]
         public IActionResult Login([FromBody] LoginOptions options)
         {
- 
+
 
             if (options.Email == "fundastic@gmail.com")
             {
                 return Ok(new
                 {
-                    userId = "40"
+                    userId = "8"
                 });
             }
 
             return Forbid();
         }
 
+
+
+        //-----------------------------------------------------------------------------------
         public IActionResult Login_Form(int id)
         {
 
             return View();
         }
 
-        //-----------------------------------------------------------------------------------
-
-
-        
-        //----------------------------------INDEX-------------------------------------------------
         public IActionResult Index()
-        {
-            List<ProjectwithFileModel> projects = projectService.GetAllProjects();
-            ProjectModel projectModel = new ProjectModel { Projects = projects };
-            return View(projectModel);
-        }
-        //-----------------------------------------------------------------------------------
-
-
-
-        //--------------------------------DASHBOARD-------------------------------------------
-        public IActionResult Dashboard()
         {
             return View();
         }
 
-
-        //-----------------------------------------------------------------------------------
-
-
-        //--------------------------------ABOUT-------------------------------------------
         public IActionResult About()
         {
             return View();
         }
-        //-----------------------------------------------------------------------------------
 
-
-
-
-        //-------------------------------------PRIVACY------------------------------------------
-
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        //----------------------------------------------------------------------------------------
-
-
-        //--------------------------------USER VIEWS-------------------------------------------
         public IActionResult AddUser()
         {
             return View();
         }
 
-        public IActionResult Users()
+        [HttpGet]
+        public IActionResult AddPackage([FromRoute] int id)
         {
-            List<UserOption> users = userService.GetAllUsers();
-            UserModel userModel = new UserModel { Users = users };
-            return View(userModel);
+            try
+            {
+                ProjectwithFileModel projectOptions = projectService.GetProjectById(id);
+                ProjectOptionModel model = new ProjectOptionModel { project = projectOptions };
+                return View(model);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IActionResult UpdateUser()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
+        public IActionResult UpdatePackage()
+        {
+            try
+            {
+                return View();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
         public IActionResult UpdateUserWithDetails([FromRoute] int id)
         {
-            UserOption userOptions = userService.GetUserById(id);
-            UserOptionModel model = new UserOptionModel { user = userOptions };
+            try
+            {
+                UserOption userOptions = userService.GetUserById(id);
+                UserOptionModel model = new UserOptionModel { user = userOptions };
+                return View(model);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
-            return View(model);
+        public IActionResult UpdatePackageWithDetails([FromRoute] int id)
+        {
+            try
+            {
+                PackageOption packageOptions = packageService.GetPackageById(id);
+                PackageOptionModel model = new PackageOptionModel { package = packageOptions };
+
+                return View(model);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IActionResult DeleteUserFromView([FromRoute] int id)
         {
-            userService.DeleteUser(id);
+            try
+            {
+                userService.DeleteUser(id);
 
-            return Redirect("/Home/Users");
+                return Redirect("/Home/Users");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public IActionResult DeletePackageFromView([FromRoute] int id)
+        {
+            try
+            {
+                packageService.DeletePackage(id);
+
+                return Redirect("/Home/Packages");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IActionResult DeleteUser()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
-        //-----------------------------------------------------------------------------------
 
-
-
-
-        //--------------------------------PROJECT VIEWS-------------------------------------------
-        public IActionResult AddProject()
+        public IActionResult DeletePackage()
         {
-            return View();
+            try
+            {
+                List<ProjectwithFileModel> projects = projectService.GetAllProjects();
+                ProjectModel projectModel = new ProjectModel { Projects = projects };
+                return View(projectModel);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
-        public IActionResult Projects()
-        {
-            List<ProjectwithFileModel> projects = projectService.GetAllProjects();
-            ProjectModel projectModel = new ProjectModel { Projects = projects };
-            return View(projectModel);
-        }
 
 
         public IActionResult SearchProjectDisplay([FromQuery] string text)
         {
-            List<ProjectwithFileModel> projects = projectService.GetAllProjects(text);
-            ProjectModel projectModel = new ProjectModel { Projects = projects };
-            return View("Projects", projectModel);
+            try
+            {
+                List<ProjectwithFileModel> projects = projectService.GetAllProjects(text);
+                ProjectModel projectModel = new ProjectModel { Projects = projects };
+                return View("Projects", projectModel);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
 
+        public IActionResult Category([FromQuery] int id)
+        {
+            try
+            {
+                List<ProjectwithFileModel> projects = projectService.SearchByCategory(id);
+                ProjectModel projectModel = new ProjectModel { Projects = projects };
+                return View("Projects", projectModel);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public IActionResult AddProject()
+        {
+            try
+            {
+                return View();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public IActionResult TopProjects()
         {
-            List<ProjectwithFileModel> projects = projectService.GetTopProjects();
-            ProjectModel projectModel = new ProjectModel { Projects = projects };
-            return View("Projects", projectModel);
+            try
+            {
+                List<ProjectwithFileModel> projects = projectService.GetTopProjects();
+                ProjectModel projectModel = new ProjectModel { Projects = projects };
+                return View("Projects", projectModel);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IActionResult MyProjects(int id)
         {
-            List<ProjectwithFileModel> projects = projectService.GetMyProjects(id);
-            ProjectModel projectModel = new ProjectModel { Projects = projects };
-            return View("Projects", projectModel);
+            try
+            {
+                List<ProjectwithFileModel> projects = projectService.GetMyProjects(id);
+                ProjectModel projectModel = new ProjectModel { Projects = projects };
+                return View("Projects", projectModel);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IActionResult DeleteProjectFromView([FromRoute] int id)
         {
-            projectService.DeleteProject(id);
+            try
+            {
+                projectService.DeleteProject(id);
 
-            return Redirect("/Home/Projects");
+                return Redirect("/Home/Projects");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IActionResult UpdateProjectWithDetails([FromRoute] int id)
         {
-            ProjectwithFileModel projectOptions = projectService.GetProjectById(id);
-            ProjectOptionModel model = new ProjectOptionModel { project = projectOptions };
+            try
+            {
+                ProjectwithFileModel projectOptions = projectService.GetProjectById(id);
+                ProjectOptionModel model = new ProjectOptionModel { project = projectOptions };
 
-            return View(model);
+                return View(model);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
         public IActionResult ProjectDetails([FromRoute] int id)
         {
-            ProjectwithFileModel projectOptions = projectService.GetProjectById(id);
-            IEnumerable<Package> projectPackages = projectService.GetProjectPackages(id);
-            ProjectOptionModel model = new ProjectOptionModel { project = projectOptions, packages = projectPackages };
+            try
+            {
+                ProjectwithFileModel projectOptions = projectService.GetProjectById(id);
+                IEnumerable<Package> projectPackages = projectService.GetProjectPackages(id);
+                ProjectOptionModel model = new ProjectOptionModel { project = projectOptions, packages = projectPackages };
 
-            return View(model);
+                return View(model);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IActionResult UpdateProject()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
         public IActionResult DeleteProject()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
-        //----------------------------------------------------------------------------------------
-
-
-
-
-        //---------------------------------PACKAGES VIEWS-------------------------------------------
-
-
-
-        [HttpGet]
-        public IActionResult AddPackage([FromRoute] int id)
+        public IActionResult Dashboard()
         {
-            ProjectwithFileModel projectOptions = projectService.GetProjectById(id);
-            ProjectOptionModel model = new ProjectOptionModel { project = projectOptions };
-
-            return View(model);
+            try
+            {
+                List<ProjectwithFileModel> projects = projectService.GetTopProjects();
+                ProjectModel projectModel = new ProjectModel { Projects = projects };
+                return View(projectModel);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
+        public IActionResult Privacy()
+        {
+            try
+            {
+                return View();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public IActionResult Users()
+        {
+            try
+            {
+                List<UserOption> users = userService.GetAllUsers();
+                UserModel userModel = new UserModel { Users = users };
+                return View(userModel);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
         public IActionResult Packages()
         {
-            List<PackageOption> packages = packageService.GetAllPackages();
-            PackageModel packageModel = new PackageModel { Packages = packages };
-            return View(packageModel);
+            try
+            {
+                List<PackageOption> packages = packageService.GetAllPackages();
+                PackageModel packageModel = new PackageModel { Packages = packages };
+                return View(packageModel);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
-
-        public IActionResult UpdatePackage()
+        public IActionResult Projects()
         {
-            return View();
+            try
+            {
+                List<ProjectwithFileModel> projects = projectService.GetAllProjects();
+                ProjectModel projectModel = new ProjectModel { Projects = projects };
+                return View(projectModel);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
-
-
-
-        public IActionResult UpdatePackageWithDetails([FromRoute] int id)
-        {
-            PackageOption packageOptions = packageService.GetPackageById(id);
-            PackageOptionModel model = new PackageOptionModel { package = packageOptions };
-
-            return View(model);
-        }
-
-
-        public IActionResult DeletePackageFromView([FromRoute] int id)
-        {
-            packageService.DeletePackage(id);
-
-            return Redirect("/Home/Packages");
-        }
-
-
-
-        public IActionResult DeletePackage()
-        {
-            List<ProjectwithFileModel> projects = projectService.GetAllProjects();
-            ProjectModel projectModel = new ProjectModel { Projects = projects };
-            return View(projectModel);
-        }
-
-        //----------------------------------------------------------------------------------------
-
-
-
-        //---------------------------------------FUNDING-------------------------------------------
-
-        [HttpPut]
-        public IActionResult FundProject([FromBody] FundingProject funding)
-        {
-            projectService.Funding(funding);
-            return Ok();
-        }
-        //----------------------------------------------------------------------------------------
-
-
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -289,7 +400,36 @@ namespace CrowdFundMVC.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        [HttpPut]
+        public IActionResult FundProject([FromBody] FundingProject funding)
+        {
+            try
+            {
+                projectService.Funding(funding);
+                return Ok();
+            }
+            catch (Exception e)
 
+            {
+                throw e;
+            }
+        }
+
+        [HttpGet]
+        public IActionResult MyFunds(int id)
+        {
+            try
+            {
+                List<ProjectwithFileModel> projects = projectService.GetMyProjects(id);
+                ProjectModel projectModel = new ProjectModel { Projects = projects };
+                return View("Projects", projectModel);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+        }
     }
 
 }

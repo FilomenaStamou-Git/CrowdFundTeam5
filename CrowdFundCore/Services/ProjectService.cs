@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using CrowdFundCore.Data;
 using CrowdFundCore.Models;
 using CrowdFundCore.Options;
@@ -17,8 +16,6 @@ namespace CrowdFundCore.Services
         {
             this.dbContext = dbContext;
         }
-
-
         
         public ProjectwithFileModel CreateProject(ProjectwithFileModel projectOption)
         {
@@ -247,36 +244,38 @@ namespace CrowdFundCore.Services
         }
 
 
-
-
-        //SELECT distinct[dbo].[FundingProjects].ProjectId FROM[dbo].[FundingProjects]
-        //where[dbo].[FundingProjects].UserId = 2
-
-        //public List<FundingProject> MyFundings(int id)
-        //{
-
-        //    List<Project> projects = dbContext
-        //        .Projects
-        //        .Where(p => p.UserId == id)
-        //        .ToList();
-
-        //    return NotImplementedException
-        //}
-
-
-
-        public IQueryable<Project> SearchByCategory(
-            ProjectwithFileModel options)
+        public List<Project> MyFundings(int id)
         {
-            var q = dbContext
-                .Set<Project>()
-                .AsQueryable();            
-            return q;
+            List<Project> projects = (from p in dbContext.Projects
+                               join fp in dbContext.FundingProjects on p.Id equals fp.Projectid
+                               where p.UserId == id select p).Distinct().ToList();
+            return projects;
         }
 
+        public List<ProjectwithFileModel> SearchByCategory(int categoryId)
+        {
 
+            List<Project> projects = dbContext.Projects
+                .Where(p => p.Categories == (Category)Enum.Parse(typeof(Category), Enum.GetName(typeof(Category), categoryId)))   // || Enum.IsDefined(typeof(Category),searchCriteria))
+                .ToList();
 
+            List<ProjectwithFileModel> projectsOpt = new List<ProjectwithFileModel>();
+            projects.ForEach(project => projectsOpt.Add(new ProjectwithFileModel
+            {
+                Id = project.Id,
+                Title = project.Title,
+                Description = project.Description,
+                Categories = project.Categories,
+                Update = project.Update,
+                Amount = project.Amount,
+                Fundings = project.Fundings,
+                Photo = project.Photo,
+                Video = project.Video,
+                UserId = project.UserId
+            }));
 
+            return projectsOpt;
+        }      
     }
 
 
