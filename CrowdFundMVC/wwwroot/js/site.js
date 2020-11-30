@@ -41,7 +41,7 @@ $('#login-btn1').on('click', function () {
         data: JSON.stringify(loginOptions),
         success: function (data) {
             localStorage.setItem('userId', data.userId);
-            window.open('/Home/MyProjects/' + localStorage.getItem('userId'), "_self")
+            window.open('/Home/dashboard/',"_self") //+ localStorage.getItem('userId')
             $('#logout-btn').show();
             $('#updateProjectbtn').show();
             $('#deleteProjectbtn').show();
@@ -64,10 +64,20 @@ $('#logout-btn').on('click', function () {
 
 });
 
+/* View my projects */
 
+$('#js-myprojects').on('click', () => {
+    debugger;
+    actionUrl = '/Home/myprojects/' + localStorage.getItem('userId')
+    window.open(actionUrl, '_self');
+})
+/* View my fundings */
 
-
-
+$('#js-myfunds').on('click', () => {
+    debugger;
+    actionUrl = '/Home/myfunds/' + localStorage.getItem('userId')
+    window.open(actionUrl, '_self');
+})
 
 
 
@@ -107,7 +117,6 @@ addUser = $('.addUser').on('click', () => {
 
     });
 })
-
 
 
                     /* Update User */
@@ -438,34 +447,6 @@ var dangerAlert = $('#danger-alert-project').hide();
 
 
 
-//function findToUpdatePackage() {
-//    //ProjectId = $('#ProjectId').val()
-//    ProjectId =parseInt($('#projectId-updatepackage').val())
-//    actionUrl = '/Home/UpdatePackagesofProject/' + ProjectId
-
-//    window.open(actionUrl, '_self');
-
-//    $.ajax({
-//        url: actionUrl,
-//        dataType: actionDataType,
-//        type: actiontype,
-//        data: JSON.stringify(sendData),
-//        contentType: 'application/json',
-//        processData: false,
-
-//        success: function (data, textStatus, jQxhr) {
-
-//            alert(JSON.stringify(data))
-
-//            window.open('/home/projects', '_self')
-//        },
-//        error: function (jqXhr, textStatus, errorThrown) {
-//            alert(errorThrown);
-//        }
-
-//    });
-//}
-
 function findToUpdateProject() {
 
     id = $('#Id').val()
@@ -480,20 +461,6 @@ function findToUpdateProject() {
 
 
 
-            /* View my projects */
-
-$('#js-myprojects').on('click', () => {
-    debugger;
-    actionUrl = '/Home/myprojects/' + localStorage.getItem('userId')
-    window.open(actionUrl, '_self');
-})
-            /* View my fundings */
-
-$('#js-myfunds').on('click', () => {
-    debugger;
-    actionUrl = '/Home/myfunds/' + localStorage.getItem('userId')
-    window.open(actionUrl, '_self');
-})
 
 
 

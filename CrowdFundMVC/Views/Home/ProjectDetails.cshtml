@@ -21,13 +21,13 @@
     <div class="card mb-3" style="padding:15px">
         <div class="row">
             <p class="card-text" style="padding:15px">
-                <b>Category: </b>@Model.project.Categories
+                <h3 class="text-center"><b><i>@Model.project.Title</i></b></h3>
             </p>
         </div>
-        <img class="card-img-top" src="~/uploadedimages/@Model.project.Photo" alt="Card image cap">
+        <img class="card-img-top rounded" src="~/uploadedimages/@Model.project.Photo" alt="Card image cap">
         <div class="card-body" style="padding:15px">
             <div class="row">
-                <h4 class="text-center"><b><i>@Model.project.Title</i></b></h4>
+                <b>Category: </b>@Model.project.Categories
             </div>
             <br />
             <p class="card-text"><b>Description: </b>@Model.project.Description</p>
