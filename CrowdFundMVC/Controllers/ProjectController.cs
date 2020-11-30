@@ -78,22 +78,22 @@ namespace CrowdFundMVC.Controllers
 
 
         [HttpPut("{id}")]
-        public ProjectwithFileModel UpdateProject([FromBody] ProjectwithFileModel projectOptWithFileModel, int id)
+        public ProjectwithFileModel UpdateProject(ProjectwithFileModel projectOptWithFileModel, int id)
         {
-            //if (projectOptWithFileModel == null) return null;
+            if (projectOptWithFileModel == null) return null;
 
-            //var formFile = projectOptWithFileModel.Picture;
-            //var filename = projectOptWithFileModel.Picture.FileName;
+            var formFile = projectOptWithFileModel.Picture;
+            var filename = projectOptWithFileModel.Picture.FileName;
 
-            //if (formFile.Length > 0)
-            //{
-            //    var filePath = Path.Combine(hostingEnvironment.WebRootPath, "uploadedimages", filename);
+            if (formFile.Length > 0)
+            {
+                var filePath = Path.Combine(hostingEnvironment.WebRootPath, "uploadedimages", filename);
 
-            //    using (var stream = System.IO.File.Create(filePath))
-            //    {
-            //        formFile.CopyTo(stream);
-            //    }
-            //}
+                using (var stream = System.IO.File.Create(filePath))
+                {
+                    formFile.CopyTo(stream);
+                }
+            }
 
             ProjectwithFileModel projectOpt = new ProjectwithFileModel
             {
@@ -109,7 +109,7 @@ namespace CrowdFundMVC.Controllers
                 UserId = projectOptWithFileModel.UserId
             };
 
-            //projectOpt.Photo = filename;
+            projectOpt.Photo = filename;
 
             return projectService.UpdateProject(projectOpt, id);
         }
@@ -126,6 +126,7 @@ namespace CrowdFundMVC.Controllers
         {
             return projectService.GetAllProjects();
         }
+
 
     }
 }

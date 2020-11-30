@@ -22,7 +22,6 @@ if (getUserId()) {
 
 }
 
-
 $('#login-btn1').on('click', function () {
     debugger;
 
@@ -116,7 +115,7 @@ addUser = $('.addUser').on('click', () => {
         }
 
     });
-})
+});
 
 
                     /* Update User */
@@ -198,15 +197,21 @@ function findToUpdateUser() {
 
 
 
-// --------------------PROJECT----------------------------//
+    // --------------------PROJECT----------------------------
 
+
+
+    
+
+let successAlert = $('#success-alert-project').hide();
+let dangerAlert = $('#danger-alert-project').hide();
 
 btn = $('#addProject').on('click', () => {
     debugger;
-    let actionUrl = '/api/project/'
-    let input = document.getElementById('Picture');
-    let files = input.files;
-    let formData = new FormData();
+    var actionUrl = '/api/project/'
+    var input = document.getElementById('Picture');
+    var files = input.files;
+    var formData = new FormData();
 
 
     for (var i = 0; i != files.length; i++) {
@@ -245,18 +250,8 @@ btn = $('#addProject').on('click', () => {
 
 
 
-//btn = $('#updateProject').on('click', () => {
-//    debugger;
 
-//    let ProjectId = $('#ProjectId').val();
-//    let actionUrl = '/api/project/' + ProjectId
-//    let input = document.getElementById('Picture');
-//    let files = input.files;
-//    let formData = new FormData();
 
-//    for (var i = 0; i != files.length; i++) {
-//        formData.append('Picture', files[i]);
-//    }
 
 //    formData.append('Title', $('#Title').val());
 //    formData.append('Description', $('#Description').val());
@@ -299,31 +294,43 @@ btnUpdate= $('#updateProject').on('click', () => {
         'Description': $('#Description').val(),
         'Categories': $('#Categories').val(),
         'Update': $('#Update').val(),
-        'Amount': $('#Amount').val(),
-        // 'Photo': $('#Photo').val(),
+        'Amount': parseFloat($('#Amount').val()),
+       // 'Photo': $('#Photo').val(),
     }
 
     $.ajax({
         url: actionUrl,
-        data: JSON.stringify(sendData),
-        processData: false,
-        contentType: 'application/json',
+        dataType: actionDataType,
         type: actiontype,
-
-        success: function (data) {
-
-            window.open('/home/projects', '_self');
-
+        data: (JSON.stringify(sendData)),
+        contentType: 'application/json',
+        processData: false,
+        success: function (data, textStatus, jQxhr) {
+            $('#success-alert-project').fadeIn(500);
+            setTimeout(function () {
+                window.open("/home/dashboard", "_self");
+            }, 3000);
         },
         error: function (jqXhr, textStatus, errorThrown) {
+
             console.log('Error from server:' + errorThrown);
-            $('#danger-alert-project').fadeIn(2000);
+            $('#danger-alert-project').fadeIn(1000);
         }
 
     });
 });
 
-//------------------------------- PACKAGE ----------------------------------------//
+
+function findToUpdateProject() {
+
+    id = $('#ProjectId').val()
+    actionUrl = '/Home/UpdateProject/' + id
+
+    window.open(actionUrl, '_self');
+
+}
+
+    //------------------------------- PACKAGE ----------------------------------------
 
                         /* Add Packages */
 
@@ -442,8 +449,8 @@ function deletePackage() {
 
 }
 
-var successAlert = $('#success-alert-project').hide();
-var dangerAlert = $('#danger-alert-project').hide();
+//var successAlert = $('#success-alert-project').hide();
+//var dangerAlert = $('#danger-alert-project').hide();
 
 
 

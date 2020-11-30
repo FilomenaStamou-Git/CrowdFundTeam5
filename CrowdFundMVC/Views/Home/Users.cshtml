@@ -5,24 +5,26 @@
 *@
 @{
 }
-<h2 style="text-align:center">Users</h2>
+<hr />
+<h2 style="text-align:left">Users</h2>
+<hr />
 <div class="row">
     @{
         foreach (var user in Model.Users)
         {
 
             <div class="col-md-3">
-                <div class="card" style="padding:20px;height:500px">
+                <div class="card" style="padding-left:30px;height:450px;border-radius: 15px 50px;margin-bottom:15px;width:270px">
 
-                    <img src="/img/avatarf.png" alt="Avatar" style="width:200px;position:center">
+                    <img src="/img/avatar.jpg" alt="Avatar" style="width:200px;position:center">
 
                     <p><b>FirstName: </b>@user.FirstName</p>
                     <p><b>LastName: </b>@user.LastName</p>
                     <p><b>Email: </b>@user.Email</p>
                     <p><b>UserId: </b>@user.Id</p>
                     <div class="row>">
-                    <a href="~/home/updateuserwithdetails/@user.Id"><button type="button" class="btn btn-outline-info" style="margin:0px 10px">Edit</button></a>
-                    <a href="~/home/DeleteUserFromView/@user.Id"><button type="button" class="btn btn-outline-secondary" style="margin:0px 10px">Delete</button></a>
+                        <a href="~/home/updateuserwithdetails/@user.Id"><button id="update-user-profile" type="button" class="btn btn-outline-info" style="margin:0px 10px">Edit</button></a>
+                        <a href="~/home/DeleteUserFromView/@user.Id"><button id="delete-user-profile" type="button" class="btn btn-outline-secondary" style="margin:0px 10px">Delete</button></a>
                     </div>
                 </div>
             </div>

@@ -162,7 +162,7 @@ namespace CrowdFundCore.Services
         private static void projectOptToProject(ProjectwithFileModel projectOpt, Project project)
 
         {
-            project.Id = projectOpt.Id;
+
             project.Title = projectOpt.Title;
             project.Description = projectOpt.Description;
             project.Categories = projectOpt.Categories;

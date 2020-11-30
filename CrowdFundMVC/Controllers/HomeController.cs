@@ -75,7 +75,7 @@ namespace CrowdFundMVC.Controllers
                 ProjectOptionModel model = new ProjectOptionModel { project = projectOptions };
                 return View(model);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -110,14 +110,14 @@ namespace CrowdFundMVC.Controllers
             try
             {
                 UserOption userOptions = userService.GetUserById(id);
-            UserOptionModel model = new UserOptionModel { user = userOptions };
-            return View(model);
-        }
+                UserOptionModel model = new UserOptionModel { user = userOptions };
+                return View(model);
+            }
             catch (Exception e)
             {
                 throw e;
             }
-}
+        }
 
         public IActionResult UpdatePackageWithDetails([FromRoute] int id)
         {
@@ -204,8 +204,8 @@ namespace CrowdFundMVC.Controllers
             }
         }
 
-        
-        public IActionResult Category([FromQuery] int id) 
+
+        public IActionResult Category([FromQuery] int id)
         {
             try
             {

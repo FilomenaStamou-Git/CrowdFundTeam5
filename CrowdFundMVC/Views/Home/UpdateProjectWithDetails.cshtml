@@ -19,7 +19,7 @@
     <div class="container-fluid" style="margin:100px 200px 100px 200px; padding: 50px; border-radius: 15px 50px; width:60%;background-color:white">
         <h2 style="text-align:center"> Update your Project: <b><i>@Model.project.Title</i></b></h2>
 
-        <form method="post">
+        <form>
 
 
             <div class="form-group">
@@ -51,12 +51,10 @@
                 <label for="exampleFormControlTextarea1">Description</label>
                 <textarea class="form-control" id="Description" rows="3" value="@Model.project.Description"></textarea>
             </div>
-            @*<div class="custom-file">
+            <div class="custom-file">
                 <input type="file" class="custom-file-input" id="Picture">
                 <label class="custom-file-label" for="Picture">Choose a Picture</label>
-            </div>*@
-            @*<input name="Photos" type="text" class="form-control"
-               id="Photo" placeholder="Enter the project Photo">*@
+            </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Amount</label>
                 <input type="number" class="form-control" id="Amount" value="@Model.project.Amount">
