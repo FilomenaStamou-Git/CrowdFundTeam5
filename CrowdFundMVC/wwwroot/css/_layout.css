@@ -1,38 +1,5 @@
-﻿﻿.site-footer {
-    background-color: #26272b;
-    padding: 45px 0 20px;
-    font-size: 15px;
-    line-height: 24px;
-    color: #737373;
-}
-
-.site-footer hr {
-    border-top-color: #bbb;
-    opacity: 0.5
-}
-
-    .site-footer hr.small {
-        margin: 20px 0
-    }
-
-.site-footer h6 {
-    color: #fff;
-    font-size: 16px;
-    text-transform: uppercase;
-    margin-top: 5px;
-    letter-spacing: 2px
-}
-
-.site-footer a {
-    color: #737373;
-}
-
-    .site-footer a:hover {
-        color: #3366cc;
-        text-decoration: none;
-    }
-
-
+﻿﻿ /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
 footer {
     position: relative bottom: 0;
 }
@@ -267,7 +234,7 @@ footer {
         border: none;
         background: transparent;
         position: absolute;
-        right: 80;
+        right: 0;
         z-index: 9;
         padding: 7px;
         height: 100%;
@@ -278,49 +245,45 @@ footer {
         font-size: 19px;
     }
 
-.navbar {
-    background-color: transparent;
+.navbar .nav-item i {
+    font-size: 18px;
 }
 
-    .navbar .nav-item i {
-        font-size: 18px;
-    }
+.navbar .dropdown-item i {
+    font-size: 16px;
+    min-width: 22px;
+}
 
-    .navbar .dropdown-item i {
-        font-size: 16px;
-        min-width: 22px;
-    }
-
-    .navbar .nav-item.open > a {
-        background: none !important;
-    }
+.navbar .nav-item.open > a {
+    background: none !important;
+}
 
 
-    .navbar .badge {
-        color: #fff;
-        background: #f44336;
-        font-size: 11px;
-        border-radius: 20px;
-        position: absolute;
-        min-width: 10px;
-        padding: 4px 6px 0;
-        min-height: 18px;
-        top: 5px;
-    }
+.navbar .badge {
+    color: #fff;
+    background: #f44336;
+    font-size: 11px;
+    border-radius: 20px;
+    position: absolute;
+    min-width: 10px;
+    padding: 4px 6px 0;
+    min-height: 18px;
+    top: 5px;
+}
 
 
 
-    .navbar a.notifications .badge {
-        margin-left: -8px;
-    }
+.navbar a.notifications .badge {
+    margin-left: -8px;
+}
 
-    .navbar a.messages .badge {
-        margin-left: -4px;
-    }
+.navbar a.messages .badge {
+    margin-left: -4px;
+}
 
-    .navbar .active a, .navbar .active a:hover, .navbar .active a:focus {
-        background: transparent !important;
-    }
+.navbar .active a, .navbar .active a:hover, .navbar .active a:focus {
+    background: transparent !important;
+}
 
 
 @media (max-width: 1199px) {
@@ -332,3 +295,4 @@ footer {
     .input-group {
         width: 100%;
     }
+    /*}*/

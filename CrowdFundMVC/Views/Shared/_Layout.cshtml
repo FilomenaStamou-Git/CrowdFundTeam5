@@ -21,7 +21,7 @@
 <body style="background-color:aliceblue">
 
     <nav class="navbar navbar-expand-xl navbar-light bg-dark">
-        <a href="~/Home/Index" class="navbar-brand text-light"><img src="~/img/fundastic.png" alt="FUNDastic" width="150" height="40"></a>
+        <a href="~/Home/Index" class="navbar-brand text-light"><i class="fa fa-cube"></i>Fund<b>Astic</b></a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -40,13 +40,14 @@
             <form class="navbar-form form-inline">
                 <div class="input-group search-box">
                     <input type="text" class="form-control handleEnter" id="searchText" placeholder="Search a Title">
-                    <button style="border-color:white;border-radius:6px 6px"><i class="material-icons searchProject" style="color:white;padding-top:5px;width:25px">&#xE8B6;</i></button>
+                    <button class="btn btn-secondary"><i class="material-icons searchProject" style="color:white;padding-top:2px;width:18px">&#xE8B6;</i></button>
                 </div>
             </form>
 
             <div class="navbar-nav ml-auto">
 
                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="AddUser" style="background-color: #5383d3;border-radius:4px;margin:5px 5px 5px 5px;width:80px;height:40px;text-align: center">Sign Up</a>
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Dashboard" style="background-color: #5383d3;border-radius:4px;margin:5px 5px 5px 5px;width:90px;height:40px;text-align: center">Dashboard</a>
                 <a id="login-btn" class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Login_Form" style="background-color: rebeccapurple;border-radius:4px;margin:5px 5px 5px 5px;width:80px;height:40px;text-align: center;color:white">Login</a>
                 <a id="logout-btn" class="nav-link text-light" style="display: none;background-color: rebeccapurple;border-radius:4px;margin:5px 5px 5px 5px;width:80px;height:40px;text-align:center;color:white">Logout</a>
             </div>
@@ -59,7 +60,7 @@
         </main>
     </div>
 
-    <!--<footer class="footer-distributed">
+    <footer class="footer-distributed">
 
         <div class="footer-left">
 
@@ -68,13 +69,12 @@
             <p class="footer-links">
                 <a href="~/Home/Index">Home</a>
                 ·
-                <a href="Privacy">Privacy</a>
+                <a href="~/Home/Privacy">Privacy</a>
                 ·
-                <a href="About">About</a>
+                <a href="~/Home/About">About</a>
                 ·
+                <a href="~/Home/Dashboard">Dashboard</a>
             </p>
-
-            <p class="footer-company-name">fundastic &copy; 2020</p>
         </div>
 
         <div class="footer-center">
@@ -83,12 +83,6 @@
                 <i class="fa fa-map-marker"></i>
                 <p><span>Web Only</span></p>
             </div>
-
-            <div>
-                <i class="fa fa-phone"></i>
-                <p>+30 555 1234560</p>
-            </div>
-
             <div>
                 <i class="fa fa-envelope"></i>
                 <p><a href="mailto:support@company.com">contact@fundastic.com</a></p>
@@ -99,27 +93,26 @@
         <div class="footer-right">
 
             <p class="footer-company-about">
-                <span>About the company</span>
-                FundAstic is a crowd funding platform for the web, where one, could share their wildest idea and others could contribute financially to see it happening.
+                <span>
+                Copyright &copy; 2020 All Rights Reserved by
+                <a href="/Home/Privacy">FUNDastic</a>.
+            </span>
             </p>
 
-            <div class="footer-icons">-->
-    <!--<a href="#"><i class="fa fa-facebook"></i></a>
-    <a href="#"><i class="fa fa-twitter"></i></a>
-    <a href="#"><i class="fa fa-linkedin"></i></a>-->
-    <!--<a href="https://github.com/ioanchri/CrowdFundTeam5"><i class="fa fa-github"></i></a>
-
-                </div>
+            <div class="footer-icons">
+                <a href="https://github.com/ioanchri/CrowdFundTeam5"><i class="fa fa-github"></i></a>
 
             </div>
 
-        </footer>
+        </div>
+
+    </footer>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
         @RenderSection("Scripts", required: false)
-    </body>-->
-    <footer class="site-footer">
+    </body>
+    @*<footer class="site-footer">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-3">
@@ -157,7 +150,7 @@
                     </div>
 
                     <div margin-left:auto; margin-right:0;>
-                        <a href="~/Home/Index" class="navbar-brand text-light"><img src="~/img/fundastic.png" alt="FUNDastic" width="150" height="40"></a>
+                        <a href="~/Home/Index" class="navbar-brand text-light"><img src="~/img/fundastic.png" alt="FUNDastic" width="250" height="40"></a>
                     </div>
 
                 </div>
@@ -182,4 +175,4 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
-</body>
+</body>*@
