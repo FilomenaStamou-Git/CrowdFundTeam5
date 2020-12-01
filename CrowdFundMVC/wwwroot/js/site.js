@@ -5,13 +5,24 @@
 
 
 
-                /* User Id */
-
-
-
+/* User Id */
+if (!localStorage.getItem('userId')) {
+    $('#logout-btn').hide();
+    $('#updateProjectbtn').hide();
+    $('#deleteProjectbtn').hide();
+    $('#SignupBtn').show();
+    $('#login-btn').show();
+    $('#dashboardBtn').hide();
+}
 function getUserId() {
     return localStorage.getItem('userId');
 }
+
+
+//if (localStorage.getItem('userId') = null) {
+//    debugger;
+//    $('#dashboardBtn').hide();
+//}
 
 if (getUserId()) {
     $('#logout-btn').show();
@@ -19,7 +30,7 @@ if (getUserId()) {
     $('#deleteProjectbtn').show();
     $('#login-btn').hide();
     $('#SignupBtn').hide();
-
+    $('#dashboardBtn').show();
 }
 
 $('#login-btn1').on('click', function () {
@@ -40,27 +51,30 @@ $('#login-btn1').on('click', function () {
         data: JSON.stringify(loginOptions),
         success: function (data) {
             localStorage.setItem('userId', data.userId);
-            window.open('/Home/dashboard/',"_self") //+ localStorage.getItem('userId')
+            window.open('/Home/dashboard/',"_self")
             $('#logout-btn').show();
             $('#updateProjectbtn').show();
             $('#deleteProjectbtn').show();
             $('#SignupBtn').hide();
+            $('#dashboardBtn').show();
+
         },
         error: function () {
-            alert('Login denied');
+            $('#danger-alert-project');
         }
     });
 });
 
+    /* Logout button functions */
 $('#logout-btn').on('click', function () {
+    debugger;
     localStorage.removeItem('userId');
     $('#logout-btn').hide();
     $('#updateProjectbtn').hide();
     $('#deleteProjectbtn').hide();
     $('#SignupBtn').show();
     $('#login-btn').show();
-
-
+    $('#dashboardBtn').hide();
 });
 
 /* View my projects */

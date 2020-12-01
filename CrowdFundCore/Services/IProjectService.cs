@@ -17,6 +17,6 @@ namespace CrowdFundCore.Services
         IEnumerable<Package> GetProjectPackages(int id);
         void Funding(FundingProject funding);
         List<ProjectwithFileModel> SearchByCategory(int categoryId);
-        List<Project> MyFundings(int id);      
+        List<ProjectwithFileModel> MyFundings(int id);      
     }
 }

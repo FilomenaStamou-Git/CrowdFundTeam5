@@ -392,6 +392,7 @@ namespace CrowdFundMVC.Controllers
             {
                 throw e;
             }
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -416,11 +417,11 @@ namespace CrowdFundMVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult MyFunds(int id)
+        public IActionResult MyFunds(int id)//gia dokimase twra 
         {
             try
             {
-                List<ProjectwithFileModel> projects = projectService.GetMyProjects(id);
+                List<ProjectwithFileModel> projects = projectService.MyFundings(id);
                 ProjectModel projectModel = new ProjectModel { Projects = projects };
                 return View("Projects", projectModel);
             }

@@ -71,23 +71,14 @@
                     <div class="col-xl-3">
                         <div class="form-group mx-sm-6 mb-1 d-inline-flex search-projects-icon">
                             <i style="font-size:1.5em;" class="fa fa-sliders" aria-hidden="true"></i>
-                            
                         </div>
                     </div>
-                    @*<div class="col-xl-2">
-                        <div class="row">
-                            <a href="~/Home/TopProjects" class="navbar-brand text-dark" style="font-size:16px"><b>Top Project</b></a>
-                           
-                        </div>
-                    </div>*@
                     <div class="col-xl-3">
                         <div class="row">
                             <label style="font-weight:500;width:300px">Title</label>
                             <input type="text" class="form-control handleEnterFilter" id="searchTextFilter" placeholder="Search a Title">
                         </div>
                     </div>
-
-
                     <div class="col-xl-3">
                         <div class="row">
                             <div class="form-group mx-sm-3 mb-1 search-projects-cat-input">
@@ -123,7 +114,7 @@
                         <div class="col-lg-3">
                             <div class="card" style="padding:20px;height:400px;border-radius: 15px 50px;margin-bottom:15px">
 
-                                <img src="~/uploadedimages/@project.Photo" style="height:150px;width:auto" />
+                                <img src="~/uploadedimages/@project.Photo" class="rounded" style="height:150px;width:auto" />
                                 <p><b>@project.Title</b></p>
                                 <div class="row">
                                     <div class="col">

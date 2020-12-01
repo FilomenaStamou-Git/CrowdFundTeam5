@@ -60,26 +60,25 @@
         </div>
     </div>
 
-    <div class="container-fluid" style="width:40%">
+    <div class="container-fluid" style="width:40%;margin-top:20px">
         <div class="row">
             <div class="col">
                 <div class="bg-white shadow rounded overflow-hidden">
                     <div class="px-4 pt-0 pb-4 cover">
                         <input id="Id" type="hidden" value="UserId" />
                         <div class="media align-items-end profile-head">
-                            <div class="profile mr-3"><img src="~/img/avatar.jpg" alt="UserPhoto" width="130" class="rounded mb-2 img-thumbnail"></div>
+                            <div class="profile mr-3"><img src="~/img/avatar.jpg" alt="UserPhoto" width="130" class="rounded mb-2 img-thumbnail" style="margin-top:10px"></div>
                             <div class="p-4 rounded shadow-lg bg-light">
-                                <a class="font-italic mb-0" style="color:black" href="~/home/Users">Edit Profile     ·</a>
-                                <a href="~/home/myprojects/" class="font-italic mb-0" style="color:black">My Projects     ·</a>
-                                <a href="~/home/myprojects/" class="font-italic mb-0" style="color:black">My Projects     ·</a>
-                                <a class="font-italic mb-0" style="color:black" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
+                                <a class="font-italic mb-0" style="color:black" href="~/home/Users"><button type="button" class="btn btn-outline-info">Edit Profile</button>     ·</a>
+                                <a class="font-italic mb-0" style="color:black"><button type="button" class="btn btn-outline-info" id="js-myprojects">My Projects</button>     ·</a>
+                                <a class="font-italic mb-0" style="color:black"><button type="button" class="btn btn-outline-info" id="js-myfunds">My Fundings</button>     ·</a>
+                                @*<a class="font-italic mb-0" style="color:black" asp-area="" asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-outline-info" id="logout-btn">Logout</button>     ·</a>*@
+                                <a class="font-italic mb-0" style="color:black" href="~/home/AddProject"><button type="button" class="btn btn-outline-info">Add Project</button></a>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                @*<div class="px-4 py-3">
-
-                    </div>*@
             </div>
 
         </div>

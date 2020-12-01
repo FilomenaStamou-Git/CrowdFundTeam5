@@ -178,7 +178,7 @@ namespace CrowdFundCore.Services
         public List<ProjectwithFileModel> GetTopProjects()
         {
             List<Project> projects = dbContext.Projects
-                .Take(6)
+                .Take(4)
                 .OrderByDescending(p =>p.Fundings)
                 .ThenBy(p=>p.Title)                
                 .ToList();
@@ -244,12 +244,28 @@ namespace CrowdFundCore.Services
         }
 
 
-        public List<Project> MyFundings(int id)
+        public List<ProjectwithFileModel> MyFundings(int id)
         {
             List<Project> projects = (from p in dbContext.Projects
                                join fp in dbContext.FundingProjects on p.Id equals fp.Projectid
                                where p.UserId == id select p).Distinct().ToList();
-            return projects;
+
+            List<ProjectwithFileModel> projectsOpt = new List<ProjectwithFileModel>();
+            projects.ForEach(project => projectsOpt.Add(new ProjectwithFileModel
+            {
+                Id = project.Id,
+                Title = project.Title,
+                Description = project.Description,
+                Categories = project.Categories,
+                Update = project.Update,
+                Amount = project.Amount,
+                Fundings = project.Fundings,
+                Photo = project.Photo,
+                Video = project.Video,
+                UserId = project.UserId
+            }));
+
+            return projectsOpt;
         }
 
         public List<ProjectwithFileModel> SearchByCategory(int categoryId)

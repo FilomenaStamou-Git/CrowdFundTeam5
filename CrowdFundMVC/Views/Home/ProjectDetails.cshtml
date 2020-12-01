@@ -12,10 +12,11 @@
     </div>
     return;
 }
+
+
 <div class="container-fluid" style="margin-top50px; padding: 50px; border-radius: 15px 50px; width:80%;background-color:white">
     <input class="" id="js-userId-fund" type="hidden" value="@Model.project.UserId" />
     <input class="" id="js-projectId-fund" type="hidden" value="@Model.project.Id" />
-
 
 
     <div class="card mb-3" style="padding:15px">
@@ -27,9 +28,9 @@
         <img class="card-img-top rounded" src="~/uploadedimages/@Model.project.Photo" alt="Card image cap">
         <div class="card-body" style="padding:15px">
             <div class="row">
-                <b>Category: </b>@Model.project.Categories
+            <p class="card-text"><b>Category: </b>@Model.project.Categories
             </div>
-            <br />
+            <br/>
             <p class="card-text"><b>Description: </b>@Model.project.Description</p>
         </div>
 
