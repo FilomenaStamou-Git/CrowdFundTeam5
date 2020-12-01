@@ -248,7 +248,7 @@ namespace CrowdFundCore.Services
         {
             List<Project> projects = (from p in dbContext.Projects
                                join fp in dbContext.FundingProjects on p.Id equals fp.Projectid
-                               where p.UserId == id select p).Distinct().ToList();
+                               where fp.Userid == id select p).Distinct().ToList();
 
             List<ProjectwithFileModel> projectsOpt = new List<ProjectwithFileModel>();
             projects.ForEach(project => projectsOpt.Add(new ProjectwithFileModel

@@ -14,7 +14,7 @@
 }
 
 
-<div class="container-fluid" style="margin-top50px; padding: 50px; border-radius: 15px 50px; width:80%;background-color:white">
+<div class="container-fluid" style="margin-top50px; padding: 50px; border-radius: 15px 50px; width:60%;background-color:white">
     <input class="" id="js-userId-fund" type="hidden" value="@Model.project.UserId" />
     <input class="" id="js-projectId-fund" type="hidden" value="@Model.project.Id" />
 
@@ -25,7 +25,7 @@
                 <h3 class="text-center"><b><i>@Model.project.Title</i></b></h3>
             </p>
         </div>
-        <img class="card-img-top rounded" src="~/uploadedimages/@Model.project.Photo" alt="Card image cap">
+        <img class="card-img-top rounded" src="~/uploadedimages/@Model.project.Photo" alt="Card image cap" style="width:auto;height:400px;">
         <div class="card-body" style="padding:15px">
             <div class="row">
             <p class="card-text"><b>Category: </b>@Model.project.Categories

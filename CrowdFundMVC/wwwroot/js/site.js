@@ -13,16 +13,16 @@ if (!localStorage.getItem('userId')) {
     $('#SignupBtn').show();
     $('#login-btn').show();
     $('#dashboardBtn').hide();
+    $('#viewUsersBtn').hide();
+    $('#addProjectBtn').hide();
+
+
+
 }
 function getUserId() {
     return localStorage.getItem('userId');
 }
 
-
-//if (localStorage.getItem('userId') = null) {
-//    debugger;
-//    $('#dashboardBtn').hide();
-//}
 
 if (getUserId()) {
     $('#logout-btn').show();
@@ -31,6 +31,8 @@ if (getUserId()) {
     $('#login-btn').hide();
     $('#SignupBtn').hide();
     $('#dashboardBtn').show();
+    $('#viewUsersBtn').show();
+    $('#addProjectBtn').show();
 }
 
 $('#login-btn1').on('click', function () {
@@ -57,10 +59,12 @@ $('#login-btn1').on('click', function () {
             $('#deleteProjectbtn').show();
             $('#SignupBtn').hide();
             $('#dashboardBtn').show();
+            $('#viewUsersBtn').show();
+            $('#addProjectBtn').show();
 
         },
         error: function () {
-            $('#danger-alert-project');
+            alert("Access Denied")
         }
     });
 });
@@ -75,6 +79,8 @@ $('#logout-btn').on('click', function () {
     $('#SignupBtn').show();
     $('#login-btn').show();
     $('#dashboardBtn').hide();
+    $('#viewUsersBtn').hide();
+    $('#addProjectBtn').hide();
 });
 
 /* View my projects */
@@ -89,6 +95,13 @@ $('#js-myprojects').on('click', () => {
 $('#js-myfunds').on('click', () => {
     debugger;
     actionUrl = '/Home/myfunds/' + localStorage.getItem('userId')
+    window.open(actionUrl, '_self');
+})
+/* View Top Projects */
+
+$('#js-topProjects').on('click', () => {
+    debugger;
+    actionUrl = '/Home/topprojects/'
     window.open(actionUrl, '_self');
 })
 
@@ -215,7 +228,7 @@ function findToUpdateUser() {
 
 
 
-    
+                /* Add Project */
 
 let successAlert = $('#success-alert-project').hide();
 let dangerAlert = $('#danger-alert-project').hide();

@@ -39,6 +39,14 @@ namespace CrowdFundMVC.Controllers
                 });
             }
 
+            if (options.Email == "backer@gmail.com")
+            {
+                return Ok(new
+                {
+                    userId = "13"
+                });
+            }
+
             return Forbid();
         }
 
