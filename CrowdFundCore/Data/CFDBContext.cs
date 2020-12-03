@@ -16,9 +16,8 @@ namespace CrowdFundCore.Data
 
 
 
-        public readonly static string connectionString =
-        "Server=tcp:ioanchri-server.database.windows.net,1433;Initial Catalog=CrowdFundTeam5;Persist Security Info=False;User ID=ioanchri;Password=1234qwer!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-        //"Server=tcp:danaikp.database.windows.net,1433;Initial Catalog=Tm5;Persist Security Info=False;User ID=dkape;Password=Zmt89950;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        public readonly static string connectionString = "Place it here";
+       
 
         protected override void OnConfiguring
            (DbContextOptionsBuilder optionsBuilder)
